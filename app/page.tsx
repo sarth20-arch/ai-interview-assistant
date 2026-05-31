@@ -2,21 +2,13 @@
 
 import { useState } from "react";
 import recruiterQA from "../data/recruiter_qa.json";
-import kpiCards from "../data/kpi_cards.json";
-import experience from "../data/experience.json";
-import projects from "../data/projects.json";
-import behavioral from "../data/behavioral.json";
-import kpis from "../data/kpis.json";
-import starStories from "../data/star_stories.json";
-import recruiterQuestions from "../data/recruiter_questions.json";
 
 export default function Home() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [selectedMode, setSelectedMode] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
   const [userQuestion, setUserQuestion] = useState("");
-const [aiResponse, setAiResponse] = useState("");
-const [loading, setLoading] = useState(false);
+  const [aiResponse, setAiResponse] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const recruiterModes = [
     "All",
@@ -28,46 +20,39 @@ const [loading, setLoading] = useState(false);
   ];
 
   const filteredQuestions = recruiterQA.filter((item: any) => {
-    const matchesMode =
+    return (
       selectedMode === "All" ||
-      item.category === selectedMode;
-
-    const matchesSearch =
-      item.question
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-      item.answer
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-
-    return matchesMode && matchesSearch;
+      item.category === selectedMode
+    );
   });
-const askAI = async () => {
-  if (!userQuestion) return;
 
-  setLoading(true);
+  const askAI = async () => {
+    if (!userQuestion.trim()) return;
 
-  try {
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: userQuestion,
-      }),
-    });
+    setLoading(true);
 
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userQuestion,
+        }),
+      });
 
-    setAiResponse(data.reply);
-  } catch (error) {
-    console.error(error);
-    setAiResponse("Something went wrong.");
-  }
+      const data = await response.json();
 
-  setLoading(false);
-};
+      setAiResponse(data.reply);
+    } catch (error) {
+      console.error(error);
+      setAiResponse("Something went wrong.");
+    }
+
+    setLoading(false);
+  };
+
   const toggleAnswer = (id: number) => {
     if (selectedId === id) {
       setSelectedId(null);
@@ -78,7 +63,6 @@ const askAI = async () => {
 
   return (
     <main className="min-h-screen bg-black text-white flex">
-      
       {/* Sidebar */}
       <aside className="w-80 border-r border-gray-800 p-6 hidden md:block">
         <h1 className="text-3xl font-bold mb-6">
@@ -86,7 +70,6 @@ const askAI = async () => {
         </h1>
 
         <div className="space-y-6">
-
           <div>
             <h2 className="text-lg font-semibold mb-2">
               Role
@@ -124,77 +107,50 @@ const askAI = async () => {
             <ul className="text-gray-400 space-y-1">
               <li>Agile</li>
               <li>Stakeholder Management</li>
-              <li>KPI Tracking</li>
               <li>Requirement Gathering</li>
               <li>Product Thinking</li>
+              <li>Implementation</li>
             </ul>
           </div>
-
         </div>
       </aside>
 
       {/* Main Content */}
       <section className="flex-1 p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-  {kpiCards.map((card) => (
-    <div
-      key={card.id}
-      className="bg-gray-900 border border-gray-800 rounded-2xl p-5"
-    >
-      <p className="text-sm text-gray-400 mb-2">
-        {card.title}
-      </p>
-
-      <h2 className="text-3xl font-bold mb-3">
-        {card.value}
-      </h2>
-
-      <p className="text-gray-300 text-sm">
-        {card.insight}
-      </p>
-    </div>
-  ))}
-</div>
-
         <h1 className="text-5xl font-bold mb-10">
-          AI Recruiter Assistant
+          Ask Sarthak
         </h1>
 
-        <input
-          type="text"
-          placeholder="Search recruiter questions..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-4 mb-8 rounded-xl bg-gray-900 border border-gray-700 text-white"
-        />
+        {/* AI Chat */}
         <div className="mb-10 space-y-4">
-  <textarea
-    placeholder="Ask AI recruiter assistant anything..."
-    value={userQuestion}
-    onChange={(e) => setUserQuestion(e.target.value)}
-    className="w-full p-4 rounded-xl bg-gray-900 border border-gray-700 text-white min-h-[120px]"
-  />
+          <textarea
+            placeholder="Ask Sarthak anything..."
+            value={userQuestion}
+            onChange={(e) => setUserQuestion(e.target.value)}
+            className="w-full p-4 rounded-xl bg-gray-900 border border-gray-700 text-white min-h-[120px]"
+          />
 
-  <button
-    onClick={askAI}
-    className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
-  >
-    {loading ? "Thinking..." : "Ask AI"}
-  </button>
+          <button
+            onClick={askAI}
+            className="bg-white text-black px-6 py-3 rounded-xl font-semibold"
+          >
+            {loading ? "Thinking..." : "Ask Sarthak"}
+          </button>
 
-  {aiResponse && (
-    <div className="border border-gray-700 rounded-xl p-5 bg-gray-900">
-      <h2 className="text-lg font-semibold mb-3">
-  Sarthak's Response
-</h2>
+          {aiResponse && (
+            <div className="border border-gray-700 rounded-xl p-5 bg-gray-900">
+              <h2 className="text-lg font-semibold mb-3">
+                Sarthak's Response
+              </h2>
 
-      <p className="text-gray-300 whitespace-pre-line">
-        {aiResponse}
-      </p>
-    </div>
-  )}
-</div>
+              <p className="text-gray-300 whitespace-pre-line">
+                {aiResponse}
+              </p>
+            </div>
+          )}
+        </div>
 
+        {/* Recruiter Modes */}
         <div className="flex gap-4 mb-10 flex-wrap">
           {recruiterModes.map((mode) => (
             <button
@@ -211,6 +167,7 @@ const askAI = async () => {
           ))}
         </div>
 
+        {/* Question Cards */}
         <div className="space-y-6">
           {filteredQuestions.map((item: any) => (
             <div
@@ -234,7 +191,6 @@ const askAI = async () => {
             </div>
           ))}
         </div>
-
       </section>
     </main>
   );
