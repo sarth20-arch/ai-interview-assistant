@@ -103,12 +103,11 @@
         {/* Sidebar */}
         <aside className="w-80 border-r border-gray-800 p-6 hidden md:block">
           <div className="flex items-center gap-4 mb-6">
-  <Image
-    src="/logo.png"
-    alt="AI Business Analyst"
-    width={100}
-    height={100}
-  />
+  <img
+  src="/Logo.png"
+  alt="AI Business Analyst"
+  width="100"
+/>
 
   <div>
     <h1 className="text-4xl font-bold">
