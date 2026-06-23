@@ -15,7 +15,7 @@
 "task": "I needed to align both groups and ensure a practical implementation approach.",
 "action": "I facilitated discussions to understand the business impact of the requested validations, worked with developers to estimate effort, and helped split the requirements into immediate and future enhancements.",
 "result": "Stakeholders agreed on a phased approach that addressed critical business needs while keeping the release timeline realistic."
-}
+},
 
 
   {
@@ -25,7 +25,7 @@
 "task": "I needed to evaluate the impact of the changes and minimize disruption to ongoing work.",
 "action": "I worked with stakeholders, developers and QA teams to assess dependencies, update user stories, reprioritize backlog items and communicate revised expectations.",
 "result": "The critical requirements were accommodated without significantly impacting overall implementation timelines."
-}
+},
 
 
   {
@@ -53,9 +53,7 @@
 "task": "I needed to support delivery without compromising requirement quality or creating confusion for developers.",
 "action": "I focused on high-priority workflows first, clarified critical requirements through stakeholder discussions, and worked closely with developers during implementation to resolve questions quickly.",
 "result": "The team delivered the planned functionality within the release timeline while maintaining requirement clarity."
-}
-]
-
+},
 {
 "id": 7,
 "scenario": "Requirement Discovery",
@@ -64,3 +62,4 @@
 "action": "I conducted requirement workshops, mapped current workflows, identified pain points and documented functional requirements through user stories and acceptance criteria.",
 "result": "The team gained a clear understanding of the solution scope and development started with significantly fewer ambiguities."
 }
+]

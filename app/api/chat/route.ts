@@ -23,20 +23,32 @@ export async function POST(req: Request) {
 
     // Dynamic Context Selection
 
-    if (userMessage.includes("stakeholder")) {
-      dynamicContext = contextMap.stakeholder;
-    } else if (userMessage.includes("agile")) {
-      dynamicContext = contextMap.agile;
-    } else if (
-      userMessage.includes("kpi") ||
-      userMessage.includes("metrics")
-    ) {
-      dynamicContext = contextMap.kpi;
-    } else if (userMessage.includes("product")) {
-      dynamicContext = contextMap.product;
-    } else if (userMessage.includes("implementation")) {
-      dynamicContext = contextMap.implementation;
-    }
+if (
+  userMessage.includes("fitrofy") ||
+  userMessage.includes("healthtech") ||
+  userMessage.includes("partnership") ||
+  userMessage.includes("white label")
+) {
+  dynamicContext = `
+Use the Fitrofy project from the Knowledge Base.
+Focus on partnerships, integrations, white-label opportunities,
+business discussions, requirement gathering and interactions
+with C-level executives.
+`;
+} else if (userMessage.includes("stakeholder")) {
+  dynamicContext = contextMap.stakeholder;
+} else if (userMessage.includes("agile")) {
+  dynamicContext = contextMap.agile;
+} else if (
+  userMessage.includes("kpi") ||
+  userMessage.includes("metrics")
+) {
+  dynamicContext = contextMap.kpi;
+} else if (userMessage.includes("product")) {
+  dynamicContext = contextMap.product;
+} else if (userMessage.includes("implementation")) {
+  dynamicContext = contextMap.implementation;
+}
 
     // Knowledge Retrieval
 // Knowledge Retrieval
@@ -50,14 +62,15 @@ const projectKnowledge = projects.filter((project: any) => {
     ${project.objective}
     ${project.challenge}
     ${project.outcome}
-    ${project.skills.join(" ")}
+    ${project.skills?.join(" ")}
+    ${project.keywords?.join(" ")}
   `.toLowerCase();
 
   return (
-    userMessage.includes("project") ||
-    userMessage.includes("challenge") ||
-    userMessage.includes("implementation") ||
-    userMessage.includes("experience")
+    combinedText.includes(userMessage) ||
+    project.keywords?.some((keyword: string) =>
+      userMessage.includes(keyword.toLowerCase())
+    )
   );
 });
 
@@ -101,11 +114,13 @@ Outcome: ${project.outcome}
   )
   .join("\n\n");
 
-knowledgeContext = relevantKnowledge
+const qaContext = qaKnowledge
   .slice(0, 3)
-  .map((item: any) => {
-    return JSON.stringify(item, null, 2);
-  })
+  .map(
+    (item: any) =>
+      `Question: ${item.question || item.scenario}
+Answer: ${item.answer || item.result || item.action}`
+  )
   .join("\n\n");
 
 knowledgeContext = `
@@ -155,6 +170,9 @@ When answering project-related questions:
 - Use implementationExperience when discussing implementation.
 - Do not invent project details not present in the knowledge base.
 - If the question asks about a project, first look for matching project information in the Knowledge Base before generating a response.
+- Highlight personal contribution before describing the project.
+- Prefer explaining what Sarthak personally owned and delivered.
+- When discussing the Tax Officer Management Platform, mention end-to-end implementation involvement when relevant.
 `,
           },
           {
