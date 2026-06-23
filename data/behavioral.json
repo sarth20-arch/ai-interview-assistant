@@ -32,9 +32,7 @@
     "category": "Agile",
     "question": "Users complain despite on-time delivery. What Agile or process changes would you consider?",
     "answer": "I would review issue resolution SLAs, support turnaround time, and feedback loops. I may introduce smaller release cycles, bug triaging improvements, and better prioritization of production issues."
-  }
-]
-,
+  },
 {
 "id": 16,
 "category": "Stakeholder Management",
@@ -69,3 +67,4 @@
 "question": "Tell me about a situation where you had to prioritize competing requirements.",
 "answer": "When multiple requirements competed for limited development capacity, I worked with stakeholders to understand business impact, urgency, and dependencies. We prioritized high-value items first and planned remaining requirements for future iterations."
 }
+]
