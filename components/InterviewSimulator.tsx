@@ -88,15 +88,6 @@ export default function InterviewSimulator() {
   // Fallback: always show BA Copilot if nothing matched
   if (recommendedNext.length === 0) recommendedNext.push({ key: 'ba', label: 'BA Copilot', href: '/ba-copilot' });
 
-  // readiness calculations (no AI)
-  const totalAvailableCategories = new Set(questions.map((q: any) => q.category)).size || 1;
-  const coveredCategories = Array.from(new Set(activeQuestions.map((q: any) => q.category)));
-  const coverageRatio = coveredCategories.length / totalAvailableCategories;
-  const questionsCompleted = activeQuestions.length;
-  const completionRatio = questions.length ? questionsCompleted / questions.length : 0;
-  const difficultyWeight = difficulty === "Hard" ? 1 : difficulty === "Medium" ? 0.9 : 0.8;
-  const readinessScore = Math.max(0, Math.min(100, Math.round((completionRatio * 0.5 + coverageRatio * 0.35 + difficultyWeight * 0.15) * 100)));
-  const readinessLabel = readinessScore >= 80 ? "Excellent" : readinessScore >= 50 ? "Good" : "Needs Practice";
 
   const revealAnswer = async () => {
     if (!currentQuestion) return;
@@ -500,13 +491,23 @@ export default function InterviewSimulator() {
           </p>
 
           <div style={{marginBottom: '18px'}}>
-            <div style={{fontSize: '13px', fontWeight: 700, marginBottom: '8px'}}>Quick Notes (Optional)</div>
+            <div style={{fontSize: '13px', fontWeight: 700, marginBottom: '8px'color: "#374151"}}>Quick Notes (Optional)</div>
             {!answered ? (
               <textarea
                 placeholder={"Example:\n• Requirement Gathering\n• Stakeholder Alignment\n• User Stories\n• UAT\n\nThese are only for your own preparation."}
                 value={notesMap[currentQuestion.id] || ""}
                 onChange={(e) => setNotesMap((prev) => ({...prev, [currentQuestion.id]: e.target.value}))}
-                style={{width: '100%', minHeight: '84px', padding: '10px', borderRadius: '8px', border: '1px solid #ddd', resize: 'vertical'}}
+                style={{
+  width: "100%",
+  minHeight: "84px",
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #ddd",
+  resize: "vertical",
+  backgroundColor: "#ffffff",
+  color: "#111827",
+  caretColor: "#111827",
+}}
               />
             ) : (
               <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
