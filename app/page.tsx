@@ -3,119 +3,124 @@
 import { useState } from "react";
 import recruiterQA from "../data/recruiter_qa.json";
 import kpis from "../data/kpis.json";
+import InterviewSimulator from "../components/InterviewSimulator";
 
-function KPIInsights() {
+// ── Types ──────────────────────────────────────────────────────────────────
+
+type Section =
+  | "Mock Interview"
+  | "Ask Sarthak"
+  | "BA Copilot"
+  | "KPI Library";
+
+const NAV_TABS: Section[] = [
+  "Mock Interview",
+  "Ask Sarthak",
+  "BA Copilot",
+  "KPI Library",
+];
+
+const PAGE_META: Record<Section, { title: string; subtitle: string }> = {
+  "Mock Interview": {
+    title: "Mock Interview",
+    subtitle:
+      "Practice realistic Business Analyst interview questions and compare your approach with a sample answer.",
+  },
+  "Ask Sarthak": {
+    title: "Ask Sarthak",
+    subtitle:
+      "Ask questions about Sarthak's projects, experience, business analysis approach and interview scenarios.",
+  },
+  "BA Copilot": {
+    title: "BA Copilot",
+    subtitle:
+      "Generate User Stories, Acceptance Criteria, Edge Cases and BA documentation.",
+  },
+  "KPI Library": {
+    title: "KPI Library",
+    subtitle:
+      "Explore commonly used Business and Product KPIs used during interviews.",
+  },
+};
+
+// ── KPI Library ────────────────────────────────────────────────────────────
+
+function KPILibrary() {
   const data: any = kpis || [];
   const [openId, setOpenId] = useState<number | null>(null);
 
   return (
-    <div>
-      <h2 className="story-title">
-        KPI & Product Framework Insights
-      </h2>
+    <div className="qa-list">
+      {Array.isArray(data) &&
+        data.map((k: any) => (
+          <div
+            key={k.id}
+            className={`qa-card ${openId === k.id ? "open" : ""}`}
+            onClick={() => setOpenId(openId === k.id ? null : k.id)}
+          >
+            <div className="qa-meta">{k.category}</div>
 
-      <p className="story-sub">
-        Practical frameworks Business Analysts can use during
-        requirement gathering, prioritization, stakeholder
-        discussions and interview preparation.
-      </p>
-
-      <div className="qa-list">
-        {Array.isArray(data) &&
-          data.map((k: any) => (
-            <div
-              key={k.id}
-              className={`qa-card ${
-                openId === k.id ? "open" : ""
-              }`}
-              onClick={() =>
-                setOpenId(
-                  openId === k.id ? null : k.id
-                )
-              }
-            >
-              <div className="qa-meta">
-                {k.category}
-              </div>
-
-              <div className="qa-question">
-                <span>{k.framework}</span>
-
-                <span className="qa-chevron">
-                  ▼
-                </span>
-              </div>
-
-              {openId === k.id && (
-                <div className="qa-answer">
-
-                  <p>
-                    <strong>Summary</strong>
-                    <br />
-                    {k.summary}
-                  </p>
-
-                  <br />
-
-                  <p>
-                    <strong>Formula</strong>
-                    <br />
-                    {k.formula}
-                  </p>
-
-                  <br />
-
-                  <p>
-                    <strong>How a BA Uses It</strong>
-                    <br />
-                    {k.how_ba_uses_it}
-                  </p>
-
-                  <br />
-
-                  <p>
-                    <strong>Interview Tip</strong>
-                    <br />
-                    {k.interview_tip}
-                  </p>
-
-                  <br />
-
-                  <p>
-                    <strong>When To Use It</strong>
-                    <br />
-                    {k.when_to_use}
-                  </p>
-
-                  <br />
-
-                  <p>
-                    <strong>Example</strong>
-                    <br />
-                    {k.example}
-                  </p>
-
-                </div>
-              )}
+            <div className="qa-question">
+              <span>{k.framework}</span>
+              <span className="qa-chevron">&#8964;</span>
             </div>
-          ))}
-      </div>
+
+            {openId === k.id && (
+              <div className="qa-answer">
+                <div className="kpi-block">
+                  <span className="kpi-block-label">Summary</span>
+                  <p>{k.summary}</p>
+                </div>
+
+                <div className="kpi-block">
+                  <span className="kpi-block-label">Formula</span>
+                  <p className="kpi-formula">{k.formula}</p>
+                </div>
+
+                <div className="kpi-block">
+                  <span className="kpi-block-label">How a BA Uses It</span>
+                  <p>{k.how_ba_uses_it}</p>
+                </div>
+
+                <div className="kpi-block">
+                  <span className="kpi-block-label">Interview Tip</span>
+                  <p>{k.interview_tip}</p>
+                </div>
+
+                <div className="kpi-block">
+                  <span className="kpi-block-label">When To Use It</span>
+                  <p>{k.when_to_use}</p>
+                </div>
+
+                <div className="kpi-block">
+                  <span className="kpi-block-label">Example</span>
+                  <p>{k.example}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
     </div>
   );
 }
 
+// ── Home ───────────────────────────────────────────────────────────────────
+
 export default function Home() {
+  const [activeSection, setActiveSection] = useState<Section>("Mock Interview");
+
+  // Ask Sarthak state
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [selectedMode, setSelectedMode] = useState("All");
   const [userQuestion, setUserQuestion] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [loading, setLoading] = useState(false);
-  const [activeSection, setActiveSection] = useState("Recruiter Assistant");
+
+  // BA Copilot state
   const [featureIdea, setFeatureIdea] = useState("");
   const [storyOutput, setStoryOutput] = useState("");
   const [storyLoading, setStoryLoading] = useState(false);
 
-  
   const recruiterModes = [
     "All",
     "Behavioral",
@@ -125,11 +130,12 @@ export default function Home() {
     "Stakeholder Management",
   ];
 
-  const filteredQuestions = recruiterQA.filter((item: any) =>
-    selectedMode === "All" || item.category === selectedMode
+  const filteredQuestions = recruiterQA.filter(
+    (item: any) =>
+      selectedMode === "All" || item.category === selectedMode
   );
 
-  const askAI = async () => {
+  const generateAnswer = async () => {
     if (!userQuestion.trim()) return;
     setLoading(true);
     try {
@@ -168,6 +174,8 @@ export default function Home() {
   const toggleAnswer = (id: number) => {
     setSelectedId(selectedId === id ? null : id);
   };
+
+  const { title, subtitle } = PAGE_META[activeSection];
 
   return (
     <>
@@ -221,9 +229,11 @@ export default function Home() {
           background: #b8975a;
           display: flex; align-items: center; justify-content: center;
           font-family: 'DM Serif Display', serif;
-          font-size: 20px;
+          font-size: 14px;
+          font-weight: 600;
           color: #1a1714;
           flex-shrink: 0;
+          letter-spacing: -0.02em;
         }
         .logo-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.3; }
         .logo-sub  { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 2px; }
@@ -258,28 +268,19 @@ export default function Home() {
           min-height: 100vh;
         }
 
-        .header {
-          padding: 32px 32px 0;
-        }
-        .headline {
-          font-family: 'DM Serif Display', serif;
-          font-size: 42px;
-          color: #0e0d0b;
-          line-height: 1;
-          letter-spacing: -0.02em;
-        }
-        .headline em { font-style: italic; color: #b8975a; }
-
-        .tab-row {
+        /* ── TOP NAV ── */
+        .topbar {
           display: flex;
+          align-items: center;
           gap: 2px;
-          padding: 20px 32px 0;
+          padding: 0 32px;
           border-bottom: 0.5px solid rgba(0,0,0,0.08);
+          background: #f8f6f1;
         }
         .tab-btn {
           font-size: 13px;
           font-weight: 400;
-          padding: 9px 18px;
+          padding: 16px 18px;
           border: none;
           background: none;
           cursor: pointer;
@@ -288,11 +289,33 @@ export default function Home() {
           margin-bottom: -0.5px;
           transition: color 0.15s, border-color 0.15s;
           font-family: 'DM Sans', sans-serif;
-          border-radius: 6px 6px 0 0;
+          white-space: nowrap;
         }
-        .tab-btn:hover { color: #0e0d0b; background: rgba(0,0,0,0.03); }
+        .tab-btn:hover { color: #0e0d0b; background: rgba(0,0,0,0.02); }
         .tab-btn.active { color: #0e0d0b; border-bottom-color: #b8975a; font-weight: 500; }
 
+        /* ── PAGE HEADER ── */
+        .page-header {
+          padding: 32px 32px 24px;
+          border-bottom: 0.5px solid rgba(0,0,0,0.06);
+        }
+        .page-title {
+          font-family: 'DM Serif Display', serif;
+          font-size: 34px;
+          color: #0e0d0b;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+          margin: 0 0 8px;
+        }
+        .page-subtitle {
+          font-size: 14px;
+          color: #7a7668;
+          line-height: 1.6;
+          max-width: 580px;
+          margin: 0;
+        }
+
+        /* ── CONTENT ── */
         .content { padding: 28px 32px; flex: 1; }
 
         /* ── CHAT BOX ── */
@@ -404,9 +427,28 @@ export default function Home() {
           animation: fadeUp 0.2s ease;
         }
 
-        /* ── BA TOOLKIT ── */
-        .story-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: #0e0d0b; margin-bottom: 6px; }
-        .story-sub { font-size: 13px; color: #7a7668; line-height: 1.6; margin-bottom: 20px; }
+        /* ── KPI BLOCKS ── */
+        .kpi-block { margin-bottom: 14px; }
+        .kpi-block:last-child { margin-bottom: 0; }
+        .kpi-block-label {
+          display: block;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #b8975a;
+          margin-bottom: 4px;
+        }
+        .kpi-block p { margin: 0; font-size: 13px; color: #3a3830; line-height: 1.7; }
+        .kpi-formula {
+          font-style: italic;
+          background: #f8f6f1;
+          border-left: 3px solid #b8975a;
+          padding: 8px 12px;
+          border-radius: 0 6px 6px 0;
+        }
+
+        /* ── BA COPILOT ── */
         .story-output {
           background: #fff;
           border: 0.5px solid rgba(0,0,0,0.08);
@@ -444,19 +486,20 @@ export default function Home() {
         @media (max-width: 768px) {
           .app { grid-template-columns: 1fr; }
           .sidebar { display: none; }
-          .header { padding: 24px 20px 0; }
-          .tab-row { padding: 16px 20px 0; }
+          .topbar { padding: 0 16px; overflow-x: auto; }
+          .page-header { padding: 24px 20px 20px; }
           .content { padding: 20px; }
         }
       `}</style>
 
       <div className="app">
-        {/* Sidebar */}
+
+        {/* ── Sidebar ── */}
         <aside className="sidebar">
           <div className="logo-area">
-            <div className="logo-icon">S</div>
+            <div className="logo-icon">BA</div>
             <div>
-              <div className="logo-text">Ask Sarthak</div>
+              <div className="logo-text">BA Prep AI</div>
               <div className="logo-sub">AI-powered Interview Toolkit</div>
             </div>
           </div>
@@ -491,16 +534,12 @@ export default function Home() {
           </div>
         </aside>
 
-        {/* Main */}
+        {/* ── Main ── */}
         <div className="main">
-          <div className="header">
-            <h1 className="headline">
-              Ask <em>Sarthak</em>
-            </h1>
-          </div>
 
-          <div className="tab-row">
-            {["Recruiter Assistant", "BA Toolkit", "KPI Insights"].map((section) => (
+          {/* Top nav */}
+          <nav className="topbar">
+            {NAV_TABS.map((section) => (
               <button
                 key={section}
                 className={`tab-btn ${activeSection === section ? "active" : ""}`}
@@ -509,15 +548,26 @@ export default function Home() {
                 {section}
               </button>
             ))}
-          </div>
+          </nav>
 
+          {/* Dynamic page header */}
+          <header className="page-header">
+            <h1 className="page-title">{title}</h1>
+            <p className="page-subtitle">{subtitle}</p>
+          </header>
+
+          {/* Content */}
           <div className="content">
-            {/* ── Recruiter Assistant ── */}
-            {activeSection === "Recruiter Assistant" && (
+
+            {/* ── Mock Interview ── */}
+            {activeSection === "Mock Interview" && <InterviewSimulator />}
+
+            {/* ── Ask Sarthak ── */}
+            {activeSection === "Ask Sarthak" && (
               <>
                 <div className="chat-box">
                   <textarea
-                    placeholder="Ask Sarthak about his experience, projects, or approach…"
+                    placeholder="Ask about Sarthak's experience, projects, or approach…"
                     value={userQuestion}
                     onChange={(e) => setUserQuestion(e.target.value)}
                   />
@@ -527,7 +577,11 @@ export default function Home() {
                         ? `${userQuestion.length} chars`
                         : "Ask anything — experience, decisions, tradeoffs"}
                     </span>
-                    <button className="ask-btn" onClick={askAI} disabled={loading}>
+                    <button
+                      className="ask-btn"
+                      onClick={generateAnswer}
+                      disabled={loading}
+                    >
                       <span className="btn-dot" />
                       {loading ? "Thinking…" : "Ask Sarthak"}
                     </button>
@@ -542,7 +596,7 @@ export default function Home() {
 
                 {aiResponse && !loading && (
                   <div className="response-card">
-                    <div className="response-label">Sarthak's response</div>
+                    <div className="response-label">Sarthak's Response</div>
                     <p className="response-text">{aiResponse}</p>
                   </div>
                 )}
@@ -580,14 +634,9 @@ export default function Home() {
               </>
             )}
 
-            {/* ── BA Toolkit ── */}
-            {activeSection === "BA Toolkit" && (
+            {/* ── BA Copilot ── */}
+            {activeSection === "BA Copilot" && (
               <div>
-                <h2 className="story-title">User Story Generator</h2>
-                <p className="story-sub">
-                  Describe a feature and generate a user story with acceptance criteria and edge cases.
-                </p>
-
                 <div className="chat-box">
                   <textarea
                     value={featureIdea}
@@ -597,9 +646,13 @@ export default function Home() {
                   />
                   <div className="chat-footer">
                     <span className="char-hint">Describe the feature in plain language</span>
-                    <button className="ask-btn" onClick={generateUserStory} disabled={storyLoading}>
+                    <button
+                      className="ask-btn"
+                      onClick={generateUserStory}
+                      disabled={storyLoading}
+                    >
                       <span className="btn-dot" />
-                      {storyLoading ? "Generating…" : "Generate Story"}
+                      {storyLoading ? "Generating…" : "Generate"}
                     </button>
                   </div>
                 </div>
@@ -617,7 +670,10 @@ export default function Home() {
                 )}
               </div>
             )}
-            {activeSection === "KPI Insights" && <KPIInsights />}
+
+            {/* ── KPI Library ── */}
+            {activeSection === "KPI Library" && <KPILibrary />}
+
           </div>
         </div>
       </div>

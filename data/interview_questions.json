@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "difficulty": "Easy",
+    "category": "Introduction",
+    "question": "Tell me about yourself.",
+    "framework": "STAR",
+    "expectedDuration": "2 minutes",
+    "tip": "Highlight BA-specific experiences, key projects, and domain expertise.",
+    "keyPoints": ["Experience", "Key Projects", "Domain Expertise", "Career Path"]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "difficulty": "Easy",
+    "category": "Implementation",
+    "question": "Tell me about your implementation experience.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "tip": "Focus on end-to-end delivery, coordination, and measurable outcomes.",
+    "keyPoints": ["Delivery", "Coordination", "Requirements", "Outcome Metrics"]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "difficulty": "Easy",
+    "category": "Stakeholder Management",
+    "question": "Describe a project involving multiple stakeholders.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "tip": "Show how you aligned diverse interests and maintained communication.",
+    "keyPoints": ["Stakeholder Alignment", "Communication", "Trade-offs", "Outcome"]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "difficulty": "Medium",
+    "category": "Prioritization",
+    "question": "How do you prioritize requirements with limited bandwidth?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "tip": "Explain frameworks used (MoSCoW, value-risk matrix) and trade-offs.",
+    "keyPoints": ["Prioritization Framework", "Business Value", "Resource Trade-offs", "Impact"]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "difficulty": "Medium",
+    "category": "Requirement Gathering",
+    "question": "Tell me about a time requirements were unclear.",
+    "framework": "STAR",
+    "expectedDuration": "2-3 minutes",
+    "tip": "Show how you clarified, validated, and documented requirements.",
+    "keyPoints": ["Clarification Process", "Stakeholder Engagement", "Documentation", "Validation"]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "difficulty": "Medium",
+    "category": "Conflict Resolution",
+    "question": "How do you handle stakeholder conflicts?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2-3 minutes",
+    "tip": "Emphasize listening, finding common ground, and data-driven decisions.",
+    "keyPoints": ["Active Listening", "Negotiation", "Common Ground", "Data-Driven"]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "difficulty": "Hard",
+    "category": "Conflict Resolution",
+    "question": "A stakeholder requests a feature that engineering says isn't feasible. What would you do?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "tip": "Show problem-solving: explore alternatives, trade-offs, and technical collaboration.",
+    "keyPoints": ["Problem Solving", "Technical Understanding", "Alternatives", "Collaboration"]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "difficulty": "Hard",
+    "category": "Agile",
+    "question": "Describe a project where priorities changed during implementation.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "tip": "Demonstrate adaptability, re-planning, and communication of impact.",
+    "keyPoints": ["Adaptability", "Re-Planning", "Risk Management", "Stakeholder Update"]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "difficulty": "Hard",
+    "category": "KPIs",
+    "question": "How would you measure the success of a newly launched feature?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "tip": "Define business metrics, tracking mechanisms, and success criteria.",
+    "keyPoints": ["Success Metrics", "Business Impact", "Tracking Mechanism", "Data Analysis"]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "difficulty": "Hard",
+    "category": "Introduction",
+    "question": "Why should we hire you for this Business Analyst role?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2-3 minutes",
+    "tip": "Connect your experience to their business needs and pain points.",
+    "keyPoints": ["Unique Value", "Experience Match", "Problem Solving", "Team Contribution"]
+  }
+]

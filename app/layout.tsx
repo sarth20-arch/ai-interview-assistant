@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Recruiter Assistant | Sarthak Srivastava",
-  description: "AI-powered recruiter and interview preparation assistant built by Sarthak Srivastava",
+  title: "BA Prep AI | Sarthak Srivastava",
+  description: "AI-powered BA interview preparation and knowledge assistant built by Sarthak Srivastava",
 };
 
 export default function RootLayout({

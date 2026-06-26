@@ -1,22 +1,22 @@
-# AI Recruiter Assistant
+# BA Prep AI
 
 🚀 Live Demo
 
-https://ai-recruiter-assistant.vercel.app/
+https://ba-prep-ai.vercel.app/
 
 ## Knowledge Repository
 
 The AI assistant is powered by a structured knowledge repository located in `/knowledge-base`.
 
-This repository contains project experience, KPI examples, STAR stories, behavioral scenarios, recruiter questions, and implementation examples used for contextual retrieval and grounded AI responses.
+This repository contains project experience, KPI examples, STAR stories, behavioral scenarios, BA interview questions, and implementation examples used for contextual retrieval and grounded AI responses.
 View Knowledge Base:
-https://github.com/sarth20-arch/ai-recruiter-assistant/tree/main/knowledge-base
+https://github.com/sarth20-arch/ba-prep-ai/tree/main/knowledge-base
 
 ---
 
 ## Overview
 
-AI Recruiter Assistant is a conversational AI application designed to act as a digital representation of my professional experience.
+BA Prep AI is a conversational AI application designed to act as a digital representation of BA professional experience and expertise.
 
 Instead of reviewing a static resume, recruiters can interactively ask questions about:
 
@@ -51,7 +51,7 @@ This project addresses that problem by creating an AI-powered recruiter interact
 
 ## Key Features
 
-### AI Recruiter Q&A
+### BA Interview Q&A
 
 Ask questions such as:
 
@@ -147,7 +147,7 @@ Contains:
 
 * Tax Officer Management Platform
 * HealthTech Partnership Initiative
-* AI Recruiter Assistant
+* BA Prep AI
 
 Includes:
 

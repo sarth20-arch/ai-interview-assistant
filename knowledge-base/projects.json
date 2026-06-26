@@ -52,9 +52,9 @@
   },
   {
     "id": 3,
-    "projectName": "AI Recruiter Assistant",
-    "summary": "Built an AI-powered recruiter assistant that acts as a digital representation of my professional experience.",
-    "objective": "Help recruiters understand experience, projects, and product thinking through conversational AI.",
+    "projectName": "BA Prep AI",
+    "summary": "Built an AI-powered BA interview preparation tool that acts as a digital representation of professional BA experience.",
+    "objective": "Help BA candidates prepare for interviews through conversational AI covering experience, projects, and BA frameworks.",
     "challenge": "Creating grounded AI responses instead of generic chatbot answers.",
     "actions": [
       "Designed recruiter-focused workflows",

@@ -1,6 +1,6 @@
 # Knowledge Base
 
-The AI Recruiter Assistant uses a structured knowledge repository to generate contextual and grounded responses instead of relying solely on generic LLM outputs.
+BA Prep AI uses a structured knowledge repository to generate contextual and grounded responses instead of relying solely on generic LLM outputs.
 
 ## Purpose
 
@@ -31,7 +31,7 @@ Contains project information including:
 Current Projects:
 - Tax Officer Management Platform
 - HealthTech Partnership Initiative
-- AI Recruiter Assistant
+- BA Prep AI
 
 ---
 
