@@ -17,6 +17,8 @@ export default function InterviewSimulator() {
   const [revealed, setRevealed] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [rating, setRating] = useState<string | null>(null);
+  const [notesMap, setNotesMap] = useState<Record<number, string>>({});
+  const [completed, setCompleted] = useState(false);
 
   const questions = useMemo(() => {
     return interviewQuestions.filter(
@@ -42,6 +44,8 @@ export default function InterviewSimulator() {
     setAnswer("");
     setRevealed(false);
     setAnswered(false);
+    setNotesMap({});
+    setCompleted(false);
     setStarted(true);
   };
 
@@ -54,6 +58,45 @@ export default function InterviewSimulator() {
   const progress = activeQuestions.length
     ? Math.round(((currentIndex + 1) / activeQuestions.length) * 100)
     : 0;
+
+  // Readiness calculations (used on completion)
+  const totalAvailableQuestions = questions.length;
+  const completedCount = activeQuestions.length;
+  const coveredCategories = Array.from(new Set(activeQuestions.map((q: any) => q.category).filter(Boolean)));
+  const totalCategoriesAvailable = Array.from(new Set(questions.map((q: any) => q.category).filter(Boolean)));
+  const categoriesCoverageRatio = totalCategoriesAvailable.length
+    ? coveredCategories.length / totalCategoriesAvailable.length
+    : 1;
+  const questionsRatio = totalAvailableQuestions
+    ? Math.min(1, completedCount / totalAvailableQuestions)
+    : 1;
+  const difficultyFactorMap: Record<string, number> = {
+    Easy: 0.95,
+    Medium: 1.0,
+    Hard: 1.08,
+  };
+  const difficultyFactor = difficultyFactorMap[difficulty] || 1;
+  const rawScore = ((questionsRatio * 0.5) + (categoriesCoverageRatio * 0.5)) * 100 * difficultyFactor;
+  const readinessScore = Math.min(100, Math.round(rawScore));
+  const readinessLabel = readinessScore >= 85 ? "Excellent" : readinessScore >= 65 ? "Good" : "Needs Practice";
+
+  const recommendedNext: { key: string; label: string; href: string }[] = [];
+  const cats = coveredCategories.map((c) => c.toLowerCase());
+  if (cats.includes("kpis")) recommendedNext.push({ key: 'kpi', label: 'KPI Library', href: '/kpi-library' });
+  if (cats.includes("agile") || cats.includes("prioritization") || cats.includes("requirement gathering")) recommendedNext.push({ key: 'ba', label: 'BA Copilot', href: '/ba-copilot' });
+  if (cats.includes("stakeholder management") || cats.includes("conflict resolution") || cats.includes("introduction")) recommendedNext.push({ key: 'sarthak', label: 'Ask Sarthak', href: '/ask-sarthak' });
+  // Fallback: always show BA Copilot if nothing matched
+  if (recommendedNext.length === 0) recommendedNext.push({ key: 'ba', label: 'BA Copilot', href: '/ba-copilot' });
+
+  // readiness calculations (no AI)
+  const totalAvailableCategories = new Set(questions.map((q: any) => q.category)).size || 1;
+  const coveredCategories = Array.from(new Set(activeQuestions.map((q: any) => q.category)));
+  const coverageRatio = coveredCategories.length / totalAvailableCategories;
+  const questionsCompleted = activeQuestions.length;
+  const completionRatio = questions.length ? questionsCompleted / questions.length : 0;
+  const difficultyWeight = difficulty === "Hard" ? 1 : difficulty === "Medium" ? 0.9 : 0.8;
+  const readinessScore = Math.max(0, Math.min(100, Math.round((completionRatio * 0.5 + coverageRatio * 0.35 + difficultyWeight * 0.15) * 100)));
+  const readinessLabel = readinessScore >= 80 ? "Excellent" : readinessScore >= 50 ? "Good" : "Needs Practice";
 
   const revealAnswer = async () => {
     if (!currentQuestion) return;
@@ -103,6 +146,9 @@ export default function InterviewSimulator() {
       setAnswered(false);
       setRating(null);
       setLoading(false);
+    } else {
+      // reached the end -> show completion screen
+      setCompleted(true);
     }
   };
 
@@ -115,6 +161,8 @@ export default function InterviewSimulator() {
     setRevealed(false);
     setRating(null);
     setLoading(false);
+    setNotesMap({});
+    setCompleted(false);
   };
 
   return (
@@ -285,6 +333,86 @@ export default function InterviewSimulator() {
 
       )}
 
+      {completed && (
+        <div className="response-card" style={{padding: '22px'}}>
+          <div style={{fontSize: '20px', fontWeight: 700, marginBottom: '12px'}}>🎉 Mock Interview Complete</div>
+
+          {/* Interview Readiness */}
+          <div style={{marginTop: '6px', marginBottom: '14px', padding: '14px', borderRadius: '12px', background: '#fafaf7', border: '1px solid rgba(0,0,0,0.04)'}}>
+            <div style={{fontSize: '13px', fontWeight: 700, marginBottom: '8px'}}>Interview Readiness</div>
+            <div style={{height: '10px', background: '#ececec', borderRadius: '999px', overflow: 'hidden'}}>
+              <div style={{width: `${readinessScore}%`, height: '100%', background: '#c9a15b', transition: 'width 0.4s'}} />
+            </div>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px'}}>
+              <div style={{fontSize: '18px', fontWeight: 700}}>{readinessScore}%</div>
+              <div style={{fontSize: '13px', color: '#717171', fontWeight: 700}}>{readinessLabel}</div>
+            </div>
+            <div style={{marginTop: '10px', fontSize: '12px', color: '#666'}}>Based on questions completed, difficulty, and topic coverage.</div>
+          </div>
+
+          <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '8px'}}>
+            <div style={{flex: '1 1 180px', padding: '14px', borderRadius: '12px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Questions Completed</div>
+              <div style={{fontSize: '16px', fontWeight: 700, color: '#111'}}>{activeQuestions.length}</div>
+            </div>
+
+            <div style={{flex: '1 1 140px', padding: '14px', borderRadius: '12px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Difficulty</div>
+              <div style={{fontSize: '16px', fontWeight: 700, color: '#111'}}>{difficulty}</div>
+            </div>
+
+            <div style={{flex: '1 1 180px', padding: '14px', borderRadius: '12px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Interview Mode</div>
+              <div style={{fontSize: '16px', fontWeight: 700, color: '#111'}}>{interviewMode}</div>
+            </div>
+
+            <div style={{flex: '1 1 260px', padding: '14px', borderRadius: '12px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Topics Covered</div>
+              <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
+                {coveredCategories.length ? coveredCategories.map((c) => (
+                  <div key={c} style={{padding: '6px 10px', borderRadius: '999px', background: 'rgba(201,161,91,0.08)', border: '1px solid rgba(201,161,91,0.12)', fontSize: '13px', color: '#3a3830'}}>{c}</div>
+                )) : <div style={{color: '#777'}}>—</div>}
+              </div>
+            </div>
+
+            <div style={{flex: '1 1 220px', padding: '14px', borderRadius: '12px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Frameworks Used</div>
+              <div style={{fontSize: '14px', color: '#3a3830'}}>{Array.from(new Set(activeQuestions.map((q:any)=>q.framework))).join(', ') || '—'}</div>
+            </div>
+          </div>
+
+          {/* Recommended Next + Buttons */}
+          <div style={{marginTop: '18px'}}>
+            <div style={{fontSize: '13px', fontWeight: 700, marginBottom: '8px'}}>Recommended Next</div>
+            <div style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
+              {/* derive recommendations */}
+              {(() => {
+                const recs = new Set<string>();
+                const cats = coveredCategories.map((s) => s.toLowerCase());
+                if (cats.some((c) => c.includes('kpi') || c.includes('kpis'))) recs.add('KPI Library');
+                if (cats.some((c) => ['agile','prioritization','implementation','requirement gathering','kpIs'].map(x=>x.toLowerCase()).includes(c)) || cats.some((c)=>c.includes('priorit'))) recs.add('BA Copilot');
+                if (cats.some((c) => c.includes('stakeholder') || c.includes('conflict') || c.includes('introd'))) recs.add('Ask Sarthak');
+                if (recs.size === 0) { recs.add('BA Copilot'); }
+                return Array.from(recs).map((r) => (
+                  <button key={r} className={r === 'BA Copilot' ? 'ask-btn' : 'filter-btn'} onClick={() => console.log('Navigate to', r)}>{r}</button>
+                ));
+              })()}
+            </div>
+          </div>
+
+          <div style={{display: 'flex', gap: '12px', marginTop: '20px'}}>
+            <button className="ask-btn" onClick={restartInterview}>Restart Interview</button>
+            <button className="filter-btn" onClick={() => {
+              // return home: reset the session but keep selected filters
+              setStarted(false);
+              setSessionQuestions([]);
+              setCurrentIndex(0);
+              setCompleted(false);
+            }}>Return Home</button>
+          </div>
+        </div>
+      )}
+
       {started && currentQuestion && (
 
         <div className="response-card">
@@ -334,6 +462,23 @@ export default function InterviewSimulator() {
             </div>
           </div>
 
+          <div style={{display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <div style={{fontSize: '11px', color: '#717171', marginBottom: '6px'}}>Category</div>
+              <div style={{padding: '6px 10px', borderRadius: '999px', background: '#f6f6f6', border: '1px solid rgba(0,0,0,0.04)', fontSize: '12px', color: '#333'}}>{currentQuestion.category || '—'}</div>
+            </div>
+
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <div style={{fontSize: '11px', color: '#717171', marginBottom: '6px'}}>Framework</div>
+              <div style={{padding: '6px 10px', borderRadius: '999px', background: '#f6f6f6', border: '1px solid rgba(0,0,0,0.04)', fontSize: '12px', color: '#333'}}>{currentQuestion.framework || '—'}</div>
+            </div>
+
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <div style={{fontSize: '11px', color: '#717171', marginBottom: '6px'}}>Expected Time</div>
+              <div style={{padding: '6px 10px', borderRadius: '999px', background: '#f6f6f6', border: '1px solid rgba(0,0,0,0.04)', fontSize: '12px', color: '#333'}}>{currentQuestion.expectedDuration || currentQuestion.expectedTime || '—'}</div>
+            </div>
+          </div>
+
           <h3
             style={{
               marginTop: 0,
@@ -353,6 +498,28 @@ export default function InterviewSimulator() {
           >
             Think about your answer first, then compare it with mine.
           </p>
+
+          <div style={{marginBottom: '18px'}}>
+            <div style={{fontSize: '13px', fontWeight: 700, marginBottom: '8px'}}>Quick Notes (Optional)</div>
+            {!answered ? (
+              <textarea
+                placeholder={"Example:\n• Requirement Gathering\n• Stakeholder Alignment\n• User Stories\n• UAT\n\nThese are only for your own preparation."}
+                value={notesMap[currentQuestion.id] || ""}
+                onChange={(e) => setNotesMap((prev) => ({...prev, [currentQuestion.id]: e.target.value}))}
+                style={{width: '100%', minHeight: '84px', padding: '10px', borderRadius: '8px', border: '1px solid #ddd', resize: 'vertical'}}
+              />
+            ) : (
+              <div style={{display: 'flex', gap: '10px', alignItems: 'flex-start'}}>
+                <div style={{flex: 1, padding: '10px 12px', borderRadius: '8px', background: '#fff', border: '1px solid rgba(0,0,0,0.06)'}}>
+                  <div style={{fontSize: '12px', color: '#717171', marginBottom: '6px'}}>Your Notes</div>
+                  <div style={{whiteSpace: 'pre-wrap', color: '#333', fontSize: '14px'}}>{notesMap[currentQuestion.id] || '—'}</div>
+                </div>
+                <div style={{minWidth: '160px', fontSize: '12px', color: '#717171'}}>
+                  These notes are for your preparation and won't be sent to the AI.
+                </div>
+              </div>
+            )}
+          </div>
 
           <div
             style={{
@@ -412,35 +579,36 @@ export default function InterviewSimulator() {
               <p className="response-text">
                 {answer?.suggestedAnswer}
               </p>
-            </div>
-          )}
 
-          {revealed && answer?.whyItWorks && answer.whyItWorks.length > 0 && (
-            <div style={{marginTop: "20px", padding: "16px", borderRadius: "12px", background: "#fafaf7", border: "1px solid rgba(0,0,0,0.06)"}}>
-              <div style={{fontSize: "13px", fontWeight: 600, color: "#3a3830", marginBottom: "10px"}}>✓ Why This Answer Works</div>
-              <ul style={{margin: 0, paddingLeft: "18px", color: "#3a3830", fontSize: "13px", lineHeight: 1.8}}>
-                {answer.whyItWorks.map((point: string, idx: number) => (
-                  <li key={idx}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+              {/* Key Points sourced from question metadata (not AI) */}
+              {currentQuestion?.keyPoints && currentQuestion.keyPoints.length > 0 && (
+                <div style={{marginTop: "16px", paddingTop: '6px'}}>
+                  <div style={{fontSize: "13px", fontWeight: 600, color: "#3a3830", marginBottom: "10px"}}>📌 Key Points to Mention</div>
+                  <div style={{display: "flex", flexWrap: "wrap", gap: "8px"}}>
+                    {currentQuestion.keyPoints.map((point: string, idx: number) => (
+                      <span key={idx} style={{padding: "6px 12px", borderRadius: "999px", background: "rgba(201, 161, 91, 0.08)", border: "0.5px solid rgba(201, 161, 91, 0.14)", fontSize: "13px", color: "#3a3830"}}>{point}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-          {revealed && answer?.keyPoints && answer.keyPoints.length > 0 && (
-            <div style={{marginTop: "16px", padding: "16px", borderRadius: "12px", background: "#fff", border: "1px solid rgba(0,0,0,0.08)"}}>
-              <div style={{fontSize: "13px", fontWeight: 600, color: "#3a3830", marginBottom: "10px"}}>📌 Key Points to Mention</div>
-              <div style={{display: "flex", flexWrap: "wrap", gap: "8px"}}>
-                {answer.keyPoints.map((point: string, idx: number) => (
-                  <span key={idx} style={{padding: "6px 12px", borderRadius: "6px", background: "rgba(201, 161, 91, 0.1)", border: "0.5px solid rgba(201, 161, 91, 0.3)", fontSize: "12px", color: "#3a3830"}}>{point}</span>
-                ))}
-              </div>
-            </div>
-          )}
+              {answer?.interviewTip && (
+                <div style={{marginTop: "16px", padding: "14px", borderRadius: "12px", background: "#fffbf5", border: "1px solid rgba(201, 161, 91, 0.2)", borderLeft: "3px solid #c9a15b"}}>
+                  <div style={{fontSize: "12px", fontWeight: 600, color: "#c9a15b", marginBottom: "6px"}}>💡 Interview Tip</div>
+                  <p style={{margin: 0, fontSize: "13px", color: "#3a3830", lineHeight: 1.6}}>{answer.interviewTip}</p>
+                </div>
+              )}
 
-          {revealed && answer?.interviewTip && (
-            <div style={{marginTop: "16px", padding: "14px", borderRadius: "12px", background: "#fffbf5", border: "1px solid rgba(201, 161, 91, 0.2)", borderLeft: "3px solid #c9a15b"}}>
-              <div style={{fontSize: "12px", fontWeight: 600, color: "#c9a15b", marginBottom: "6px"}}>💡 Interview Tip</div>
-              <p style={{margin: 0, fontSize: "13px", color: "#3a3830", lineHeight: 1.6}}>{answer.interviewTip}</p>
+              {answer?.whyItWorks && answer.whyItWorks.length > 0 && (
+                <div style={{marginTop: "20px", padding: "16px", borderRadius: "12px", background: "#fafaf7", border: "1px solid rgba(0,0,0,0.06)"}}>
+                  <div style={{fontSize: "13px", fontWeight: 600, color: "#3a3830", marginBottom: "10px"}}>✓ Why This Answer Works</div>
+                  <ul style={{margin: 0, paddingLeft: "18px", color: "#3a3830", fontSize: "13px", lineHeight: 1.8}}>
+                    {answer.whyItWorks.map((point: string, idx: number) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
 
