@@ -199,6 +199,32 @@ data/
 
 ---
 
+## Screenshots
+
+### Home
+
+<img width="1537" height="866" alt="image" src="https://github.com/user-attachments/assets/fb76b193-f359-46f0-8976-b611edf2748c" />
+
+
+### Mock Interview
+
+<img width="1031" height="718" alt="image" src="https://github.com/user-attachments/assets/a0e99116-bb44-4a65-ad7d-6b6088bfd5e8" />
+
+
+### KPI Insights
+
+<img width="1310" height="745" alt="image" src="https://github.com/user-attachments/assets/fd51b62a-23d6-4b08-b0e0-953560d8e8c8" />
+
+
+### BA Toolkit
+
+<img width="1611" height="470" alt="image" src="https://github.com/user-attachments/assets/6b1717dc-b715-4baf-8558-e7aa7042ebbb" />
+
+### Ask Sarthak
+
+<img width="1570" height="658" alt="image" src="https://github.com/user-attachments/assets/610b3495-e435-459e-8c8d-f622e2b66b11" />
+
+
 # 👨‍💻 Author
 
 **Sarthak Srivastava**
