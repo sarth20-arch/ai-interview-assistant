@@ -1,294 +1,214 @@
-# BA Prep AI
+# 🚀 AI Interview Assistant
 
-🚀 Live Demo
+An AI-powered interview preparation platform for Business Analysts that combines structured interview simulations, AI-generated guidance, KPI learning, and Business Analyst productivity tools.
 
-https://ba-prep-ai.vercel.app/
+Unlike a generic chatbot, the platform delivers a guided interview experience with contextual knowledge, recruiter-style questions, and grounded AI responses.
 
-## Knowledge Repository
+🌐 **Live Demo**
 
-The AI assistant is powered by a structured knowledge repository located in `/knowledge-base`.
+https://ai-recruiter-assistant.vercel.app/
 
-This repository contains project experience, KPI examples, STAR stories, behavioral scenarios, BA interview questions, and implementation examples used for contextual retrieval and grounded AI responses.
-View Knowledge Base:
+---
+
+# ✨ Features
+
+### 🎯 AI Interview Simulator
+
+Practice Business Analyst interviews through a structured interview flow.
+
+- Role & difficulty selection
+- Recruiter/Hiring Manager interview modes
+- AI-generated suggested answers
+- Framework hints
+- Key points interviewers look for
+- Interview tips
+- Readiness summary
+
+---
+
+### 🤖 Ask Sarthak
+
+An AI assistant that answers recruiter questions using a structured knowledge base instead of generic LLM responses.
+
+Topics include:
+
+- Professional Experience
+- Projects
+- Stakeholder Management
+- Agile
+- Product Thinking
+- KPI Knowledge
+- Implementation Experience
+- Behavioral Questions
+
+---
+
+### 📊 KPI Insights
+
+Learn commonly used Business and Product metrics including:
+
+- Activation Rate
+- Feature Adoption
+- Retention
+- Sprint Velocity
+- Stakeholder Satisfaction
+- Business Outcome Metrics
+
+---
+
+### 🛠️ BA Toolkit
+
+Generate Business Analysis artifacts such as:
+
+- User Stories
+- Acceptance Criteria
+- BRD/FRD Ideas
+- Requirement Templates
+
+---
+
+# 🧠 Knowledge Repository
+
+The AI is powered by a structured knowledge repository instead of relying entirely on prompt engineering.
+
+Knowledge includes:
+
+- Projects
+- STAR Stories
+- Behavioral Scenarios
+- KPI Examples
+- Recruiter Questions
+- Business Analysis Concepts
+
+Repository:
+
 https://github.com/sarth20-arch/ba-prep-ai/tree/main/knowledge-base
 
 ---
 
-## Overview
+# ⚙️ How It Works
 
-BA Prep AI is a conversational AI application designed to act as a digital representation of BA professional experience and expertise.
-
-Instead of reviewing a static resume, recruiters can interactively ask questions about:
-
-* Professional Experience
-* Projects
-* KPI Knowledge
-* Agile Practices
-* Stakeholder Management
-* Behavioral Scenarios
-* Business Analysis Work
-* Product Thinking
-
-The assistant generates contextual responses grounded in a structured knowledge repository rather than generic AI-generated answers.
-
----
-
-## Problem Statement
-
-Traditional resumes provide limited information and often leave recruiters with unanswered questions.
-
-Recruiters frequently want to know:
-
-* What projects has the candidate worked on?
-* How does the candidate handle stakeholders?
-* What KPIs has the candidate tracked?
-* How does the candidate approach Agile delivery?
-* Can the candidate explain implementation challenges?
-
-This project addresses that problem by creating an AI-powered recruiter interaction experience.
-
----
-
-## Key Features
-
-### BA Interview Q&A
-
-Ask questions such as:
-
-* Tell me about yourself
-* Describe your implementation experience
-* Explain a stakeholder management challenge
-* What Agile ceremonies have you participated in?
-* What KPIs have you tracked?
-
-The assistant responds using contextual knowledge from structured datasets.
-
----
-
-### KPI Insights
-
-Explore examples of:
-
-* Activation Rate
-* Retention Rate
-* Feature Adoption
-* Sprint Velocity
-* Stakeholder Alignment
-
-and understand how product and business metrics are used to measure success.
-
----
-
-### BA Toolkit
-
-Generate:
-
-* User Stories
-* Acceptance Criteria
-* Requirement Artifacts
-
-from feature descriptions.
-
-Designed to simulate common Business Analyst workflows.
-
----
-
-### Project Knowledge Repository
-
-The assistant maintains a structured repository of:
-
-* Project Experience
-* STAR Stories
-* Behavioral Scenarios
-* Recruiter Questions
-* KPI Examples
-
-to generate grounded responses.
-
----
-
-## How It Works
-
-Recruiter Question
-
-↓
-
+```
+User Question
+      │
+      ▼
 Context Selection
-
-↓
-
+      │
+      ▼
 Knowledge Retrieval
-
-↓
-
+      │
+      ▼
 Prompt Construction
-
-↓
-
-LLM Processing (OpenRouter)
-
-↓
-
-AI Response
-
-↓
-
-Response Displayed to Recruiter
+      │
+      ▼
+OpenRouter LLM
+      │
+      ▼
+Grounded AI Response
+      │
+      ▼
+User Interface
+```
 
 ---
 
-## Knowledge Base Architecture
+# 🏗️ Project Structure
 
-The application uses structured datasets instead of relying solely on raw prompts.
+```
+app/
+│
+├── Interview Simulator
+├── Ask Sarthak
+├── KPI Insights
+└── BA Toolkit
 
-### Projects
+components/
+│
+├── Setup Screen
+├── Question Progress
+├── Suggested Answer Panel
+├── Completion Screen
+└── Reusable UI Components
 
-Contains:
-
-* Tax Officer Management Platform
-* HealthTech Partnership Initiative
-* BA Prep AI
-
-Includes:
-
-* Objectives
-* Challenges
-* Actions
-* Outcomes
-* Skills
-
----
-
-### STAR Stories
-
-Contains examples related to:
-
-* Requirement Ambiguity
-* Stakeholder Management
-* Agile Delivery
-* Implementation Challenges
+data/
+│
+├── Interview Questions
+├── Projects
+├── Behavioral Stories
+├── KPI Knowledge
+└── Prompt Context
+```
 
 ---
 
-### KPI Knowledge
-
-Contains examples of:
-
-* Activation Metrics
-* Adoption Metrics
-* Retention Metrics
-* Sprint Metrics
-* Product Success Indicators
-
----
-
-### Recruiter Questions
-
-Contains curated responses for:
-
-* Tell me about yourself
-* Career transitions
-* Strengths and weaknesses
-* Product and Business Analysis discussions
-
----
-
-## Tech Stack
+# 💻 Tech Stack
 
 ### Frontend
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
 
 ### Backend
 
-* Next.js API Routes
-* OpenRouter API Integration
+- Next.js API Routes
+- OpenRouter API
 
-### Knowledge Layer
+### AI Layer
 
-* Structured JSON Knowledge Base
-* Context Retrieval Logic
-* Prompt Engineering
+- Structured JSON Knowledge Base
+- Context Retrieval
+- Prompt Engineering
 
 ### Deployment
 
-* GitHub
-* Vercel
+- GitHub
+- Vercel
 
 ---
 
-## Technical Architecture
+# 📈 Current Capabilities
 
-Frontend (Next.js)
+✅ Structured Interview Simulator
 
-↓
+✅ AI Recruiter Assistant
 
-Backend API Route
+✅ Suggested Interview Answers
 
-↓
+✅ Framework Hints
 
-Context Selection Engine
+✅ Interview Tips
 
-↓
+✅ KPI Learning
 
-Knowledge Retrieval Layer
+✅ BA Toolkit
 
-↓
-
-Prompt Construction
-
-↓
-
-OpenRouter
-
-↓
-
-LLM Response
-
-↓
-
-Frontend Rendering
+✅ Knowledge-Based Response Generation
 
 ---
 
-## What I Learned
+# 🚀 Roadmap
 
-Through this project I gained hands-on experience in:
-
-* AI Product Development
-* Prompt Engineering
-* Context Retrieval
-* API Integrations
-* Next.js Development
-* TypeScript
-* Product Thinking
-* Business Analysis Workflows
-* Git & GitHub
-* Vercel Deployment
+- Resume + JD Personalized Interviews
+- AI Interview Evaluation
+- Dynamic Follow-up Questions
+- Candidate Scoring
+- Voice Interview Mode
+- PDF Interview Reports
 
 ---
 
-## Future Enhancements
+# 👨‍💻 Author
 
-* Resume vs JD Match Analyzer
-* Interview Evaluation Engine
-* Candidate Scoring Framework
-* Advanced Knowledge Retrieval
-* Recruiter Analytics Dashboard
+**Sarthak Srivastava**
 
----
+Business Analyst • Product Enthusiast • AI Builder
 
-## Author
+🔗 LinkedIn
 
-Sarthak Srivastava
-
-Business Analyst | Product Enthusiast | AI Builder
-
-LinkedIn:
 https://www.linkedin.com/in/sarthak-srivastava-s1997/
 
-Live Demo:
+🌐 Live Demo
+
 https://ai-recruiter-assistant.vercel.app/
