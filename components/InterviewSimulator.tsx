@@ -8,6 +8,7 @@ import technicalBAQuestions from "../data/interview_bank/technical_ba.json";
 import productManagerQuestions from "../data/interview_bank/product_manager.json";
 import CompletionScreen from "./CompletionScreen";
 
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -298,123 +299,6 @@ function SuggestedAnswerPanel({
   );
 }
 
-function CompletionScreen({
-  questions,
-  difficulty,
-  interviewMode,
-  onRestart,
-  onReturnHome,
-}: {
-  questions: Question[];
-  difficulty: string;
-  interviewMode: string;
-  onRestart: () => void;
-  onReturnHome: () => void;
-}) {
-  const coveredCategories = Array.from(
-    new Set(questions.map((q) => q.category).filter(Boolean))
-  );
-  const totalCategories = Array.from(
-    new Set((interviewQuestions as Question[])
-      .filter((q) => q.difficulty === difficulty)
-      .map((q) => q.category)
-      .filter(Boolean))
-  );
-  const totalAvailable = (interviewQuestions as Question[]).filter(
-    (q) => q.difficulty === difficulty
-  ).length;
-
-  const qRatio = totalAvailable ? Math.min(1, questions.length / totalAvailable) : 1;
-  const catRatio = totalCategories.length ? coveredCategories.length / totalCategories.length : 1;
-  const factor = DIFFICULTY_FACTOR[difficulty] ?? 1;
-  const readinessScore = Math.min(100, Math.round(((qRatio * 0.5) + (catRatio * 0.5)) * 100 * factor));
-  const readinessLabel =
-    readinessScore >= 85 ? "Excellent" : readinessScore >= 65 ? "Good" : "Needs Practice";
-
-  const recommendations = deriveRecommendations(coveredCategories);
-
-  return (
-    <div className="completion-card">
-      <div className="section-header">
-        <div className="section-title">🎉 Mock Interview Complete</div>
-        <p className="info-card-text">
-          This readiness score reflects how many questions you completed and how well topics were covered.
-        </p>
-      </div>
-
-      {/* Readiness score */}
-      <div className="tip-card section-spaced">
-        <div className="info-card-title">Interview Readiness</div>
-        <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${readinessScore}%` }} />
-        </div>
-        <div className="readiness-meta">
-          <div>
-            <div className="summary-label">Score</div>
-            <div className="summary-value">{readinessScore}%</div>
-          </div>
-          <div>
-            <div className="summary-label">Status</div>
-            <div className="summary-value">{readinessLabel}</div>
-          </div>
-        </div>
-        <p className="info-card-text">Based on questions completed, difficulty, and topic coverage.</p>
-      </div>
-
-      {/* Session summary */}
-      <div className="summary-grid section-spaced">
-        <div className="summary-card">
-          <div className="summary-label">Questions Completed</div>
-          <div className="summary-value">{questions.length}</div>
-        </div>
-        <div className="summary-card">
-          <div className="summary-label">Difficulty</div>
-          <div className="summary-value">{difficulty}</div>
-        </div>
-        <div className="summary-card">
-          <div className="summary-label">Interview Mode</div>
-          <div className="summary-value">{interviewMode}</div>
-        </div>
-        <div className="summary-card">
-          <div className="summary-label">Topics Covered</div>
-          <div className="badge-row">
-            {coveredCategories.length
-              ? coveredCategories.map((c) => <span key={c} className="badge">{c}</span>)
-              : <span className="caption">—</span>}
-          </div>
-        </div>
-      </div>
-
-      {/* Recommendations */}
-      <div className="section-spaced">
-        <div className="info-card-title">Recommended Next</div>
-        <div className="recommendation-row">
-          {recommendations.map((rec) => (
-            <button
-              key={rec.key}
-              className={`recommendation-button${rec.key === "ba" ? " primary" : ""}`}
-              onClick={() => {
-                // TODO: replace with router.push(rec.href) once routing is wired
-                console.log("Navigate to", rec.href);
-              }}
-            >
-              {rec.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="button-row">
-        <button className="primary-button" onClick={onRestart}>Restart Interview</button>
-        <button className="secondary-button" onClick={onReturnHome}>Return Home</button>
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Main page component
-// ---------------------------------------------------------------------------
 export default function InterviewSimulator() {
   // Setup state
   const [role, setRole] = useState("Business Analyst");
