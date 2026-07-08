@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import interviewQuestions from "../data/interview_questions.json";
+import recruiterQuestions from "../data/interview_bank/recruiter.json";
+import hiringManagerQuestions from "../data/interview_bank/hiring_manager.json";
+import seniorBAQuestions from "../data/interview_bank/senior_ba.json";
+import technicalBAQuestions from "../data/interview_bank/technical_ba.json";
+import productManagerQuestions from "../data/interview_bank/product_manager.json";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -429,14 +433,35 @@ export default function InterviewSimulator() {
   const [revealed, setRevealed] = useState(false);
   const [rating, setRating] = useState<RatingValue | null>(null);
   const [notesMap, setNotesMap] = useState<Record<number, string>>({});
+const questionBank = useMemo(() => {
+  switch (interviewMode) {
+    case "Recruiter":
+      return recruiterQuestions as Question[];
 
-  const filteredQuestions = useMemo(
-    () =>
-      (interviewQuestions as Question[]).filter(
-        (q) => q.role === role && q.difficulty === difficulty
-      ),
-    [role, difficulty]
-  );
+    case "Hiring Manager":
+      return hiringManagerQuestions as Question[];
+
+    case "Senior Business Analyst":
+      return seniorBAQuestions as Question[];
+
+    case "Technical BA":
+      return technicalBAQuestions as Question[];
+
+    case "Product Manager":
+      return productManagerQuestions as Question[];
+
+    default:
+      return recruiterQuestions as Question[];
+  }
+}, [interviewMode]);
+
+const filteredQuestions = useMemo(
+  () =>
+    questionBank.filter(
+      (q) => q.difficulty === difficulty
+    ),
+  [questionBank, difficulty]
+);
 
   const activeQuestions = started ? sessionQuestions : filteredQuestions;
   const currentQuestion: Question | undefined = activeQuestions[currentIndex];

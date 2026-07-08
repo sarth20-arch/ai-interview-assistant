@@ -1,0 +1,224 @@
+```json
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "REST API",
+    "difficulty": "Medium",
+    "question": "Can you explain what a REST API is and how you've worked with APIs as a Business Analyst?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["API Knowledge", "Communication"],
+    "tip": "Focus on the BA's role in defining, validating and consuming APIs rather than coding them.",
+    "keyPoints": ["Endpoints", "Request", "Response", "Business Requirements"],
+    "commonMistakes": [
+      "Explaining APIs like a developer.",
+      "Confusing REST with SOAP."
+    ],
+    "followUps": [
+      {
+        "question": "What information do you usually capture in API requirements?",
+        "purpose": "Evaluates practical API experience."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "HTTP Methods",
+    "difficulty": "Medium",
+    "question": "Explain GET, POST, PUT and DELETE with practical examples.",
+    "framework": "Conceptual",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["API Basics"],
+    "tip": "Relate each method to business scenarios.",
+    "keyPoints": ["GET", "POST", "PUT", "DELETE"],
+    "commonMistakes": [
+      "Mixing POST and PUT."
+    ],
+    "followUps": [
+      {
+        "question": "Which HTTP method would you use for updating customer information?",
+        "purpose": "Tests practical understanding."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "JSON",
+    "difficulty": "Easy",
+    "question": "What is JSON and why is it commonly used in integrations?",
+    "framework": "Conceptual",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Technical Fundamentals"],
+    "tip": "Explain JSON from a BA perspective.",
+    "keyPoints": ["Key-Value", "Lightweight", "Data Exchange"],
+    "commonMistakes": [
+      "Explaining programming syntax."
+    ],
+    "followUps": [
+      {
+        "question": "Have you ever reviewed a JSON payload?",
+        "purpose": "Checks practical exposure."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "SQL",
+    "difficulty": "Medium",
+    "question": "How comfortable are you with SQL, and when have you used it?",
+    "framework": "Experience Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["SQL", "Data Analysis"],
+    "tip": "Explain how SQL supports analysis and validation.",
+    "keyPoints": ["SELECT", "JOIN", "Filtering", "Validation"],
+    "commonMistakes": [
+      "Pretending to be an advanced SQL developer."
+    ],
+    "followUps": [
+      {
+        "question": "Which SQL query do you use most frequently?",
+        "purpose": "Measures real-world experience."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Data Mapping",
+    "difficulty": "Hard",
+    "question": "Explain your approach to data mapping between two systems.",
+    "framework": "Structured Answer",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Data Mapping", "Integration"],
+    "tip": "Discuss source fields, destination fields and validation.",
+    "keyPoints": ["Source", "Target", "Transformation", "Validation"],
+    "commonMistakes": [
+      "Ignoring business rules."
+    ],
+    "followUps": [
+      {
+        "question": "How do you validate mapped fields?",
+        "purpose": "Evaluates analytical thinking."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Validation",
+    "difficulty": "Medium",
+    "question": "How do you define validation rules for user inputs?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Validation", "Requirements"],
+    "tip": "Think about business rules and edge cases.",
+    "keyPoints": ["Mandatory", "Format", "Business Rules"],
+    "commonMistakes": [
+      "Only considering happy paths."
+    ],
+    "followUps": [
+      {
+        "question": "Who approves validation rules?",
+        "purpose": "Checks stakeholder understanding."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Error Handling",
+    "difficulty": "Hard",
+    "question": "How should a system handle API failures or unexpected errors?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Problem Solving", "Technical Thinking"],
+    "tip": "Focus on user experience and business continuity.",
+    "keyPoints": ["Error Messages", "Retry", "Logging"],
+    "commonMistakes": [
+      "Ignoring user communication."
+    ],
+    "followUps": [
+      {
+        "question": "What information should be logged?",
+        "purpose": "Evaluates technical awareness."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Authentication",
+    "difficulty": "Medium",
+    "question": "What's the difference between authentication and authorization?",
+    "framework": "Conceptual",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Security Basics"],
+    "tip": "Use simple real-world examples.",
+    "keyPoints": ["Identity", "Permissions"],
+    "commonMistakes": [
+      "Using both terms interchangeably."
+    ],
+    "followUps": [
+      {
+        "question": "Can you explain this using a banking application?",
+        "purpose": "Tests conceptual clarity."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Performance",
+    "difficulty": "Medium",
+    "question": "A report takes 45 seconds to load. How would you investigate the issue?",
+    "framework": "Problem Solving",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Analytical Thinking", "Performance"],
+    "tip": "Think systematically instead of jumping to solutions.",
+    "keyPoints": ["Data", "Queries", "Infrastructure", "User Impact"],
+    "commonMistakes": [
+      "Blaming developers immediately."
+    ],
+    "followUps": [
+      {
+        "question": "What information would you collect first?",
+        "purpose": "Evaluates investigation skills."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "interviewer": "Technical BA",
+    "category": "Integrations",
+    "difficulty": "Hard",
+    "question": "Describe your role during a system integration project.",
+    "framework": "STAR",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Integration", "Stakeholder Management", "Requirements"],
+    "tip": "Focus on coordination between business and technical teams.",
+    "keyPoints": ["Requirements", "Mapping", "Testing", "Validation"],
+    "commonMistakes": [
+      "Only discussing meetings instead of delivery."
+    ],
+    "followUps": [
+      {
+        "question": "What was the biggest integration challenge?",
+        "purpose": "Measures implementation experience."
+      }
+    ]
+  }
+]

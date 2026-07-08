@@ -1,232 +1,191 @@
 [
   {
-    "id": 1,
+    "id": 101,
     "role": "Business Analyst",
+    "interviewer": "Recruiter",
     "difficulty": "Easy",
     "category": "Introduction",
     "question": "Tell me about yourself.",
-    "framework": "STAR",
+    "framework": "Structured Answer",
     "expectedDuration": "2 minutes",
-    "skillsTested": [
-      "Communication",
-      "Structured Thinking",
-      "Self Awareness"
-    ],
-    "tip": "Highlight BA-specific experiences, key projects, and domain expertise.",
-    "keyPoints": [
-  "Experience",
-  "Key Projects",
-  "Domain Expertise",
-  "Career Path"
-],
-
-"followUps": [
-  {
-    "question": "Which experiences are most relevant to a Business Analyst role?",
-    "purpose": "Tests whether the candidate can tailor their background to the role."
-  },
-  {
-    "question": "What have you learned from your most relevant project so far?",
-    "purpose": "Tests reflection and growth mindset."
-  }
-],
-
-"commonMistakes": [
-  "Giving a chronological life story instead of a focused BA introduction.",
-  "Talking too much about responsibilities instead of achievements.",
-  "Not tailoring the introduction to the role."
-]
-  },
-  {
-    "id": 2,
-    "role": "Business Analyst",
-    "difficulty": "Easy",
-    "category": "Implementation",
-    "question": "Tell me about your implementation experience.",
-    "framework": "STAR",
-    "expectedDuration": "3 minutes",
-    "tip": "Focus on end-to-end delivery, coordination, and measurable outcomes.",
-    "keyPoints": ["Delivery", "Coordination", "Requirements", "Outcome Metrics"],
+    "tip": "Focus on your experience, key projects, and why you're a good fit for a BA role.",
+    "keyPoints": ["Experience", "Projects", "Career Journey", "Business Analysis"],
+    "skillsTested": ["Communication", "Self-awareness"],
     "followUps": [
       {
-        "question": "What were the biggest challenges during rollout?",
-        "purpose": "Tests problem-solving and resilience during delivery."
-      },
-      {
-        "question": "How did you know the implementation was successful?",
-        "purpose": "Tests outcome-oriented thinking."
+        "question": "Which project best represents your Business Analysis experience?",
+        "purpose": "Checks project relevance."
       }
     ]
   },
   {
-    "id": 3,
+    "id": 102,
     "role": "Business Analyst",
+    "interviewer": "Recruiter",
     "difficulty": "Easy",
-    "category": "Stakeholder Management",
-    "question": "Describe a project involving multiple stakeholders.",
-    "framework": "STAR",
+    "category": "Resume",
+    "question": "Walk me through your resume.",
+    "framework": "Structured Answer",
     "expectedDuration": "3 minutes",
-    "tip": "Show how you aligned diverse interests and maintained communication.",
-    "keyPoints": ["Stakeholder Alignment", "Communication", "Trade-offs", "Outcome"],
+    "tip": "Present your experience as a story rather than reading your resume.",
+    "keyPoints": ["Career Progression", "Achievements", "Projects"],
+    "skillsTested": ["Communication", "Storytelling"],
     "followUps": [
       {
-        "question": "How did you resolve conflicting stakeholder priorities?",
-        "purpose": "Tests stakeholder management."
-      },
+        "question": "Which role contributed most to your BA growth?",
+        "purpose": "Measures reflection."
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Career",
+    "question": "Why are you looking for a new opportunity?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "tip": "Stay positive and focus on growth.",
+    "keyPoints": ["Growth", "Learning", "Career Goals"],
+    "skillsTested": ["Professionalism"],
+    "followUps": [
       {
-        "question": "What would you do differently today?",
-        "purpose": "Tests reflection and learning."
-      },
+        "question": "What are you hoping to learn in your next role?",
+        "purpose": "Evaluates motivation."
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Motivation",
+    "question": "Why do you want to work as a Business Analyst?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "tip": "Connect your strengths with the BA role.",
+    "keyPoints": ["Problem Solving", "Stakeholders", "Technology"],
+    "skillsTested": ["Motivation"],
+    "followUps": [
+      {
+        "question": "What excites you most about Business Analysis?",
+        "purpose": "Checks genuine interest."
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Strengths",
+    "question": "What would you say are your biggest strengths?",
+    "framework": "STAR",
+    "expectedDuration": "2 minutes",
+    "tip": "Support strengths with examples.",
+    "keyPoints": ["Examples", "Impact"],
+    "skillsTested": ["Self-awareness"],
+    "followUps": [
+      {
+        "question": "Can you give me an example?",
+        "purpose": "Validates claims."
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Weakness",
+    "question": "Tell me about one area you're actively improving.",
+    "framework": "STAR",
+    "expectedDuration": "2 minutes",
+    "tip": "Choose a genuine development area and explain your progress.",
+    "keyPoints": ["Honesty", "Growth"],
+    "skillsTested": ["Growth Mindset"],
+    "followUps": [
+      {
+        "question": "How are you working on it today?",
+        "purpose": "Measures initiative."
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Medium",
+    "category": "Achievement",
+    "question": "What professional achievement are you most proud of?",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "tip": "Highlight business impact, not just effort.",
+    "keyPoints": ["Impact", "Ownership"],
+    "skillsTested": ["Results Orientation"],
+    "followUps": [
       {
         "question": "How did you measure success?",
-        "purpose": "Tests business outcome thinking."
+        "purpose": "Looks for business thinking."
       }
     ]
   },
   {
-    "id": 4,
+    "id": 108,
     "role": "Business Analyst",
+    "interviewer": "Recruiter",
     "difficulty": "Medium",
-    "category": "Prioritization",
-    "question": "How do you prioritize requirements with limited bandwidth?",
+    "category": "Challenge",
+    "question": "Tell me about a difficult situation at work and how you handled it.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "tip": "Show calm decision-making and ownership.",
+    "keyPoints": ["Situation", "Action", "Learning"],
+    "skillsTested": ["Problem Solving"],
+    "followUps": [
+      {
+        "question": "What would you do differently today?",
+        "purpose": "Tests reflection."
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Role",
+    "question": "Why are you interested in this position?",
     "framework": "Structured Answer",
     "expectedDuration": "2 minutes",
-    "tip": "Explain frameworks used (MoSCoW, value-risk matrix) and trade-offs.",
-    "keyPoints": ["Prioritization Framework", "Business Value", "Resource Trade-offs", "Impact"],
+    "tip": "Connect the role with your experience and future goals.",
+    "keyPoints": ["Company", "Role", "Growth"],
+    "skillsTested": ["Preparation"],
     "followUps": [
       {
-        "question": "How do you explain a deprioritized item to stakeholders?",
-        "purpose": "Tests communication and stakeholder alignment."
-      },
-      {
-        "question": "What criteria would make you revisit that decision?",
-        "purpose": "Tests adaptability and review discipline."
+        "question": "Why this company specifically?",
+        "purpose": "Measures research."
       }
     ]
   },
   {
-    "id": 5,
+    "id": 110,
     "role": "Business Analyst",
-    "difficulty": "Medium",
-    "category": "Requirement Gathering",
-    "question": "Tell me about a time requirements were unclear.",
-    "framework": "STAR",
-    "expectedDuration": "2-3 minutes",
-    "tip": "Show how you clarified, validated, and documented requirements.",
-    "keyPoints": ["Clarification Process", "Stakeholder Engagement", "Documentation", "Validation"],
-    "followUps": [
-      {
-        "question": "How did you decide when to stop asking questions?",
-        "purpose": "Tests judgment in requirement discovery."
-      },
-      {
-        "question": "What documentation did you create to reduce ambiguity?",
-        "purpose": "Tests clarity and traceability."
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "role": "Business Analyst",
-    "difficulty": "Medium",
-    "category": "Conflict Resolution",
-    "question": "How do you handle stakeholder conflicts?",
+    "interviewer": "Recruiter",
+    "difficulty": "Easy",
+    "category": "Closing",
+    "question": "Do you have any questions for me?",
     "framework": "Structured Answer",
-    "expectedDuration": "2-3 minutes",
-    "tip": "Emphasize listening, finding common ground, and data-driven decisions.",
-    "keyPoints": ["Active Listening", "Negotiation", "Common Ground", "Data-Driven"],
+    "expectedDuration": "2 minutes",
+    "tip": "Ask thoughtful questions about the role, team, or success metrics.",
+    "keyPoints": ["Curiosity", "Preparation"],
+    "skillsTested": ["Engagement"],
     "followUps": [
       {
-        "question": "Can you give an example of a conflict that escalated?",
-        "purpose": "Tests practical experience with difficult conversations."
-      },
-      {
-        "question": "How do you preserve relationships after a disagreement?",
-        "purpose": "Tests stakeholder maturity and diplomacy."
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "role": "Business Analyst",
-    "difficulty": "Hard",
-    "category": "Conflict Resolution",
-    "question": "A stakeholder requests a feature that engineering says isn't feasible. What would you do?",
-    "framework": "Scenario Based",
-    "expectedDuration": "3 minutes",
-    "tip": "Show problem-solving: explore alternatives, trade-offs, and technical collaboration.",
-    "keyPoints": ["Problem Solving", "Technical Understanding", "Alternatives", "Collaboration"],
-    "followUps": [
-      {
-        "question": "How would you present the trade-offs to the stakeholder?",
-        "purpose": "Tests communication under constraint."
-      },
-      {
-        "question": "What would you do if no compromise was available?",
-        "purpose": "Tests decision-making and escalation judgment."
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "role": "Business Analyst",
-    "difficulty": "Hard",
-    "category": "Agile",
-    "question": "Describe a project where priorities changed during implementation.",
-    "framework": "STAR",
-    "expectedDuration": "3 minutes",
-    "tip": "Demonstrate adaptability, re-planning, and communication of impact.",
-    "keyPoints": ["Adaptability", "Re-Planning", "Risk Management", "Stakeholder Update"],
-    "followUps": [
-      {
-        "question": "How did you communicate the impact of the change?",
-        "purpose": "Tests change communication and stakeholder management."
-      },
-      {
-        "question": "What adjustment did you make to the delivery plan?",
-        "purpose": "Tests agility and planning discipline."
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "role": "Business Analyst",
-    "difficulty": "Hard",
-    "category": "KPIs",
-    "question": "How would you measure the success of a newly launched feature?",
-    "framework": "Structured Answer",
-    "expectedDuration": "3 minutes",
-    "tip": "Define business metrics, tracking mechanisms, and success criteria.",
-    "keyPoints": ["Success Metrics", "Business Impact", "Tracking Mechanism", "Data Analysis"],
-    "followUps": [
-      {
-        "question": "Which metrics would you review first after launch?",
-        "purpose": "Tests prioritization of business KPIs."
-      },
-      {
-        "question": "How would you handle a metric that shows poor adoption?",
-        "purpose": "Tests analytical thinking and follow-through."
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "role": "Business Analyst",
-    "difficulty": "Hard",
-    "category": "Introduction",
-    "question": "Why should we hire you for this Business Analyst role?",
-    "framework": "Structured Answer",
-    "expectedDuration": "2-3 minutes",
-    "tip": "Connect your experience to their business needs and pain points.",
-    "keyPoints": ["Unique Value", "Experience Match", "Problem Solving", "Team Contribution"],
-    "followUps": [
-      {
-        "question": "What makes you stand out from other candidates?",
-        "purpose": "Tests confidence and differentiation."
-      },
-      {
-        "question": "How would your background help this team in the next six months?",
-        "purpose": "Tests strategic fit and forward thinking."
+        "question": "What would you ask if you had one minute left?",
+        "purpose": "Evaluates curiosity."
       }
     ]
   }

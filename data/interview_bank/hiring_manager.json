@@ -1,0 +1,230 @@
+```json
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Stakeholder Management",
+    "difficulty": "Medium",
+    "question": "Describe a project where you managed multiple stakeholders with conflicting priorities.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Stakeholder Management", "Communication", "Negotiation"],
+    "tip": "Explain how you aligned stakeholders rather than simply describing the conflict.",
+    "keyPoints": ["Stakeholders", "Conflict", "Resolution", "Business Outcome"],
+    "commonMistakes": [
+      "Taking sides instead of facilitating alignment.",
+      "Ignoring business impact.",
+      "Blaming stakeholders."
+    ],
+    "followUps": [
+      {
+        "question": "How did you gain agreement from everyone involved?",
+        "purpose": "Evaluates stakeholder management."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Requirements",
+    "difficulty": "Medium",
+    "question": "Tell me about a time when the business requirements were unclear.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Requirement Gathering", "Critical Thinking"],
+    "tip": "Focus on how you clarified ambiguity before development started.",
+    "keyPoints": ["Clarification", "Workshops", "Validation"],
+    "commonMistakes": [
+      "Assuming requirements.",
+      "Skipping stakeholder validation."
+    ],
+    "followUps": [
+      {
+        "question": "What techniques did you use to clarify the requirements?",
+        "purpose": "Evaluates elicitation skills."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Prioritization",
+    "difficulty": "Medium",
+    "question": "How do you prioritize requirements when everything appears to be high priority?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Prioritization", "Decision Making"],
+    "tip": "Discuss business value, risk, dependencies, and stakeholder alignment.",
+    "keyPoints": ["Business Value", "Risk", "Dependencies", "MoSCoW"],
+    "commonMistakes": [
+      "Prioritizing based on opinion.",
+      "Ignoring dependencies."
+    ],
+    "followUps": [
+      {
+        "question": "Have you ever had to push back on stakeholders?",
+        "purpose": "Measures confidence."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Implementation",
+    "difficulty": "Medium",
+    "question": "Walk me through your implementation experience from requirements to deployment.",
+    "framework": "Lifecycle",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Implementation", "Delivery", "Agile"],
+    "tip": "Explain the complete implementation lifecycle instead of isolated tasks.",
+    "keyPoints": ["Requirements", "Development", "Testing", "Deployment"],
+    "commonMistakes": [
+      "Only talking about documentation.",
+      "Skipping UAT."
+    ],
+    "followUps": [
+      {
+        "question": "Which phase was the most challenging?",
+        "purpose": "Evaluates implementation experience."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Agile",
+    "difficulty": "Medium",
+    "question": "How have you contributed during Agile ceremonies?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Agile", "Collaboration"],
+    "tip": "Cover planning, refinement, stand-ups, reviews, and retrospectives.",
+    "keyPoints": ["Planning", "Refinement", "Sprint Review"],
+    "commonMistakes": [
+      "Only mentioning daily stand-ups."
+    ],
+    "followUps": [
+      {
+        "question": "Which ceremony adds the most value and why?",
+        "purpose": "Evaluates Agile understanding."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Scope Management",
+    "difficulty": "Hard",
+    "question": "A stakeholder requests a major change after development has started. What would you do?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Scope Management", "Decision Making"],
+    "tip": "Balance customer needs with delivery constraints.",
+    "keyPoints": ["Impact Analysis", "Stakeholder Alignment", "Change Management"],
+    "commonMistakes": [
+      "Accepting every request immediately.",
+      "Rejecting changes without analysis."
+    ],
+    "followUps": [
+      {
+        "question": "How would you communicate the impact to leadership?",
+        "purpose": "Measures communication."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "UAT",
+    "difficulty": "Medium",
+    "question": "Describe your role during User Acceptance Testing.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Testing", "Validation"],
+    "tip": "Explain preparation, execution, defect handling, and sign-off.",
+    "keyPoints": ["Test Cases", "Defects", "Business Validation"],
+    "commonMistakes": [
+      "Confusing QA testing with UAT."
+    ],
+    "followUps": [
+      {
+        "question": "What happens if business users reject the solution?",
+        "purpose": "Evaluates ownership."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Business Value",
+    "difficulty": "Hard",
+    "question": "How do you determine whether a feature actually delivered business value?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Business Thinking", "KPIs"],
+    "tip": "Discuss measurable outcomes instead of opinions.",
+    "keyPoints": ["KPIs", "Success Metrics", "User Feedback"],
+    "commonMistakes": [
+      "Equating delivery with success."
+    ],
+    "followUps": [
+      {
+        "question": "What KPIs would you monitor after launch?",
+        "purpose": "Measures product thinking."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Failure",
+    "difficulty": "Hard",
+    "question": "Tell me about a time something didn't go as planned.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Ownership", "Resilience"],
+    "tip": "Take responsibility and focus on learning.",
+    "keyPoints": ["Ownership", "Recovery", "Learning"],
+    "commonMistakes": [
+      "Blaming others.",
+      "Avoiding accountability."
+    ],
+    "followUps": [
+      {
+        "question": "What processes changed because of that experience?",
+        "purpose": "Evaluates continuous improvement."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "interviewer": "Hiring Manager",
+    "category": "Reflection",
+    "difficulty": "Medium",
+    "question": "Looking back at your last implementation, what would you do differently?",
+    "framework": "Reflection",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Reflection", "Continuous Improvement"],
+    "tip": "Show maturity by identifying genuine improvements.",
+    "keyPoints": ["Learning", "Improvement", "Future Approach"],
+    "commonMistakes": [
+      "Saying you wouldn't change anything."
+    ],
+    "followUps": [
+      {
+        "question": "How has that experience influenced the way you work today?",
+        "purpose": "Measures growth."
+      }
+    ]
+  }
+]

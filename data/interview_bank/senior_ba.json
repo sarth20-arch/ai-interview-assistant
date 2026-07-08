@@ -1,0 +1,225 @@
+```json
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Requirement Gathering",
+    "difficulty": "Medium",
+    "question": "What requirement elicitation techniques have you used, and when would you choose one over another?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Requirement Gathering", "Stakeholder Management"],
+    "tip": "Explain multiple techniques with practical scenarios.",
+    "keyPoints": ["Workshops", "Interviews", "Observation", "Document Analysis", "Brainstorming"],
+    "commonMistakes": [
+      "Only mentioning workshops.",
+      "Giving textbook definitions."
+    ],
+    "followUps": [
+      {
+        "question": "Which technique has worked best for you and why?",
+        "purpose": "Evaluates practical experience."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "User Stories",
+    "difficulty": "Medium",
+    "question": "How do you write a good user story?",
+    "framework": "INVEST",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["User Stories", "Agile"],
+    "tip": "Explain the INVEST principle and acceptance criteria.",
+    "keyPoints": ["INVEST", "Acceptance Criteria", "Business Value"],
+    "commonMistakes": [
+      "Confusing user stories with requirements.",
+      "Ignoring acceptance criteria."
+    ],
+    "followUps": [
+      {
+        "question": "How do you know if a user story is ready for development?",
+        "purpose": "Tests Agile maturity."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Prioritization",
+    "difficulty": "Medium",
+    "question": "Explain how you prioritize requirements.",
+    "framework": "MoSCoW",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Prioritization", "Business Value"],
+    "tip": "Discuss business value, dependencies and risk.",
+    "keyPoints": ["MoSCoW", "Risk", "Dependencies"],
+    "commonMistakes": [
+      "Prioritizing everything as high priority."
+    ],
+    "followUps": [
+      {
+        "question": "Have you ever disagreed with stakeholders on priority?",
+        "purpose": "Evaluates stakeholder management."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Acceptance Criteria",
+    "difficulty": "Medium",
+    "question": "What makes good acceptance criteria?",
+    "framework": "Given-When-Then",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Acceptance Criteria", "Agile"],
+    "tip": "Focus on clarity and testability.",
+    "keyPoints": ["Given", "When", "Then", "Testable"],
+    "commonMistakes": [
+      "Writing vague acceptance criteria."
+    ],
+    "followUps": [
+      {
+        "question": "Who validates acceptance criteria?",
+        "purpose": "Checks understanding of delivery lifecycle."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Documentation",
+    "difficulty": "Medium",
+    "question": "What documents do you typically create during a project?",
+    "framework": "Lifecycle",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Documentation", "Analysis"],
+    "tip": "Cover BRD, FRD, user stories, process flows and UAT documents.",
+    "keyPoints": ["BRD", "FRD", "User Stories", "Process Flows", "RTM"],
+    "commonMistakes": [
+      "Listing documents without explaining their purpose."
+    ],
+    "followUps": [
+      {
+        "question": "Which document is the most important and why?",
+        "purpose": "Measures judgment."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Process Mapping",
+    "difficulty": "Hard",
+    "question": "How do you approach process mapping for a new business workflow?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Process Mapping", "Business Analysis"],
+    "tip": "Discuss As-Is, To-Be and stakeholder validation.",
+    "keyPoints": ["As-Is", "Gap Analysis", "To-Be"],
+    "commonMistakes": [
+      "Skipping stakeholder validation."
+    ],
+    "followUps": [
+      {
+        "question": "Which diagramming tools have you used?",
+        "purpose": "Checks practical exposure."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Scope Management",
+    "difficulty": "Hard",
+    "question": "How do you handle scope creep during a sprint?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Scope Management", "Communication"],
+    "tip": "Explain impact analysis before making commitments.",
+    "keyPoints": ["Impact", "Backlog", "Change Request"],
+    "commonMistakes": [
+      "Accepting every request."
+    ],
+    "followUps": [
+      {
+        "question": "When would you reject a change request?",
+        "purpose": "Evaluates decision making."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "UAT",
+    "difficulty": "Medium",
+    "question": "How do you prepare for User Acceptance Testing?",
+    "framework": "Lifecycle",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["UAT", "Quality Assurance"],
+    "tip": "Discuss planning, scenarios, execution and sign-off.",
+    "keyPoints": ["Test Scenarios", "Business Validation", "Defects"],
+    "commonMistakes": [
+      "Confusing QA with UAT."
+    ],
+    "followUps": [
+      {
+        "question": "What happens if UAT fails?",
+        "purpose": "Measures ownership."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Stakeholder Communication",
+    "difficulty": "Medium",
+    "question": "How do you communicate technical concepts to non-technical stakeholders?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Communication", "Stakeholder Management"],
+    "tip": "Use simple language and business outcomes.",
+    "keyPoints": ["Business Language", "Examples", "Visuals"],
+    "commonMistakes": [
+      "Using excessive technical jargon."
+    ],
+    "followUps": [
+      {
+        "question": "Can you give an example?",
+        "purpose": "Validates experience."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "interviewer": "Senior Business Analyst",
+    "category": "Continuous Improvement",
+    "difficulty": "Hard",
+    "question": "If you joined a project that was already struggling, where would you start your analysis?",
+    "framework": "Problem Solving",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Problem Solving", "Analytical Thinking"],
+    "tip": "Start by understanding the problem before recommending solutions.",
+    "keyPoints": ["Root Cause", "Stakeholders", "Data", "Prioritization"],
+    "commonMistakes": [
+      "Jumping directly to solutions."
+    ],
+    "followUps": [
+      {
+        "question": "How would you identify the root cause?",
+        "purpose": "Evaluates analytical thinking."
+      }
+    ]
+  }
+]

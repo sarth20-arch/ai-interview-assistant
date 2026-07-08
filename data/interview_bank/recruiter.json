@@ -1,0 +1,240 @@
+```json
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Introduction",
+    "difficulty": "Easy",
+    "question": "Tell me about yourself.",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Communication", "Self Awareness"],
+    "tip": "Focus on your experience, projects, and why you're a strong fit for a BA role.",
+    "keyPoints": ["Current Role", "Relevant Experience", "Key Projects", "Career Goal"],
+    "commonMistakes": [
+      "Starting with personal background.",
+      "Reading the resume word for word.",
+      "Speaking for more than 3 minutes."
+    ],
+    "followUps": [
+      {
+        "question": "Which project best represents your Business Analysis skills?",
+        "purpose": "Tests project relevance."
+      },
+      {
+        "question": "Why did you choose Business Analysis?",
+        "purpose": "Tests motivation."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Resume",
+    "difficulty": "Easy",
+    "question": "Walk me through your resume.",
+    "framework": "Chronological",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Communication", "Storytelling"],
+    "tip": "Connect each role to your career progression.",
+    "keyPoints": ["Career Growth", "Responsibilities", "Achievements"],
+    "commonMistakes": [
+      "Reading the resume.",
+      "Skipping major projects.",
+      "Not connecting experiences."
+    ],
+    "followUps": [
+      {
+        "question": "Which role helped you grow the most?",
+        "purpose": "Evaluates reflection."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Career",
+    "difficulty": "Easy",
+    "question": "Why are you looking for a new opportunity?",
+    "framework": "Positive Framing",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Professionalism", "Motivation"],
+    "tip": "Focus on growth instead of complaining about your current employer.",
+    "keyPoints": ["Growth", "Learning", "Career Goals"],
+    "commonMistakes": [
+      "Speaking negatively about previous employers.",
+      "Talking only about salary."
+    ],
+    "followUps": [
+      {
+        "question": "What are you hoping to achieve in your next role?",
+        "purpose": "Measures long-term thinking."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Motivation",
+    "difficulty": "Easy",
+    "question": "Why do you want to become a Business Analyst?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Career Motivation"],
+    "tip": "Connect your strengths with the BA role.",
+    "keyPoints": ["Problem Solving", "Business", "Technology"],
+    "commonMistakes": [
+      "Giving textbook definitions.",
+      "Talking only about salary."
+    ],
+    "followUps": [
+      {
+        "question": "What part of the BA role excites you most?",
+        "purpose": "Measures genuine interest."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Strengths",
+    "difficulty": "Easy",
+    "question": "What are your greatest strengths?",
+    "framework": "STAR",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Self Awareness"],
+    "tip": "Support every strength with a real example.",
+    "keyPoints": ["Evidence", "Impact"],
+    "commonMistakes": [
+      "Listing adjectives only.",
+      "No examples."
+    ],
+    "followUps": [
+      {
+        "question": "Can you share an example?",
+        "purpose": "Validates credibility."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Improvement",
+    "difficulty": "Easy",
+    "question": "Tell me about an area you're currently improving.",
+    "framework": "STAR",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Growth Mindset"],
+    "tip": "Choose a genuine improvement area and explain your progress.",
+    "keyPoints": ["Learning", "Improvement"],
+    "commonMistakes": [
+      "Giving fake weaknesses.",
+      "Choosing a critical weakness."
+    ],
+    "followUps": [
+      {
+        "question": "What steps are you taking to improve?",
+        "purpose": "Evaluates initiative."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Achievement",
+    "difficulty": "Medium",
+    "question": "What professional achievement are you most proud of?",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Ownership", "Results Orientation"],
+    "tip": "Focus on measurable business impact whenever possible.",
+    "keyPoints": ["Challenge", "Action", "Impact"],
+    "commonMistakes": [
+      "Talking about team achievements only.",
+      "Ignoring results."
+    ],
+    "followUps": [
+      {
+        "question": "How did you measure success?",
+        "purpose": "Evaluates business thinking."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Behavioral",
+    "difficulty": "Medium",
+    "question": "Tell me about a difficult situation you faced at work.",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Problem Solving", "Communication"],
+    "tip": "Focus on your actions and learning.",
+    "keyPoints": ["Situation", "Action", "Learning"],
+    "commonMistakes": [
+      "Blaming teammates.",
+      "Focusing only on the problem."
+    ],
+    "followUps": [
+      {
+        "question": "What would you do differently today?",
+        "purpose": "Measures reflection."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Company Fit",
+    "difficulty": "Easy",
+    "question": "Why do you want to join our company?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Preparation"],
+    "tip": "Mention the company, role, and your career goals.",
+    "keyPoints": ["Research", "Alignment", "Growth"],
+    "commonMistakes": [
+      "Giving generic answers.",
+      "Not mentioning the company."
+    ],
+    "followUps": [
+      {
+        "question": "What attracted you to this opportunity?",
+        "purpose": "Evaluates preparation."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "interviewer": "Recruiter",
+    "category": "Closing",
+    "difficulty": "Easy",
+    "question": "Do you have any questions for me?",
+    "framework": "Structured Answer",
+    "expectedDuration": "2 minutes",
+    "skillsTested": ["Curiosity", "Professionalism"],
+    "tip": "Ask about success metrics, team structure, or growth opportunities.",
+    "keyPoints": ["Curiosity", "Preparation"],
+    "commonMistakes": [
+      "Saying 'No'.",
+      "Only asking about leave or salary."
+    ],
+    "followUps": [
+      {
+        "question": "If you could ask only one question, what would it be?",
+        "purpose": "Measures curiosity."
+      }
+    ]
+  }
+]
+```

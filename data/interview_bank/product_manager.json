@@ -1,0 +1,224 @@
+```json
+[
+  {
+    "id": 1,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Product Thinking",
+    "difficulty": "Medium",
+    "question": "How do you decide whether a feature should be built?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Product Thinking", "Decision Making"],
+    "tip": "Talk about user problems before solutions.",
+    "keyPoints": ["User Problem", "Business Value", "Feasibility", "Impact"],
+    "commonMistakes": [
+      "Jumping directly to solutions.",
+      "Ignoring user needs."
+    ],
+    "followUps": [
+      {
+        "question": "What data would influence your decision?",
+        "purpose": "Evaluates product thinking."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Prioritization",
+    "difficulty": "Medium",
+    "question": "Two high-impact features compete for the same sprint. How would you prioritize?",
+    "framework": "Scenario Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Prioritization", "Decision Making"],
+    "tip": "Discuss business value, effort, risk and dependencies.",
+    "keyPoints": ["Business Value", "Effort", "Risk", "Dependencies"],
+    "commonMistakes": [
+      "Choosing based on personal opinion."
+    ],
+    "followUps": [
+      {
+        "question": "Would your answer change if a major client requested one feature?",
+        "purpose": "Tests trade-off thinking."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "KPIs",
+    "difficulty": "Medium",
+    "question": "How would you measure whether a newly released feature is successful?",
+    "framework": "Metrics Based",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["KPIs", "Analytics"],
+    "tip": "Discuss measurable outcomes instead of opinions.",
+    "keyPoints": ["Adoption", "Retention", "Business Metrics", "User Feedback"],
+    "commonMistakes": [
+      "Assuming delivery equals success."
+    ],
+    "followUps": [
+      {
+        "question": "Which KPI would you monitor first?",
+        "purpose": "Evaluates analytical thinking."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "MVP",
+    "difficulty": "Medium",
+    "question": "How would you define the MVP for a new product?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["MVP", "Prioritization"],
+    "tip": "Focus on solving one core problem.",
+    "keyPoints": ["Core Problem", "Essential Features", "Learning"],
+    "commonMistakes": [
+      "Including too many features."
+    ],
+    "followUps": [
+      {
+        "question": "How do you decide what to exclude?",
+        "purpose": "Evaluates prioritization."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "User Research",
+    "difficulty": "Medium",
+    "question": "How would you gather user feedback before building a feature?",
+    "framework": "Discovery",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Discovery", "Communication"],
+    "tip": "Discuss interviews, surveys, analytics and observation.",
+    "keyPoints": ["Interviews", "Surveys", "Analytics", "Observation"],
+    "commonMistakes": [
+      "Relying on assumptions."
+    ],
+    "followUps": [
+      {
+        "question": "How many users would you interview?",
+        "purpose": "Tests research approach."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Trade-offs",
+    "difficulty": "Hard",
+    "question": "Engineering estimates a feature will take three months, but leadership wants it in one. How would you respond?",
+    "framework": "Scenario Based",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Negotiation", "Trade-offs"],
+    "tip": "Balance delivery expectations with realistic execution.",
+    "keyPoints": ["Scope Reduction", "Phased Delivery", "Communication"],
+    "commonMistakes": [
+      "Promising unrealistic timelines."
+    ],
+    "followUps": [
+      {
+        "question": "Would you reduce scope or extend the timeline?",
+        "purpose": "Evaluates decision making."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Experiments",
+    "difficulty": "Hard",
+    "question": "A feature isn't performing as expected after launch. What would you do next?",
+    "framework": "Problem Solving",
+    "expectedDuration": "4 minutes",
+    "skillsTested": ["Product Thinking", "Analytics"],
+    "tip": "Use data before making changes.",
+    "keyPoints": ["KPIs", "User Feedback", "Experiments", "Iteration"],
+    "commonMistakes": [
+      "Making assumptions without evidence."
+    ],
+    "followUps": [
+      {
+        "question": "What experiment would you run first?",
+        "purpose": "Measures experimentation mindset."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Roadmap",
+    "difficulty": "Medium",
+    "question": "What factors influence a product roadmap?",
+    "framework": "Structured Answer",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Roadmapping", "Strategic Thinking"],
+    "tip": "Discuss customer needs, business goals and technical feasibility.",
+    "keyPoints": ["Vision", "Business Goals", "Customer Needs", "Resources"],
+    "commonMistakes": [
+      "Treating the roadmap as a feature list."
+    ],
+    "followUps": [
+      {
+        "question": "How often should a roadmap change?",
+        "purpose": "Evaluates planning mindset."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Stakeholder Management",
+    "difficulty": "Medium",
+    "question": "How would you handle conflicting priorities between business stakeholders and engineering?",
+    "framework": "STAR",
+    "expectedDuration": "3 minutes",
+    "skillsTested": ["Stakeholder Management", "Communication"],
+    "tip": "Focus on alignment and transparency.",
+    "keyPoints": ["Alignment", "Trade-offs", "Business Value"],
+    "commonMistakes": [
+      "Taking sides."
+    ],
+    "followUps": [
+      {
+        "question": "Who has the final decision?",
+        "purpose": "Tests stakeholder understanding."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "role": "Business Analyst",
+    "interviewer": "Product Manager",
+    "category": "Product Sense",
+    "difficulty": "Hard",
+    "question": "Imagine you're improving a food delivery app. What feature would you build and why?",
+    "framework": "Product Design",
+    "expectedDuration": "5 minutes",
+    "skillsTested": ["Creativity", "Product Sense", "Problem Solving"],
+    "tip": "Start with the user problem, not the feature.",
+    "keyPoints": ["Problem", "Users", "Solution", "Success Metrics"],
+    "commonMistakes": [
+      "Building features without validating the problem."
+    ],
+    "followUps": [
+      {
+        "question": "How would you measure whether your feature succeeded?",
+        "purpose": "Evaluates product thinking."
+      }
+    ]
+  }
+]
