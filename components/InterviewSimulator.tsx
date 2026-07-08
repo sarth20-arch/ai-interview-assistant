@@ -6,6 +6,7 @@ import hiringManagerQuestions from "../data/interview_bank/hiring_manager.json";
 import seniorBAQuestions from "../data/interview_bank/senior_ba.json";
 import technicalBAQuestions from "../data/interview_bank/technical_ba.json";
 import productManagerQuestions from "../data/interview_bank/product_manager.json";
+import CompletionScreen from "./CompletionScreen";
 
 // ---------------------------------------------------------------------------
 // Types
