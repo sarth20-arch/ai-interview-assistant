@@ -4,110 +4,99 @@ import { useState } from "react";
 import recruiterQA from "../data/recruiter_qa.json";
 import kpis from "../data/kpis.json";
 import InterviewSimulator from "../components/InterviewSimulator";
+import HomeDashboard from "../components/HomeDashboard";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
 type Section =
+  | "Home"
   | "Mock Interview"
   | "Ask Sarthak"
   | "BA Copilot"
   | "KPI Library";
 
-const NAV_TABS: Section[] = [
-  "Mock Interview",
-  "Ask Sarthak",
-  "BA Copilot",
-  "KPI Library",
-];
-
-const PAGE_META: Record<Section, { title: string; subtitle: string }> = {
-  "Mock Interview": {
-    title: "Mock Interview",
-    subtitle:
-      "Practice realistic Business Analyst interview questions and compare your approach with a sample answer.",
-  },
-  "Ask Sarthak": {
-    title: "Ask Sarthak",
-    subtitle:
-      "Ask questions about Sarthak's projects, experience, business analysis approach and interview scenarios.",
-  },
-  "BA Copilot": {
-    title: "BA Copilot",
-    subtitle:
-      "Generate User Stories, Acceptance Criteria, Edge Cases and BA documentation.",
-  },
-  "KPI Library": {
-    title: "KPI Library",
-    subtitle:
-      "Explore commonly used Business and Product KPIs used during interviews.",
-  },
-};
-
 // ── KPI Library ────────────────────────────────────────────────────────────
 
+interface KPIItem {
+  id: number;
+  category: string;
+  framework: string;
+  summary: string;
+  formula: string;
+  how_ba_uses_it: string;
+  interview_tip: string;
+  when_to_use: string;
+  example: string;
+}
+
 function KPILibrary() {
-  const data: any = kpis || [];
+  const data = kpis as KPIItem[];
   const [openId, setOpenId] = useState<number | null>(null);
 
   return (
-    <div className="qa-list">
-      {Array.isArray(data) &&
-        data.map((k: any) => (
-          <div
-            key={k.id}
-            className={`qa-card ${openId === k.id ? "open" : ""}`}
-            onClick={() => setOpenId(openId === k.id ? null : k.id)}
-          >
-            <div className="qa-meta">{k.category}</div>
+    <>
+      <header className="page-header">
+        <h1 className="page-title">KPI Library</h1>
+        <p className="page-subtitle">
+          Explore commonly used Business and Product KPIs used during interviews.
+        </p>
+      </header>
 
-            <div className="qa-question">
-              <span>{k.framework}</span>
-              <span className="qa-chevron">&#8964;</span>
-            </div>
+      <div className="content">
+        <div className="qa-list">
+          {data.map((k) => (
+            <div
+              key={k.id}
+              className={`qa-card ${openId === k.id ? "open" : ""}`}
+              onClick={() => setOpenId(openId === k.id ? null : k.id)}
+            >
+              <div className="qa-meta">{k.category}</div>
 
-            {openId === k.id && (
-              <div className="qa-answer">
-                <div className="kpi-block">
-                  <span className="kpi-block-label">Summary</span>
-                  <p>{k.summary}</p>
-                </div>
-
-                <div className="kpi-block">
-                  <span className="kpi-block-label">Formula</span>
-                  <p className="kpi-formula">{k.formula}</p>
-                </div>
-
-                <div className="kpi-block">
-                  <span className="kpi-block-label">How a BA Uses It</span>
-                  <p>{k.how_ba_uses_it}</p>
-                </div>
-
-                <div className="kpi-block">
-                  <span className="kpi-block-label">Interview Tip</span>
-                  <p>{k.interview_tip}</p>
-                </div>
-
-                <div className="kpi-block">
-                  <span className="kpi-block-label">When To Use It</span>
-                  <p>{k.when_to_use}</p>
-                </div>
-
-                <div className="kpi-block">
-                  <span className="kpi-block-label">Example</span>
-                  <p>{k.example}</p>
-                </div>
+              <div className="qa-question">
+                <span>{k.framework}</span>
+                <span className="qa-chevron">&#8964;</span>
               </div>
-            )}
-          </div>
-        ))}
-    </div>
+
+              {openId === k.id && (
+                <div className="qa-answer">
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">Summary</span>
+                    <p>{k.summary}</p>
+                  </div>
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">Formula</span>
+                    <p className="kpi-formula">{k.formula}</p>
+                  </div>
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">How a BA Uses It</span>
+                    <p>{k.how_ba_uses_it}</p>
+                  </div>
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">Interview Tip</span>
+                    <p>{k.interview_tip}</p>
+                  </div>
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">When To Use It</span>
+                    <p>{k.when_to_use}</p>
+                  </div>
+                  <div className="kpi-block">
+                    <span className="kpi-block-label">Example</span>
+                    <p>{k.example}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
 // ── Home ───────────────────────────────────────────────────────────────────
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<Section>("Mock Interview");
+  const [activeSection, setActiveSection] = useState<Section>("Home");
 
   // Ask Sarthak state
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -130,9 +119,8 @@ export default function Home() {
     "Stakeholder Management",
   ];
 
-  const filteredQuestions = recruiterQA.filter(
-    (item: any) =>
-      selectedMode === "All" || item.category === selectedMode
+  const filteredQuestions = (recruiterQA as { id: number; category: string; question: string; answer: string }[]).filter(
+    (item) => selectedMode === "All" || item.category === selectedMode
   );
 
   const generateAnswer = async () => {
@@ -175,7 +163,9 @@ export default function Home() {
     setSelectedId(selectedId === id ? null : id);
   };
 
-  const { title, subtitle } = PAGE_META[activeSection];
+  const navigate = (section: Section) => setActiveSection(section);
+  const goHome = () => setActiveSection("Home");
+  const isHome = activeSection === "Home";
 
   return (
     <>
@@ -222,6 +212,7 @@ export default function Home() {
           gap: 12px;
           padding-bottom: 24px;
           border-bottom: 0.5px solid rgba(255,255,255,0.08);
+          cursor: pointer;
         }
         .logo-icon {
           width: 38px; height: 38px;
@@ -268,36 +259,37 @@ export default function Home() {
           min-height: 100vh;
         }
 
-        /* ── TOP NAV ── */
-        .topbar {
+        /* ── BACK BAR ── */
+        .back-bar {
           display: flex;
           align-items: center;
-          gap: 2px;
           padding: 0 32px;
-          border-bottom: 0.5px solid rgba(0,0,0,0.08);
+          height: 48px;
+          border-bottom: 0.5px solid rgba(0,0,0,0.06);
           background: #f8f6f1;
+          flex-shrink: 0;
         }
-        .tab-btn {
-          font-size: 13px;
-          font-weight: 400;
-          padding: 16px 18px;
-          border: none;
-          background: none;
-          cursor: pointer;
+        .back-btn {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 500;
           color: #7a7668;
-          border-bottom: 2px solid transparent;
-          margin-bottom: -0.5px;
-          transition: color 0.15s, border-color 0.15s;
+          background: none;
+          border: none;
+          cursor: pointer;
           font-family: 'DM Sans', sans-serif;
-          white-space: nowrap;
+          padding: 0;
+          transition: color 0.15s;
         }
-        .tab-btn:hover { color: #0e0d0b; background: rgba(0,0,0,0.02); }
-        .tab-btn.active { color: #0e0d0b; border-bottom-color: #b8975a; font-weight: 500; }
+        .back-btn:hover { color: #0e0d0b; }
 
-        /* ── PAGE HEADER ── */
+        /* ── PAGE HEADER (used by inline modules) ── */
         .page-header {
           padding: 32px 32px 24px;
           border-bottom: 0.5px solid rgba(0,0,0,0.06);
+          flex-shrink: 0;
         }
         .page-title {
           font-family: 'DM Serif Display', serif;
@@ -486,7 +478,7 @@ export default function Home() {
         @media (max-width: 768px) {
           .app { grid-template-columns: 1fr; }
           .sidebar { display: none; }
-          .topbar { padding: 0 16px; overflow-x: auto; }
+          .back-bar { padding: 0 16px; }
           .page-header { padding: 24px 20px 20px; }
           .content { padding: 20px; }
         }
@@ -496,7 +488,7 @@ export default function Home() {
 
         {/* ── Sidebar ── */}
         <aside className="sidebar">
-          <div className="logo-area">
+          <div className="logo-area" onClick={goHome}>
             <div className="logo-icon">BA</div>
             <div>
               <div className="logo-text">BA Prep AI</div>
@@ -537,34 +529,36 @@ export default function Home() {
         {/* ── Main ── */}
         <div className="main">
 
-          {/* Top nav */}
-          <nav className="topbar">
-            {NAV_TABS.map((section) => (
-              <button
-                key={section}
-                className={`tab-btn ${activeSection === section ? "active" : ""}`}
-                onClick={() => setActiveSection(section)}
-              >
-                {section}
+          {/* Back bar — only on feature pages */}
+          {!isHome && (
+            <div className="back-bar">
+              <button className="back-btn" onClick={goHome}>
+                ← Back to Home
               </button>
-            ))}
-          </nav>
+            </div>
+          )}
 
-          {/* Dynamic page header */}
-          <header className="page-header">
-            <h1 className="page-title">{title}</h1>
-            <p className="page-subtitle">{subtitle}</p>
-          </header>
+          {/* ── Home ── */}
+          {activeSection === "Home" && (
+            <div className="content">
+              <HomeDashboard onNavigate={(s) => navigate(s as Section)} />
+            </div>
+          )}
 
-          {/* Content */}
-          <div className="content">
+          {/* ── Mock Interview — owns its own header ── */}
+          {activeSection === "Mock Interview" && <InterviewSimulator />}
 
-            {/* ── Mock Interview ── */}
-            {activeSection === "Mock Interview" && <InterviewSimulator />}
+          {/* ── Ask Sarthak ── */}
+          {activeSection === "Ask Sarthak" && (
+            <>
+              <header className="page-header">
+                <h1 className="page-title">Ask Sarthak</h1>
+                <p className="page-subtitle">
+                  Ask questions about Sarthak's projects, experience, business analysis approach and interview scenarios.
+                </p>
+              </header>
 
-            {/* ── Ask Sarthak ── */}
-            {activeSection === "Ask Sarthak" && (
-              <>
+              <div className="content">
                 <div className="chat-box">
                   <textarea
                     placeholder="Ask about Sarthak's experience, projects, or approach…"
@@ -577,11 +571,7 @@ export default function Home() {
                         ? `${userQuestion.length} chars`
                         : "Ask anything — experience, decisions, tradeoffs"}
                     </span>
-                    <button
-                      className="ask-btn"
-                      onClick={generateAnswer}
-                      disabled={loading}
-                    >
+                    <button className="ask-btn" onClick={generateAnswer} disabled={loading}>
                       <span className="btn-dot" />
                       {loading ? "Thinking…" : "Ask Sarthak"}
                     </button>
@@ -589,9 +579,7 @@ export default function Home() {
                 </div>
 
                 {loading && (
-                  <div className="loading-dots">
-                    <span /><span /><span />
-                  </div>
+                  <div className="loading-dots"><span /><span /><span /></div>
                 )}
 
                 {aiResponse && !loading && (
@@ -614,7 +602,7 @@ export default function Home() {
                 </div>
 
                 <div className="qa-list">
-                  {filteredQuestions.map((item: any) => (
+                  {filteredQuestions.map((item) => (
                     <div
                       key={item.id}
                       className={`qa-card ${selectedId === item.id ? "open" : ""}`}
@@ -631,12 +619,21 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-              </>
-            )}
+              </div>
+            </>
+          )}
 
-            {/* ── BA Copilot ── */}
-            {activeSection === "BA Copilot" && (
-              <div>
+          {/* ── BA Copilot ── */}
+          {activeSection === "BA Copilot" && (
+            <>
+              <header className="page-header">
+                <h1 className="page-title">BA Copilot</h1>
+                <p className="page-subtitle">
+                  Generate User Stories, Acceptance Criteria, Edge Cases and BA documentation.
+                </p>
+              </header>
+
+              <div className="content">
                 <div className="chat-box">
                   <textarea
                     value={featureIdea}
@@ -646,11 +643,7 @@ export default function Home() {
                   />
                   <div className="chat-footer">
                     <span className="char-hint">Describe the feature in plain language</span>
-                    <button
-                      className="ask-btn"
-                      onClick={generateUserStory}
-                      disabled={storyLoading}
-                    >
+                    <button className="ask-btn" onClick={generateUserStory} disabled={storyLoading}>
                       <span className="btn-dot" />
                       {storyLoading ? "Generating…" : "Generate"}
                     </button>
@@ -658,9 +651,7 @@ export default function Home() {
                 </div>
 
                 {storyLoading && (
-                  <div className="loading-dots">
-                    <span /><span /><span />
-                  </div>
+                  <div className="loading-dots"><span /><span /><span /></div>
                 )}
 
                 {storyOutput && !storyLoading && (
@@ -669,12 +660,12 @@ export default function Home() {
                   </div>
                 )}
               </div>
-            )}
+            </>
+          )}
 
-            {/* ── KPI Library ── */}
-            {activeSection === "KPI Library" && <KPILibrary />}
+          {/* ── KPI Library — owns its own header ── */}
+          {activeSection === "KPI Library" && <KPILibrary />}
 
-          </div>
         </div>
       </div>
     </>
