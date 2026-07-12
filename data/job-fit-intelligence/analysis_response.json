@@ -1,0 +1,38 @@
+{
+  "overallMatch": 0,
+
+  "recruiterVerdict": {
+    "decision": "",
+    "confidence": 0,
+    "reason": ""
+  },
+
+  "hiringManagerVerdict": {
+    "decision": "",
+    "confidence": 0,
+    "reason": ""
+  },
+
+  "atsAnalysis": {
+    "score": 0,
+    "keywordCoverage": 0
+  },
+
+  "matchedSkills": [],
+
+  "missingSkills": [],
+
+  "matchedTools": [],
+
+  "missingTools": [],
+
+  "strengths": [],
+
+  "weaknesses": [],
+
+  "resumeImprovements": [],
+
+  "interviewPreparation": [],
+
+  "recommendedModules": []
+}

@@ -5,15 +5,17 @@ import recruiterQA from "../data/recruiter_qa.json";
 import kpis from "../data/kpis.json";
 import InterviewSimulator from "../components/InterviewSimulator";
 import HomeDashboard from "../components/HomeDashboard";
+import JDInput from "@/components/job-fit-intelligence/JDInput";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
 type Section =
   | "Home"
+  | "job-fit-intelligence"
   | "Mock Interview"
   | "Ask Sarthak"
   | "BA Copilot"
-  | "KPI Library";
+  | "KPI Library";  
 
 // ── KPI Library ────────────────────────────────────────────────────────────
 
@@ -544,6 +546,8 @@ export default function Home() {
               <HomeDashboard onNavigate={(s) => navigate(s as Section)} />
             </div>
           )}
+{/* ── job-fit-intelligence ── */}
+{activeSection === "job-fit-intelligence" && <JDInput />}
 
           {/* ── Mock Interview — owns its own header ── */}
           {activeSection === "Mock Interview" && <InterviewSimulator />}

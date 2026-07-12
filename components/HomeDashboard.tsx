@@ -23,15 +23,15 @@ const FEATURES: {
   section: Section;
 }[] = [
   {
-    icon: "💬",
-    title: "Ask Sarthak",
-    badge: "AI Coach",
-    badgeType: "gold",
-    description:
-      "Ask questions about Business Analysis, projects, stakeholder management and interview scenarios based on Sarthak's knowledge base.",
-    cta: "Open Assistant",
-    section: "Ask Sarthak",
-  },
+  icon: "🎯",
+  title: "job-fit-intelligence",
+  badge: "New",
+  badgeType: "gold",
+  description:
+    "Analyze a Business Analyst job description, compare it with your resume, and receive recruiter-level insights, ATS analysis, and interview preparation guidance.",
+  cta: "Analyze Resume",
+  section: "job-fit-intelligence",
+},
   {
     icon: "🎤",
     title: "Mock Interview",
@@ -41,6 +41,16 @@ const FEATURES: {
       "Practice realistic Recruiter, Hiring Manager, Technical BA and Product interviews with structured coaching.",
     cta: "Start Interview",
     section: "Mock Interview",
+  },
+  {
+    icon: "💬",
+    title: "Ask Sarthak",
+    badge: "AI Coach",
+    badgeType: "gold",
+    description:
+      "Ask questions about Business Analysis, projects, stakeholder management and interview scenarios based on Sarthak's knowledge base.",
+    cta: "Open Assistant",
+    section: "Ask Sarthak",
   },
   {
     icon: "📝",
@@ -65,11 +75,11 @@ const FEATURES: {
 ];
 
 const JOURNEY = [
-  "Learn BA Concepts",
-  "Ask Questions",
-  "Practice Interviews",
-  "Create BA Documents",
-  "Interview Ready",
+  { label: "KPI Library",       section: "KPI Library" as Section },
+  { label: "Ask Sarthak",       section: "Ask Sarthak" as Section },
+  { label: "Mock Interview",    section: "Mock Interview" as Section },
+  { label: "BA Copilot",        section: "BA Copilot" as Section },
+  { label: "Interview Ready",   section: null },
 ];
 
 export default function HomeDashboard({ onNavigate }: Props) {
@@ -98,11 +108,7 @@ export default function HomeDashboard({ onNavigate }: Props) {
             </button>
             <button
               className="hd-secondary-btn"
-              onClick={() =>
-                document
-                  .getElementById("hd-features")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => onNavigate("Ask Sarthak")}
             >
               Ask Sarthak
             </button>
@@ -138,7 +144,7 @@ export default function HomeDashboard({ onNavigate }: Props) {
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === "Enter" && onNavigate(f.section)}
-              aria-label={`Navigate to ${f.title}`}
+              aria-label={`Go to ${f.title}`}
             >
               <div className="hd-feature-top">
                 <span className="hd-feature-icon">{f.icon}</span>
@@ -148,9 +154,7 @@ export default function HomeDashboard({ onNavigate }: Props) {
               </div>
               <h3 className="hd-feature-title">{f.title}</h3>
               <p className="hd-feature-desc">{f.description}</p>
-              <span className="hd-feature-cta">
-                {f.cta} →
-              </span>
+              <span className="hd-feature-cta">{f.cta} →</span>
             </div>
           ))}
         </div>
@@ -167,11 +171,19 @@ export default function HomeDashboard({ onNavigate }: Props) {
 
         <div className="hd-journey">
           {JOURNEY.map((step, i) => (
-            <div key={step} className="hd-journey-item">
-              <div className="hd-journey-node">
+            <div key={step.label} className="hd-journey-item">
+              <div
+                className={`hd-journey-node ${step.section ? "hd-journey-node--link" : "hd-journey-node--end"}`}
+                onClick={() => step.section && onNavigate(step.section)}
+                role={step.section ? "button" : undefined}
+                tabIndex={step.section ? 0 : undefined}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && step.section && onNavigate(step.section)
+                }
+              >
                 <span className="hd-journey-num">{i + 1}</span>
               </div>
-              <span className="hd-journey-label">{step}</span>
+              <span className="hd-journey-label">{step.label}</span>
               {i < JOURNEY.length - 1 && (
                 <div className="hd-journey-connector" aria-hidden="true" />
               )}
@@ -181,11 +193,9 @@ export default function HomeDashboard({ onNavigate }: Props) {
       </section>
 
       <style>{`
-        /* ── WRAP ── */
         .hd-wrap {
           display: flex;
           flex-direction: column;
-          gap: 0;
         }
 
         /* ── HERO ── */
@@ -193,9 +203,7 @@ export default function HomeDashboard({ onNavigate }: Props) {
           padding: 56px 0 48px;
           border-bottom: 0.5px solid rgba(0,0,0,0.06);
         }
-        .hd-hero-inner {
-          max-width: 560px;
-        }
+        .hd-hero-inner { max-width: 560px; }
         .hd-hero-eyebrow {
           font-size: 10px;
           font-weight: 600;
@@ -285,9 +293,7 @@ export default function HomeDashboard({ onNavigate }: Props) {
           padding: 48px 0;
           border-bottom: 0.5px solid rgba(0,0,0,0.06);
         }
-        .hd-section-header {
-          margin-bottom: 28px;
-        }
+        .hd-section-header { margin-bottom: 28px; }
         .hd-section-title {
           font-family: 'DM Serif Display', serif;
           font-size: 26px;
@@ -320,23 +326,24 @@ export default function HomeDashboard({ onNavigate }: Props) {
           flex-direction: column;
           gap: 10px;
           transition:
-            border-color 0.2s ease,
-            box-shadow 0.2s ease,
-            transform 0.2s ease;
+            border-color 200ms ease,
+            box-shadow 200ms ease,
+            transform 200ms ease;
           outline: none;
           user-select: none;
         }
         .hd-feature-card:hover {
           border-color: rgba(184,151,90,0.55);
-          box-shadow: 0 8px 28px rgba(0,0,0,0.09);
-          transform: scale(1.02);
+          box-shadow: 0 12px 32px rgba(0,0,0,0.11);
+          transform: translateY(-4px) scale(1.02);
         }
         .hd-feature-card:focus-visible {
           border-color: #b8975a;
           box-shadow: 0 0 0 3px rgba(184,151,90,0.2);
         }
         .hd-feature-card:active {
-          transform: scale(1.005);
+          transform: translateY(-2px) scale(1.005);
+          box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
 
         .hd-feature-top {
@@ -394,17 +401,13 @@ export default function HomeDashboard({ onNavigate }: Props) {
           font-weight: 500;
           color: #b8975a;
           margin-top: 4px;
-          transition: opacity 0.15s;
           pointer-events: none;
+          transition: opacity 0.15s;
         }
-        .hd-feature-card:hover .hd-feature-cta {
-          opacity: 0.7;
-        }
+        .hd-feature-card:hover .hd-feature-cta { opacity: 0.7; }
 
         /* ── JOURNEY ── */
-        .hd-journey-section {
-          border-bottom: none;
-        }
+        .hd-journey-section { border-bottom: none; }
         .hd-journey {
           display: flex;
           align-items: flex-start;
@@ -430,6 +433,18 @@ export default function HomeDashboard({ onNavigate }: Props) {
           flex-shrink: 0;
           position: relative;
           z-index: 1;
+          transition: background 0.15s, transform 0.15s;
+        }
+        .hd-journey-node--link {
+          cursor: pointer;
+        }
+        .hd-journey-node--link:hover {
+          background: #b8975a;
+          transform: scale(1.1);
+        }
+        .hd-journey-node--end {
+          background: rgba(184,151,90,0.2);
+          cursor: default;
         }
         .hd-journey-num {
           font-size: 13px;
@@ -437,6 +452,8 @@ export default function HomeDashboard({ onNavigate }: Props) {
           color: #b8975a;
           font-family: 'DM Serif Display', serif;
         }
+        .hd-journey-node--link:hover .hd-journey-num { color: #fff; }
+        .hd-journey-node--end .hd-journey-num { color: #b8975a; }
         .hd-journey-label {
           font-size: 11px;
           font-weight: 500;

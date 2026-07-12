@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "company": "FinPay Technologies",
+    "industry": "FinTech",
+    "domain": [
+      "Payments",
+      "Digital Banking",
+      "FinTech"
+    ],
+    "role": "Business Analyst",
+    "experience": "2-4 Years",
+    "location": "Bangalore",
+    "jobDescription": "We are looking for a Business Analyst to support the development of our digital payments platform. You will work closely with Product Managers, Engineering, Compliance, and Operations teams to translate business requirements into scalable solutions.",
+    "responsibilities": [
+      "Gather and document business requirements",
+      "Create BRDs, FRDs and User Stories",
+      "Facilitate stakeholder workshops",
+      "Support Sprint Planning and Backlog Grooming",
+      "Collaborate with Developers and QA",
+      "Participate in UAT",
+      "Analyze payment workflows",
+      "Create process flow diagrams"
+    ],
+    "requiredSkills": [
+      "Requirement Gathering",
+      "Stakeholder Management",
+      "Agile",
+      "SQL",
+      "Jira",
+      "User Stories",
+      "Acceptance Criteria",
+      "Excel",
+      "API Fundamentals"
+    ],
+    "preferredSkills": [
+      "Power BI",
+      "Postman",
+      "Figma",
+      "Banking Domain",
+      "REST APIs"
+    ]
+  },
+  {
+    "id": 2,
+    "company": "MedNova Health",
+    "industry": "Healthcare",
+    "domain": [
+      "Healthcare",
+      "HealthTech",
+      "Digital Health"
+    ],
+    "role": "Business Analyst",
+    "experience": "2-5 Years",
+    "location": "Hyderabad",
+    "jobDescription": "Join our healthcare transformation team to improve digital experiences for hospitals and healthcare providers by translating business needs into scalable software solutions.",
+    "responsibilities": [
+      "Gather requirements from healthcare stakeholders",
+      "Document workflows",
+      "Prepare functional specifications",
+      "Support implementation projects",
+      "Perform impact analysis",
+      "Coordinate UAT",
+      "Analyze healthcare KPIs",
+      "Participate in Agile ceremonies"
+    ],
+    "requiredSkills": [
+      "Requirement Gathering",
+      "Workflow Mapping",
+      "Stakeholder Management",
+      "Agile",
+      "SQL",
+      "Excel",
+      "Jira",
+      "Business Analysis"
+    ],
+    "preferredSkills": [
+      "FHIR",
+      "HL7",
+      "Healthcare Domain",
+      "Power BI",
+      "Visio"
+    ]
+  },
+  {
+    "id": 3,
+    "company": "ShopSphere Retail",
+    "industry": "Retail",
+    "domain": [
+      "Retail",
+      "E-Commerce",
+      "Customer Experience"
+    ],
+    "role": "Business Analyst",
+    "experience": "3-5 Years",
+    "location": "Gurgaon",
+    "jobDescription": "Work closely with Product, Marketing, and Engineering teams to improve customer journeys and optimize digital commerce experiences.",
+    "responsibilities": [
+      "Analyze customer journeys",
+      "Gather requirements from business teams",
+      "Support backlog refinement",
+      "Monitor business KPIs",
+      "Coordinate UAT",
+      "Create workflow diagrams",
+      "Support feature launches"
+    ],
+    "requiredSkills": [
+      "Business Analysis",
+      "Product Thinking",
+      "SQL",
+      "Power BI",
+      "Excel",
+      "Jira",
+      "Agile",
+      "Stakeholder Communication"
+    ],
+    "preferredSkills": [
+      "Google Analytics",
+      "Mixpanel",
+      "Amplitude",
+      "A/B Testing",
+      "Figma"
+    ]
+  },
+  {
+    "id": 4,
+    "company": "NexaTech Solutions",
+    "industry": "IT Services",
+    "domain": [
+      "Enterprise Applications",
+      "Government Projects",
+      "IT Services"
+    ],
+    "role": "Business Analyst",
+    "experience": "2-6 Years",
+    "location": "Pune",
+    "jobDescription": "Support enterprise implementation projects for government and private sector clients by translating business processes into functional solutions.",
+    "responsibilities": [
+      "Requirement elicitation workshops",
+      "Prepare BRDs and FRDs",
+      "Create User Stories",
+      "Coordinate stakeholders",
+      "Support Sprint Planning",
+      "Coordinate UAT",
+      "Manage Change Requests",
+      "Support client demonstrations"
+    ],
+    "requiredSkills": [
+      "Requirement Gathering",
+      "Stakeholder Management",
+      "Agile",
+      "SDLC",
+      "SQL",
+      "Jira",
+      "Confluence",
+      "Draw.io",
+      "Excel"
+    ],
+    "preferredSkills": [
+      "SAP",
+      "Azure DevOps",
+      "Postman",
+      "Enterprise Applications",
+      "Government Domain"
+    ]
+  },
+  {
+    "id": 5,
+    "company": "CloudFlow Software",
+    "industry": "SaaS",
+    "domain": [
+      "B2B SaaS",
+      "Cloud",
+      "Product"
+    ],
+    "role": "Business Analyst",
+    "experience": "3-5 Years",
+    "location": "Remote",
+    "jobDescription": "Collaborate with Product Managers and Engineering teams to deliver scalable B2B SaaS products while driving product discovery and feature delivery.",
+    "responsibilities": [
+      "Conduct product discovery sessions",
+      "Translate business needs into User Stories",
+      "Prioritize product backlog",
+      "Define Acceptance Criteria",
+      "Analyze product usage metrics",
+      "Support sprint execution",
+      "Coordinate UAT",
+      "Review customer feedback"
+    ],
+    "requiredSkills": [
+      "Product Discovery",
+      "User Stories",
+      "Acceptance Criteria",
+      "Stakeholder Management",
+      "Agile",
+      "SQL",
+      "Jira",
+      "Product Analytics",
+      "API Understanding"
+    ],
+    "preferredSkills": [
+      "Mixpanel",
+      "Amplitude",
+      "Power BI",
+      "REST APIs",
+      "B2B SaaS"
+    ]
+  }
+]
