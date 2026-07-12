@@ -1,6 +1,11 @@
 "use client";
 
-type Section = "Mock Interview" | "Ask Sarthak" | "BA Copilot" | "KPI Library";
+  type Section =
+  | "job-fit-intelligence"
+  | "Mock Interview"
+  | "Ask Sarthak"
+  | "BA Copilot"
+  | "KPI Library";
 
 type Props = {
   onNavigate: (section: Section) => void;
