@@ -1,11 +1,6 @@
 "use client";
 
-  type Section =
-  | "job-fit-intelligence"
-  | "Mock Interview"
-  | "Ask Sarthak"
-  | "BA Copilot"
-  | "KPI Library";
+  import type { Section } from "@/types/navigation";
 
 type Props = {
   onNavigate: (section: Section) => void;

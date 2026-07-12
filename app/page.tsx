@@ -6,16 +6,10 @@ import kpis from "../data/kpis.json";
 import InterviewSimulator from "../components/InterviewSimulator";
 import HomeDashboard from "../components/HomeDashboard";
 import JDInput from "@/components/job-fit-intelligence/JDInput";
-
+import type { Section } from "../types/navigation";
 // ── Types ──────────────────────────────────────────────────────────────────
 
-type Section =
-  | "Home"
-  | "job-fit-intelligence"
-  | "Mock Interview"
-  | "Ask Sarthak"
-  | "BA Copilot"
-  | "KPI Library";  
+
 
 // ── KPI Library ────────────────────────────────────────────────────────────
 
