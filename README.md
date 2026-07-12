@@ -1,8 +1,8 @@
 # 🚀 AI Interview Assistant
 
-An AI-powered interview preparation platform for Business Analysts that combines structured interview simulations, AI-generated guidance, KPI learning, and Business Analyst productivity tools.
+An AI-powered interview preparation platform for Business Analysts that combines structured interview simulations, AI-generated guidance, KPI learning, Business Analyst productivity tools, and Job Fit Intelligence.
 
-Unlike a generic chatbot, the platform delivers a guided interview experience with contextual knowledge, recruiter-style questions, and grounded AI responses.
+Unlike a generic chatbot, the platform delivers guided interview experiences with contextual knowledge, recruiter-style questions, grounded AI responses, and resume-to-JD analysis.
 
 🌐 **Live Demo**
 
@@ -17,12 +17,29 @@ https://ai-recruiter-assistant.vercel.app/
 Practice Business Analyst interviews through a structured interview flow.
 
 - Role & difficulty selection
-- Recruiter/Hiring Manager interview modes
+- Recruiter / Hiring Manager interview modes
 - AI-generated suggested answers
 - Framework hints
 - Key points interviewers look for
 - Interview tips
+- Follow-up questions
 - Readiness summary
+
+---
+
+### 📄 Job Fit Intelligence (New)
+
+Analyze a Business Analyst Job Description before applying.
+
+Features include:
+
+- Paste any Business Analyst JD
+- Sample Business Analyst JDs
+- Optional resume upload
+- ATS Match Score
+- Overall Match Score
+- Recruiter Hiring Recommendation
+- AI-generated Job Fit Summary
 
 ---
 
@@ -43,7 +60,7 @@ Topics include:
 
 ---
 
-### 📊 KPI Insights
+### 📊 KPI Library
 
 Learn commonly used Business and Product metrics including:
 
@@ -62,7 +79,7 @@ Generate Business Analysis artifacts such as:
 
 - User Stories
 - Acceptance Criteria
-- BRD/FRD Ideas
+- BRD Ideas
 - Requirement Templates
 
 ---
@@ -89,7 +106,7 @@ https://github.com/sarth20-arch/ba-prep-ai/tree/main/knowledge-base
 # ⚙️ How It Works
 
 ```
-User Question
+User Input
       │
       ▼
 Context Selection
@@ -117,22 +134,28 @@ User Interface
 ```
 app/
 │
+├── Home Dashboard
+├── Job Fit Intelligence
 ├── Interview Simulator
 ├── Ask Sarthak
-├── KPI Insights
+├── KPI Library
 └── BA Toolkit
 
 components/
 │
+├── Home Dashboard
+├── Interview Simulator
+├── Job Fit Intelligence
 ├── Setup Screen
 ├── Question Progress
 ├── Suggested Answer Panel
 ├── Completion Screen
-└── Reusable UI Components
+└── Shared Components
 
 data/
 │
-├── Interview Questions
+├── Interview Bank
+├── Job Fit Intelligence
 ├── Projects
 ├── Behavioral Stories
 ├── KPI Knowledge
@@ -170,7 +193,11 @@ data/
 
 # 📈 Current Capabilities
 
-✅ Structured Interview Simulator
+✅ AI Interview Simulator
+
+✅ Job Fit Intelligence
+
+✅ Resume vs JD Analysis
 
 ✅ AI Recruiter Assistant
 
@@ -180,7 +207,7 @@ data/
 
 ✅ Interview Tips
 
-✅ KPI Learning
+✅ KPI Library
 
 ✅ BA Toolkit
 
@@ -190,40 +217,44 @@ data/
 
 # 🚀 Roadmap
 
-- Resume + JD Personalized Interviews
+- Personalized Resume vs JD Interview Questions
 - AI Interview Evaluation
 - Dynamic Follow-up Questions
-- Candidate Scoring
+- Candidate Scoring Dashboard
 - Voice Interview Mode
 - PDF Interview Reports
+- Interview History
+- Progress Analytics
 
 ---
 
-## Screenshots
+# 📸 Screenshots
 
-### Home
+### 🏠 Home Dashboard
 
-<img width="1537" height="866" alt="image" src="https://github.com/user-attachments/assets/fb76b193-f359-46f0-8976-b611edf2748c" />
+*(Add updated homepage screenshot)*
 
+### 📄 Job Fit Intelligence
 
-### Mock Interview
+*(Add Job Fit Intelligence screenshot)*
+
+### 🎤 Mock Interview
 
 <img width="1031" height="718" alt="image" src="https://github.com/user-attachments/assets/a0e99116-bb44-4a65-ad7d-6b6088bfd5e8" />
 
-
-### KPI Insights
+### 📊 KPI Library
 
 <img width="1310" height="745" alt="image" src="https://github.com/user-attachments/assets/fd51b62a-23d6-4b08-b0e0-953560d8e8c8" />
 
-
-### BA Toolkit
+### 🛠️ BA Toolkit
 
 <img width="1611" height="470" alt="image" src="https://github.com/user-attachments/assets/6b1717dc-b715-4baf-8558-e7aa7042ebbb" />
 
-### Ask Sarthak
+### 🤖 Ask Sarthak
 
 <img width="1570" height="658" alt="image" src="https://github.com/user-attachments/assets/610b3495-e435-459e-8c8d-f622e2b66b11" />
 
+---
 
 # 👨‍💻 Author
 
