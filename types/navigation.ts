@@ -5,3 +5,5 @@ export type Section =
   | "BA Copilot"
   | "KPI Library"
   | "job-fit-intelligence";
+
+  
