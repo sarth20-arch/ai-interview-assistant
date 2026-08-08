@@ -168,7 +168,7 @@ ${qaContext}
 
     const completion =
       await openai.chat.completions.create({
-        model: "google/gemma-4-31b-it:free",
+        model: "openai/gpt-oss-20b:free",
 
         messages: [
           {

@@ -1,57 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #05070f;
+  --foreground: #e2e8f0;
+  --surface: #0f172a;
+  --surface-strong: #111827;
+  --surface-muted: #0b1222;
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(148, 163, 184, 0.24);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --muted-strong: #cbd5e1;
+  --primary: #38bdf8;
+  --primary-strong: #0ea5e9;
+  --accent: #22d3ee;
+  --gold: #facc15;
+  --success: #22c55e;
+  --warning: #f97316;
+  --danger: #f87171;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%),
+    linear-gradient(180deg, #05070f 0%, #08111f 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 input,
 textarea {
-  color: #111827;
-  background-color: #ffffff;
-  caret-color: #111827;
+  color: var(--foreground);
+  background-color: rgba(255, 255, 255, 0.04);
+  caret-color: var(--primary);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #6b7280;
+  color: var(--muted);
   opacity: 1;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --surface: #ffffff;
-  --surface-strong: #f8f6f1;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.12);
-  --text: #111827;
-  --muted: #6b7280;
-  --muted-strong: #4b5563;
-  --primary: #1a1714;
-  --gold: #b8975a;
-  --success: #256c37;
-  --warning: #d97706;
-  --card-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
 
 .interview-page {
@@ -239,7 +233,125 @@ textarea::placeholder {
   padding: 16px;
   color: var(--muted-strong);
 }
+.job-fit-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+}
 
+.job-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 860px) {
+  .job-fit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.job-fit-heading {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--foreground-strong);
+}
+
+.job-fit-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.job-fit-meta strong {
+  display: block;
+  color: var(--foreground-strong);
+  margin-bottom: 8px;
+}
+
+.job-fit-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--foreground-strong);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.job-fit-pill--success {
+  background: rgba(34, 197, 94, 0.16);
+  border: 1px solid rgba(34, 197, 94, 0.18);
+  color: var(--success);
+}
+
+.job-fit-pill--warning {
+  background: rgba(251, 191, 36, 0.16);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  color: var(--warning);
+}
+
+.job-fit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.job-fit-tag {
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--foreground);
+  font-size: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.job-fit-list {
+  margin-top: 14px;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.job-fit-list li {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.job-fit-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.job-fit-stat {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.job-fit-stat strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.job-fit-stat span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--foreground-strong);
+}
 .time-tip {
   font-size: 12px;
   color: var(--muted);

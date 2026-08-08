@@ -3,6 +3,7 @@
 import { useState } from "react";
 import recruiterQA from "../data/recruiter_qa.json";
 import kpis from "../data/kpis.json";
+import { candidateProfile } from "../data/profile";
 import InterviewSimulator from "../components/InterviewSimulator";
 import HomeDashboard from "../components/HomeDashboard";
 import JDInput from "@/components/job-fit-intelligence/JDInput";
@@ -172,7 +173,6 @@ export default function Home() {
 
         body {
           margin: 0;
-          background: #f8f6f1;
           font-family: 'DM Sans', sans-serif;
         }
 
@@ -184,7 +184,7 @@ export default function Home() {
 
         /* ── SIDEBAR ── */
         .sidebar {
-          background: #1a1714;
+          background: rgba(15, 23, 42, 0.96);
           padding: 28px 20px;
           display: flex;
           flex-direction: column;
@@ -198,7 +198,7 @@ export default function Home() {
           top: -70px; right: -70px;
           width: 200px; height: 200px;
           border-radius: 50%;
-          border: 48px solid rgba(184,151,90,0.07);
+          border: 48px solid rgba(56, 189, 248, 0.08);
           pointer-events: none;
         }
 
@@ -207,23 +207,52 @@ export default function Home() {
           align-items: center;
           gap: 12px;
           padding-bottom: 24px;
-          border-bottom: 0.5px solid rgba(255,255,255,0.08);
+          border-bottom: 0.5px solid rgba(148,163,184,0.08);
           cursor: pointer;
         }
         .logo-icon {
           width: 38px; height: 38px;
           border-radius: 10px;
-          background: #b8975a;
+          background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
           display: flex; align-items: center; justify-content: center;
           font-family: 'DM Serif Display', serif;
           font-size: 14px;
           font-weight: 600;
-          color: #1a1714;
+          color: #0f172a;
           flex-shrink: 0;
           letter-spacing: -0.02em;
         }
-        .logo-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.3; }
-        .logo-sub  { font-size: 11px; color: rgba(255,255,255,0.38); margin-top: 2px; }
+        .logo-text { font-size: 13px; font-weight: 500; color: rgba(226,232,240,0.95); line-height: 1.3; }
+        .logo-sub  { font-size: 11px; color: rgba(226,232,240,0.55); margin-top: 2px; }
+
+        .sidebar-profile-card {
+          padding: 20px 16px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(148,163,184,0.12);
+          border-radius: 18px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .sidebar-profile-heading {
+          font-size: 11px;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #38bdf8;
+          font-weight: 700;
+        }
+        .sidebar-profile-name {
+          font-size: 16px;
+          font-weight: 700;
+          color: rgba(226,232,240,0.98);
+          line-height: 1.2;
+          margin: 0;
+        }
+        .sidebar-profile-meta {
+          font-size: 12px;
+          color: rgba(226,232,240,0.72);
+          line-height: 1.5;
+        }
 
         .sidebar-section { display: flex; flex-direction: column; gap: 6px; }
         .sidebar-label {
@@ -231,38 +260,39 @@ export default function Home() {
           font-weight: 500;
           letter-spacing: 0.13em;
           text-transform: uppercase;
-          color: #b8975a;
+          color: #38bdf8;
           margin-bottom: 2px;
         }
-        .sidebar-val-main { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
-        .sidebar-val      { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+        .sidebar-val-main { font-size: 13px; color: rgba(226,232,240,0.95); font-weight: 500; }
+        .sidebar-val      { font-size: 12px; color: rgba(226,232,240,0.62); line-height: 1.6; }
 
         .tag-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
         .tag {
           font-size: 10px;
           padding: 3px 9px;
           border-radius: 20px;
-          border: 0.5px solid rgba(184,151,90,0.28);
-          color: rgba(255,255,255,0.5);
-          background: rgba(255,255,255,0.03);
+          border: 0.5px solid rgba(56,189,248,0.28);
+          color: rgba(226,232,240,0.72);
+          background: rgba(255,255,255,0.04);
         }
 
         /* ── MAIN ── */
         .main {
           display: flex;
           flex-direction: column;
-          background: #f8f6f1;
+          background: transparent;
           min-height: 100vh;
+          padding: 0 48px;
         }
 
         /* ── BACK BAR ── */
         .back-bar {
           display: flex;
           align-items: center;
-          padding: 0 32px;
+          padding: 0;
           height: 48px;
-          border-bottom: 0.5px solid rgba(0,0,0,0.06);
-          background: #f8f6f1;
+          border-bottom: 0.5px solid rgba(255,255,255,0.08);
+          background: rgba(255,255,255,0.04);
           flex-shrink: 0;
         }
         .back-btn {
@@ -271,7 +301,7 @@ export default function Home() {
           gap: 6px;
           font-size: 12px;
           font-weight: 500;
-          color: #7a7668;
+          color: rgba(226,232,240,0.88);
           background: none;
           border: none;
           cursor: pointer;
@@ -279,41 +309,41 @@ export default function Home() {
           padding: 0;
           transition: color 0.15s;
         }
-        .back-btn:hover { color: #0e0d0b; }
+        .back-btn:hover { color: #38bdf8; }
 
         /* ── PAGE HEADER (used by inline modules) ── */
         .page-header {
-          padding: 32px 32px 24px;
-          border-bottom: 0.5px solid rgba(0,0,0,0.06);
+          padding: 32px 0 24px;
+          border-bottom: 0.5px solid rgba(255,255,255,0.08);
           flex-shrink: 0;
         }
         .page-title {
           font-family: 'DM Serif Display', serif;
           font-size: 34px;
-          color: #0e0d0b;
+          color: var(--foreground);
           line-height: 1.1;
           letter-spacing: -0.02em;
           margin: 0 0 8px;
         }
         .page-subtitle {
           font-size: 14px;
-          color: #7a7668;
+          color: rgba(226,232,240,0.75);
           line-height: 1.6;
           max-width: 580px;
           margin: 0;
         }
 
         /* ── CONTENT ── */
-        .content { padding: 28px 32px; flex: 1; }
+        .content { padding: 28px 0; flex: 1; }
 
         /* ── CHAT BOX ── */
         .chat-box {
-          border: 0.5px solid rgba(0,0,0,0.1);
-          border-radius: 14px;
-          background: #fff;
-          padding: 16px;
+          border: 1px solid rgba(148,163,184,0.16);
+          border-radius: 16px;
+          background: rgba(255,255,255,0.04);
+          padding: 18px;
           margin-bottom: 16px;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+          box-shadow: 0 18px 36px rgba(0,0,0,0.12);
         }
         .chat-box textarea {
           width: 100%;
@@ -321,97 +351,97 @@ export default function Home() {
           outline: none;
           font-family: 'DM Sans', sans-serif;
           font-size: 14px;
-          color: #0e0d0b;
+          color: var(--foreground);
           background: transparent;
           resize: none;
           min-height: 80px;
           line-height: 1.65;
         }
-        .chat-box textarea::placeholder { color: #a09c8e; }
+        .chat-box textarea::placeholder { color: rgba(226,232,240,0.45); }
         .chat-footer {
           display: flex; align-items: center; justify-content: space-between;
           margin-top: 12px;
           padding-top: 12px;
-          border-top: 0.5px solid rgba(0,0,0,0.07);
+          border-top: 1px solid rgba(148,163,184,0.12);
         }
-        .char-hint { font-size: 11px; color: #a09c8e; }
+        .char-hint { font-size: 11px; color: rgba(226,232,240,0.65); }
 
         .ask-btn {
           display: flex; align-items: center; gap: 7px;
           padding: 9px 20px;
-          background: #1a1714;
+          background: #1f2937;
           color: #fff;
-          border: none;
-          border-radius: 9px;
+          border: 1px solid rgba(56,189,248,0.22);
+          border-radius: 12px;
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           font-weight: 500;
           cursor: pointer;
-          transition: opacity 0.15s;
+          transition: opacity 0.15s, transform 0.15s;
         }
-        .ask-btn:hover { opacity: 0.82; }
+        .ask-btn:hover { opacity: 0.92; transform: translateY(-1px); }
         .ask-btn:disabled { opacity: 0.5; cursor: default; }
-        .btn-dot { width: 6px; height: 6px; border-radius: 50%; background: #b8975a; flex-shrink: 0; }
+        .btn-dot { width: 6px; height: 6px; border-radius: 50%; background: #38bdf8; flex-shrink: 0; }
 
         /* ── RESPONSE ── */
         .response-card {
-          background: #fff;
-          border: 0.5px solid rgba(0,0,0,0.08);
-          border-left: 3px solid #b8975a;
-          border-radius: 0 12px 12px 0;
-          padding: 16px 18px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(148,163,184,0.16);
+          border-left: 3px solid #38bdf8;
+          border-radius: 18px;
+          padding: 18px 20px;
           margin-bottom: 24px;
           animation: fadeUp 0.3s ease;
         }
         .response-label {
           font-size: 10px;
           font-weight: 500;
-          color: #b8975a;
+          color: #38bdf8;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           margin-bottom: 8px;
         }
-        .response-text { font-size: 13px; color: #3a3830; line-height: 1.75; white-space: pre-line; }
+        .response-text { font-size: 13px; color: rgba(226,232,240,0.9); line-height: 1.75; white-space: pre-line; }
 
         /* ── FILTERS ── */
         .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
         .filter-btn {
           font-size: 11px;
           padding: 5px 13px;
-          border: 0.5px solid rgba(0,0,0,0.12);
+          border: 1px solid rgba(148,163,184,0.18);
           border-radius: 20px;
-          background: #fff;
+          background: rgba(255,255,255,0.04);
           cursor: pointer;
-          color: #3a3830;
+          color: rgba(226,232,240,0.82);
           font-family: 'DM Sans', sans-serif;
           transition: all 0.15s;
         }
-        .filter-btn:hover { border-color: #b8975a; color: #0e0d0b; }
-        .filter-btn.active { background: #1a1714; color: #fff; border-color: #1a1714; }
+        .filter-btn:hover { border-color: rgba(56,189,248,0.25); color: #fff; }
+        .filter-btn.active { background: rgba(56,189,248,0.18); color: #fff; border-color: rgba(56,189,248,0.35); }
 
         /* ── QA CARDS ── */
         .qa-list { display: flex; flex-direction: column; gap: 10px; }
         .qa-card {
-          background: #fff;
-          border: 0.5px solid rgba(0,0,0,0.08);
-          border-radius: 12px;
-          padding: 16px 18px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(148,163,184,0.16);
+          border-radius: 16px;
+          padding: 18px 20px;
           cursor: pointer;
-          transition: border-color 0.2s, box-shadow 0.2s;
+          transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
-        .qa-card:hover { border-color: rgba(184,151,90,0.45); box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
-        .qa-card.open { border-color: #b8975a; }
-        .qa-meta { font-size: 10px; font-weight: 500; color: #b8975a; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 6px; }
+        .qa-card:hover { border-color: rgba(56,189,248,0.35); box-shadow: 0 18px 32px rgba(0,0,0,0.10); transform: translateY(-1px); }
+        .qa-card.open { border-color: #38bdf8; }
+        .qa-meta { font-size: 10px; font-weight: 500; color: #38bdf8; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 8px; }
         .qa-question {
-          font-size: 14px; font-weight: 500; color: #0e0d0b; line-height: 1.4;
+          font-size: 14px; font-weight: 500; color: rgba(226,232,240,0.94); line-height: 1.4;
           display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
         }
-        .qa-chevron { font-size: 16px; color: #a09c8e; flex-shrink: 0; transition: transform 0.2s; display: inline-block; }
+        .qa-chevron { font-size: 16px; color: rgba(226,232,240,0.65); flex-shrink: 0; transition: transform 0.2s; display: inline-block; }
         .qa-card.open .qa-chevron { transform: rotate(180deg); }
         .qa-answer {
-          font-size: 13px; color: #3a3830; line-height: 1.75;
+          font-size: 13px; color: rgba(226,232,240,0.78); line-height: 1.75;
           margin-top: 14px; padding-top: 14px;
-          border-top: 0.5px solid rgba(0,0,0,0.07);
+          border-top: 1px solid rgba(148,163,184,0.16);
           animation: fadeUp 0.2s ease;
         }
 
@@ -427,28 +457,31 @@ export default function Home() {
           color: #b8975a;
           margin-bottom: 4px;
         }
-        .kpi-block p { margin: 0; font-size: 13px; color: #3a3830; line-height: 1.7; }
+        .kpi-block p { margin: 0; font-size: 13px; color: rgba(226,232,240,0.82); line-height: 1.7; }
         .kpi-formula {
           font-style: italic;
-          background: #f8f6f1;
-          border-left: 3px solid #b8975a;
+          background: rgba(255,255,255,0.04);
+          border-left: 3px solid #38bdf8;
           padding: 8px 12px;
           border-radius: 0 6px 6px 0;
+          color: rgba(226,232,240,0.82);
         }
 
         /* ── BA COPILOT ── */
         .story-output {
-          background: #fff;
-          border: 0.5px solid rgba(0,0,0,0.08);
-          border-radius: 12px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(148,163,184,0.16);
+          border-radius: 16px;
           padding: 18px;
           margin-top: 16px;
           animation: fadeUp 0.3s ease;
         }
         .story-output pre {
           font-family: 'DM Sans', sans-serif;
-          font-size: 13px; color: #3a3830;
-          line-height: 1.8; white-space: pre-wrap;
+          font-size: 13px;
+          color: rgba(226,232,240,0.92);
+          line-height: 1.8;
+          white-space: pre-wrap;
           margin: 0;
         }
 
@@ -474,9 +507,10 @@ export default function Home() {
         @media (max-width: 768px) {
           .app { grid-template-columns: 1fr; }
           .sidebar { display: none; }
-          .back-bar { padding: 0 16px; }
-          .page-header { padding: 24px 20px 20px; }
-          .content { padding: 20px; }
+          .main { padding: 0 20px; }
+          .back-bar { padding: 0; }
+          .page-header { padding: 24px 0 20px; }
+          .content { padding: 20px 0; }
         }
       `}</style>
 
@@ -492,21 +526,29 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="sidebar-profile-card">
+            <div className="sidebar-profile-heading">{candidateProfile.heading}</div>
+            <div className="sidebar-profile-name">{candidateProfile.name}</div>
+            <div className="sidebar-profile-meta">
+              {candidateProfile.role} · {candidateProfile.experience}
+            </div>
+          </div>
+
           <div className="sidebar-section">
             <div className="sidebar-label">Role</div>
-            <div className="sidebar-val-main">Business Analyst</div>
+            <div className="sidebar-val-main">{candidateProfile.role}</div>
             <div className="sidebar-val">Product Management</div>
           </div>
 
           <div className="sidebar-section">
             <div className="sidebar-label">Experience</div>
-            <div className="sidebar-val-main">3+ Years</div>
+            <div className="sidebar-val-main">{candidateProfile.experience}</div>
           </div>
 
           <div className="sidebar-section">
             <div className="sidebar-label">Domains</div>
             <div className="tag-list">
-              {["SaaS", "HealthTech", "Tax Platforms", "AI Products"].map((d) => (
+              {candidateProfile.domains.map((d) => (
                 <span key={d} className="tag">{d}</span>
               ))}
             </div>
@@ -515,7 +557,7 @@ export default function Home() {
           <div className="sidebar-section">
             <div className="sidebar-label">Skills</div>
             <div className="tag-list">
-              {["Agile", "Stakeholder Mgmt", "Req. Gathering", "Product Thinking", "Implementation"].map((s) => (
+              {candidateProfile.skills.map((s) => (
                 <span key={s} className="tag">{s}</span>
               ))}
             </div>
@@ -540,11 +582,20 @@ export default function Home() {
               <HomeDashboard onNavigate={(s) => navigate(s as Section)} />
             </div>
           )}
-{/* ── job-fit-intelligence ── */}
-{activeSection === "job-fit-intelligence" && <JDInput />}
+
+          {/* ── job-fit-intelligence ── */}
+          {activeSection === "job-fit-intelligence" && (
+            <div className="content">
+              <JDInput />
+            </div>
+          )}
 
           {/* ── Mock Interview — owns its own header ── */}
-          {activeSection === "Mock Interview" && <InterviewSimulator />}
+          {activeSection === "Mock Interview" && (
+            <div className="content">
+              <InterviewSimulator />
+            </div>
+          )}
 
           {/* ── Ask Sarthak ── */}
           {activeSection === "Ask Sarthak" && (
@@ -552,14 +603,14 @@ export default function Home() {
               <header className="page-header">
                 <h1 className="page-title">Ask Sarthak</h1>
                 <p className="page-subtitle">
-                  Ask questions about Sarthak's projects, experience, business analysis approach and interview scenarios.
+                  Ask questions about Sarthak&apos;s projects, experience, business analysis approach and interview scenarios.
                 </p>
               </header>
 
               <div className="content">
                 <div className="chat-box">
                   <textarea
-                    placeholder="Ask about Sarthak's experience, projects, or approach…"
+                    placeholder="Ask about Sarthak&apos;s experience, projects, or approach…"
                     value={userQuestion}
                     onChange={(e) => setUserQuestion(e.target.value)}
                   />
@@ -582,7 +633,7 @@ export default function Home() {
 
                 {aiResponse && !loading && (
                   <div className="response-card">
-                    <div className="response-label">Sarthak's Response</div>
+                    <div className="response-label">Sarthak&apos;s Response</div>
                     <p className="response-text">{aiResponse}</p>
                   </div>
                 )}
@@ -662,7 +713,11 @@ export default function Home() {
           )}
 
           {/* ── KPI Library — owns its own header ── */}
-          {activeSection === "KPI Library" && <KPILibrary />}
+          {activeSection === "KPI Library" && (
+            <div className="content">
+              <KPILibrary />
+            </div>
+          )}
 
         </div>
       </div>

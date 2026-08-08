@@ -8,76 +8,49 @@ export default function MatchScore({ analysis }: MatchScoreProps) {
   // If no resume was uploaded, show a locked state instead of fake scores.
   if (!analysis.resumeUploaded) {
     return (
-      <div
-        style={{
-          marginTop: "32px",
-          padding: "24px",
-          border: "1px solid #e5e5e5",
-          borderRadius: "16px",
-          background: "#fff",
-        }}
-      >
-        <h2>Resume Analysis</h2>
+      <div className="job-fit-card" style={{ marginTop: "32px" }}>
+        <h2 className="job-fit-heading">Resume Analysis</h2>
 
-        <p style={{ marginTop: "12px" }}>
+        <p className="job-fit-meta" style={{ marginTop: "12px" }}>
           ⚠ No resume uploaded.
         </p>
 
-        <p style={{ marginTop: "8px", color: "#666" }}>
+        <p className="job-fit-meta" style={{ marginTop: "8px" }}>
           Upload your resume to unlock personalized insights:
         </p>
 
-        <ul style={{ marginTop: "16px", lineHeight: "2" }}>
-          <li>✅ Overall Match Score</li>
-          <li>✅ ATS Compatibility</li>
-          <li>✅ Recruiter Evaluation</li>
-          <li>✅ Hiring Manager Review</li>
-          <li>✅ Resume Improvements</li>
-          <li>✅ Interview Preparation Plan</li>
+        <ul className="job-fit-list" style={{ marginTop: "16px", lineHeight: "1.9" }}>
+          <li>Overall Match Score</li>
+          <li>ATS Compatibility</li>
+          <li>Recruiter Evaluation</li>
+          <li>Hiring Manager Review</li>
+          <li>Resume Improvements</li>
+          <li>Interview Preparation Plan</li>
         </ul>
       </div>
     );
   }
 
   return (
-    <div
-      style={{
-        marginTop: "32px",
-        padding: "24px",
-        border: "1px solid #e5e5e5",
-        borderRadius: "16px",
-        background: "#fff",
-      }}
-    >
-      <h2>Job Fit Summary</h2>
+    <div className="job-fit-card" style={{ marginTop: "32px" }}>
+      <h2 className="job-fit-heading">Job Fit Summary</h2>
 
-      <p style={{ marginTop: "12px" }}>
+      <p className="job-fit-meta" style={{ marginTop: "12px" }}>
         {analysis.summary}
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "24px",
-          marginTop: "20px",
-        }}
-      >
-        <div>
+      <div className="job-fit-stat-grid">
+        <div className="job-fit-stat">
           <strong>Overall Match</strong>
-          <br />
-          {analysis.overallMatch}%
+          <span>{analysis.overallMatch}%</span>
         </div>
-
-        <div>
+        <div className="job-fit-stat">
           <strong>ATS Score</strong>
-          <br />
-          {analysis.atsScore}%
+          <span>{analysis.atsScore}%</span>
         </div>
-
-        <div>
-          <strong>Recruiter</strong>
-          <br />
-          {analysis.recruiterDecision}
+        <div className="job-fit-stat">
+          <strong>Recruiter Decision</strong>
+          <span>{analysis.recruiterDecision}</span>
         </div>
       </div>
     </div>

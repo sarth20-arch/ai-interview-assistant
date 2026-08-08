@@ -201,38 +201,38 @@
           /* ── HERO ── */
           .hd-hero {
             padding: 56px 0 48px;
-            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(148,163,184,0.16);
           }
           .hd-hero-inner { max-width: 560px; }
           .hd-hero-eyebrow {
             font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
+            font-weight: 700;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #b8975a;
+            color: #38bdf8;
             margin-bottom: 14px;
           }
           .hd-hero-title {
             font-family: 'DM Serif Display', serif;
             font-size: 42px;
-            color: #0e0d0b;
-            line-height: 1.08;
-            letter-spacing: -0.025em;
+            color: var(--foreground);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
             margin: 0 0 16px;
           }
           .hd-hero-subtitle {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 500;
-            color: #0e0d0b;
+            color: rgba(226,232,240,0.88);
             line-height: 1.5;
             margin: 0 0 10px;
           }
           .hd-hero-support {
             font-size: 14px;
-            color: #7a7668;
+            color: rgba(226,232,240,0.7);
             line-height: 1.7;
             margin: 0 0 28px;
-            max-width: 480px;
+            max-width: 520px;
           }
           .hd-hero-actions {
             display: flex;
@@ -245,86 +245,87 @@
           .hd-secondary-btn {
             font-size: 13px;
             font-weight: 500;
-            padding: 9px 20px;
-            border: 0.5px solid rgba(0,0,0,0.15);
-            border-radius: 9px;
-            background: #fff;
-            color: #3a3830;
+            padding: 11px 22px;
+            border: 1px solid rgba(56,189,248,0.24);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.05);
+            color: rgba(226,232,240,0.9);
             cursor: pointer;
             font-family: 'DM Sans', sans-serif;
-            transition: border-color 0.15s, color 0.15s;
+            transition: border-color 0.15s, color 0.15s, transform 0.15s;
           }
           .hd-secondary-btn:hover {
-            border-color: #b8975a;
-            color: #0e0d0b;
+            border-color: rgba(56,189,248,0.45);
+            color: #fff;
+            transform: translateY(-1px);
           }
 
           /* ── STATS ── */
           .hd-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(0,0,0,0.06);
-            border-top: 0.5px solid rgba(0,0,0,0.06);
-            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            gap: 16px;
+            margin-top: 32px;
           }
           .hd-stat-card {
-            background: #f8f6f1;
-            padding: 24px 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(148,163,184,0.16);
+            border-radius: 22px;
+            padding: 26px 20px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
           }
           .hd-stat-value {
             font-family: 'DM Serif Display', serif;
-            font-size: 32px;
-            color: #0e0d0b;
+            font-size: 34px;
+            color: #38bdf8;
             letter-spacing: -0.02em;
             line-height: 1;
           }
           .hd-stat-label {
             font-size: 12px;
-            color: #7a7668;
+            color: rgba(226,232,240,0.72);
             line-height: 1.4;
           }
 
           /* ── SECTION SHELL ── */
           .hd-section {
             padding: 48px 0;
-            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(148,163,184,0.16);
           }
           .hd-section-header { margin-bottom: 28px; }
           .hd-section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 26px;
-            color: #0e0d0b;
-            letter-spacing: -0.02em;
-            margin: 0 0 6px;
+            font-size: 30px;
+            color: var(--foreground);
+            letter-spacing: -0.03em;
+            margin: 0 0 8px;
           }
           .hd-section-sub {
-            font-size: 13px;
-            color: #7a7668;
+            font-size: 14px;
+            color: rgba(226,232,240,0.72);
             margin: 0;
-            line-height: 1.6;
+            line-height: 1.65;
           }
 
           /* ── FEATURE GRID ── */
           .hd-feature-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 16px;
           }
 
           /* ── FEATURE CARD ── */
           .hd-feature-card {
-            background: #fff;
-            border: 0.5px solid rgba(0,0,0,0.08);
-            border-radius: 14px;
-            padding: 22px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(148,163,184,0.16);
+            border-radius: 22px;
+            padding: 24px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             transition:
               border-color 200ms ease,
               box-shadow 200ms ease,
@@ -333,17 +334,17 @@
             user-select: none;
           }
           .hd-feature-card:hover {
-            border-color: rgba(184,151,90,0.55);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.11);
-            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(56,189,248,0.35);
+            box-shadow: 0 22px 45px rgba(0,0,0,0.16);
+            transform: translateY(-4px);
           }
           .hd-feature-card:focus-visible {
-            border-color: #b8975a;
-            box-shadow: 0 0 0 3px rgba(184,151,90,0.2);
+            border-color: rgba(56,189,248,0.55);
+            box-shadow: 0 0 0 3px rgba(56,189,248,0.12);
           }
           .hd-feature-card:active {
-            transform: translateY(-2px) scale(1.005);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
           }
 
           .hd-feature-top {
@@ -359,52 +360,52 @@
           /* ── BADGES ── */
           .hd-badge {
             font-size: 10px;
-            font-weight: 500;
-            padding: 3px 9px;
-            border-radius: 20px;
-            letter-spacing: 0.04em;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
             pointer-events: none;
           }
           .hd-badge--gold {
-            background: rgba(184,151,90,0.12);
-            color: #8a6e2f;
-            border: 0.5px solid rgba(184,151,90,0.3);
+            background: rgba(56,189,248,0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56,189,248,0.22);
           }
           .hd-badge--dark {
-            background: #1a1714;
-            color: rgba(255,255,255,0.85);
-            border: 0.5px solid #1a1714;
+            background: rgba(255,255,255,0.08);
+            color: rgba(226,232,240,0.95);
+            border: 1px solid rgba(255,255,255,0.08);
           }
           .hd-badge--outline {
             background: transparent;
-            color: #7a7668;
-            border: 0.5px solid rgba(0,0,0,0.12);
+            color: rgba(226,232,240,0.9);
+            border: 1px solid rgba(148,163,184,0.18);
           }
 
           .hd-feature-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0e0d0b;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--foreground);
             margin: 0;
-            line-height: 1.3;
+            line-height: 1.25;
           }
           .hd-feature-desc {
-            font-size: 13px;
-            color: #7a7668;
-            line-height: 1.65;
+            font-size: 14px;
+            color: rgba(226,232,240,0.7);
+            line-height: 1.75;
             margin: 0;
             flex: 1;
           }
           .hd-feature-cta {
             align-self: flex-start;
-            font-size: 12px;
-            font-weight: 500;
-            color: #b8975a;
+            font-size: 13px;
+            font-weight: 600;
+            color: #38bdf8;
             margin-top: 4px;
             pointer-events: none;
             transition: opacity 0.15s;
           }
-          .hd-feature-card:hover .hd-feature-cta { opacity: 0.7; }
+          .hd-feature-card:hover .hd-feature-cta { opacity: 0.85; }
 
           /* ── JOURNEY ── */
           .hd-journey-section { border-bottom: none; }
@@ -426,7 +427,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: #1a1714;
+            background: rgba(255,255,255,0.06);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -439,25 +440,25 @@
             cursor: pointer;
           }
           .hd-journey-node--link:hover {
-            background: #b8975a;
-            transform: scale(1.1);
+            background: #38bdf8;
+            transform: scale(1.06);
           }
           .hd-journey-node--end {
-            background: rgba(184,151,90,0.2);
+            background: rgba(56,189,248,0.12);
             cursor: default;
           }
           .hd-journey-num {
             font-size: 13px;
-            font-weight: 600;
-            color: #b8975a;
+            font-weight: 700;
+            color: #38bdf8;
             font-family: 'DM Serif Display', serif;
           }
           .hd-journey-node--link:hover .hd-journey-num { color: #fff; }
-          .hd-journey-node--end .hd-journey-num { color: #b8975a; }
+          .hd-journey-node--end .hd-journey-num { color: #38bdf8; }
           .hd-journey-label {
             font-size: 11px;
             font-weight: 500;
-            color: #3a3830;
+            color: rgba(226,232,240,0.75);
             text-align: center;
             margin-top: 10px;
             line-height: 1.4;
@@ -469,7 +470,7 @@
             left: 50%;
             width: 100%;
             height: 0.5px;
-            background: rgba(184,151,90,0.35);
+            background: rgba(56,189,248,0.25);
             z-index: 0;
           }
 

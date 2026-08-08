@@ -8,53 +8,30 @@ export default function KeywordAnalysis({
   if (!analysis) return null;
 
   return (
-    <div
-      style={{
-        marginTop: "24px",
-        padding: "24px",
-        border: "1px solid #e5e5e5",
-        borderRadius: "16px",
-        background: "#fff",
-      }}
-    >
-      <h2>JD Intelligence</h2>
+    <div className="job-fit-card">
+      <h2 className="job-fit-heading">JD Intelligence</h2>
 
-      <div style={{ marginTop: "18px" }}>
-        <strong>Role</strong>
-        <p>{analysis.jdInsights.role}</p>
+      <div className="job-fit-grid" style={{ marginTop: "24px" }}>
+        <div className="job-fit-meta">
+          <strong>Role</strong>
+          <p>{analysis.jdInsights.role || "—"}</p>
+        </div>
+        <div className="job-fit-meta">
+          <strong>Experience</strong>
+          <p>{analysis.jdInsights.experience || "—"}</p>
+        </div>
+        <div className="job-fit-meta">
+          <strong>Domain</strong>
+          <p>{analysis.jdInsights.domain || "—"}</p>
+        </div>
       </div>
 
-      <div style={{ marginTop: "12px" }}>
-        <strong>Experience</strong>
-        <p>{analysis.jdInsights.experience}</p>
-      </div>
-
-      <div style={{ marginTop: "12px" }}>
-        <strong>Domain</strong>
-        <p>{analysis.jdInsights.domain}</p>
-      </div>
-
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "24px" }}>
         <strong>Top Skills</strong>
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "10px",
-            marginTop: "10px",
-          }}
-        >
+        <div className="job-fit-tags">
           {analysis.jdInsights.topSkills.map((skill: string) => (
-            <span
-              key={skill}
-              style={{
-                padding: "8px 14px",
-                borderRadius: "999px",
-                border: "1px solid #ddd",
-                fontSize: "13px",
-              }}
-            >
+            <span key={skill} className="job-fit-tag">
               {skill}
             </span>
           ))}
@@ -64,7 +41,7 @@ export default function KeywordAnalysis({
       <div style={{ marginTop: "24px" }}>
         <strong>Hidden Expectations</strong>
 
-        <ul style={{ marginTop: "10px" }}>
+        <ul className="job-fit-list">
           {analysis.jdInsights.hiddenExpectations.map((item: string) => (
             <li key={item}>{item}</li>
           ))}

@@ -182,10 +182,25 @@ When answering project-related questions:
         ],
       });
 
+    const content: unknown = completion.choices?.[0]?.message?.content;
+
+    console.log("Reply:", content);
+    console.log("FULL COMPLETION:");
+    console.log(JSON.stringify(completion, null, 2));
+
+    let reply = "";
+
+    if (typeof content === "string") {
+      reply = content;
+    } else if (Array.isArray(content)) {
+      const contentArray = content as Array<{ text?: string }>;
+      reply = contentArray
+        .map((item) => item.text ?? "")
+        .join("");
+    }
+
     return Response.json({
-      reply:
-        completion.choices[0].message.content ||
-        "No response generated.",
+      reply: reply || "No response generated.",
     });
   } catch (error) {
     console.error(error);

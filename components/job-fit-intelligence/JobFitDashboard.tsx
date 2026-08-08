@@ -12,21 +12,14 @@ export default function JobFitDashboard({ analysis }: Props) {
 
   return (
     <>
-  <AnalysisHeader analysis={analysis} />
+      <AnalysisHeader analysis={analysis} />
 
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "24px",
-      marginTop: "24px",
-    }}
-  >
-    <RecruiterVerdict analysis={analysis} />
-    <KeywordAnalysis analysis={analysis} />
+      <div className="job-fit-grid" style={{ marginTop: "24px" }}>
+        <RecruiterVerdict analysis={analysis} />
+        <KeywordAnalysis analysis={analysis} />
+      </div>
 
-    <MatchScore analysis={analysis} />
-  </div>
-</>
+      <MatchScore analysis={analysis} />
+    </>
   );
 }

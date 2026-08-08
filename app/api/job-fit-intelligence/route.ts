@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -6,10 +7,36 @@ const openai = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY,
 });
 
+async function extractTextFromPdf(file: File) {
+  const arrayBuffer = await file.arrayBuffer();
+  const uint8Array = new Uint8Array(arrayBuffer);
+  const loadingTask = pdfjsLib.getDocument({ data: uint8Array });
+  const pdfDocument = await loadingTask.promise;
+
+  let extractedText = "";
+
+  for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber++) {
+    const page = await pdfDocument.getPage(pageNumber);
+    const content = await page.getTextContent();
+
+    const pageText = content.items
+      .map((item) =>
+        item && typeof item === "object" && "str" in item && typeof item.str === "string"
+          ? item.str
+          : ""
+      )
+      .join(" ");
+
+    extractedText += pageText + "\n";
+  }
+
+  return extractedText.trim();
+}
+
 const SYSTEM_PROMPT = `
 You are an expert Business Analyst Hiring Manager, Senior Business Analyst, Technical Recruiter and ATS evaluator.
 
-Your responsibility is to analyze ONE Business Analyst Job Description.
+Your responsibility is to analyze a Business Analyst Job Description and, when a resume is uploaded, evaluate the candidate against that Job Description.
 
 Your analysis must be objective, recruiter-quality and practical.
 
@@ -24,6 +51,20 @@ Do not return markdown.
 Do not wrap the response inside code blocks.
 
 Do not explain your reasoning.
+
+Do not infer candidate skills, experience, or domain expertise unless they are explicitly shown in the provided resume text.
+
+If a resume file was uploaded, resumeUploaded must be true. If no file was uploaded, resumeUploaded must be false.
+
+Do not let the presence or absence of resume data be decided by the analysis. The server will supply resumeUploaded.
+
+If a resume file was uploaded but resume text is unavailable, the analysis can still indicate that resume comparison fields are empty, but do not invent candidate details.
+
+When resumeUploaded is true, use the following judgments for comparison fields:
+- Strong Match
+- Partial Match
+- Missing
+
 Your analysis must extract the following information from the Job Description.
 
 1. Job Details
@@ -70,7 +111,7 @@ Only use information explicitly present or strongly implied by the Job Descripti
 Your response MUST exactly follow this JSON structure.
 
 {
-  "resumeUploaded": false,
+  "resumeUploaded": null,
 
   "jdInsights": {
     "role": "",
@@ -102,20 +143,17 @@ Your response MUST exactly follow this JSON structure.
     "summary": ""
   },
 
-  "overallMatch": null,
-
-  "atsScore": null,
-
-  "recruiterDecision": null,
-
-  "hiringManagerDecision": null,
-
-  "seniorBAVerdict": null,
-
+  "overallMatch": 0,
+  "atsScore": 0,
+  "experienceMatch": "",
+  "domainMatch": "",
+  "skillMatch": "",
+  "criticalSkillCoverage": "",
+  "recruiterDecision": "",
+  "hiringManagerDecision": "",
+  "seniorBAVerdict": "",
   "missingKeywords": [],
-
   "resumeSuggestions": [],
-
   "nextSteps": []
 }
 
@@ -142,17 +180,120 @@ resumeUploaded is false.
 9. Keep every summary concise and recruiter-friendly.
 
 10. Prioritize factual extraction over interpretation.
+11. When resumeUploaded is true, the resume comparison is mandatory.
 
+Evaluate the candidate against the Job Description using these dimensions:
+
+A. Experience Match
+- Compare required experience with the candidate's actual experience.
+- Identify whether the candidate meets, partially meets, or falls short of the requirement.
+
+B. Skill Match
+- Compare the candidate's demonstrated skills against the critical and important JD skills.
+- Do not assume a skill exists just because it is related to another skill.
+
+C. Domain Match
+- Compare the candidate's actual domain/project experience with the JD domain.
+- Clearly distinguish direct domain experience from transferable experience.
+
+D. ATS Compatibility
+- Evaluate keyword and skill alignment between the resume and JD.
+- Do not invent keywords that are not present in either document.
+
+E. Recruiter Evaluation
+- Decide whether the resume is likely to be shortlisted.
+- Give a concise reason based only on the evidence.
+
+F. Hiring Manager Evaluation
+- Decide whether the candidate appears capable of performing the role.
+- Identify the strongest evidence and the biggest concern.
+
+G. Senior BA Evaluation
+- Evaluate BA maturity, ownership, requirements skills, stakeholder management,
+  delivery experience and technical understanding.
+
+H. Missing Keywords
+- List important JD terms that are absent or insufficiently demonstrated in the resume.
+
+I. Resume Improvements
+- Give specific improvements based on the actual resume and JD.
+- Do not invent achievements, metrics, tools or responsibilities.
+
+J. Interview Preparation
+- Generate preparation topics based on the actual gaps and requirements of the JD.
+
+For scoring:
+- overallMatch must be between 0 and 100.
+- atsScore must be between 0 and 100.
+- Scores must reflect the evidence found in the resume and Job Description.
+- Do not automatically give high scores.
+- Do not use 0 merely because information is incomplete.
+- If the resume provides insufficient evidence for a specific assessment,
+  use "Insufficient data" rather than guessing.
+
+Base every comparison only on the provided resume and Job Description.
 `;
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+   const formData = await request.formData();
+
+const jobDescription = formData.get("jobDescription")?.toString() || "";
+
+const resumeFile = formData.get("resume") as File | null;
+    const resumeFilename = resumeFile?.name ?? null;
 
     console.log("job-fit-intelligence Request");
-    console.log(body);
+    const resumeUploaded = !!resumeFile;
+    let resumeText = "";
 
-    const resumeUploaded = body.resumeFileName !== null;
+if (resumeFile) {
+  try {
+    resumeText = await extractTextFromPdf(resumeFile);
+
+    console.log("========================================");
+    console.log("Resume File:", resumeFile.name);
+    console.log("Resume extracted characters:", resumeText.length);
+    console.log("Resume extraction succeeded: true");
+    console.log("========================================");
+  } catch (pdfError) {
+    console.error("Failed to parse resume PDF:", pdfError);
+    resumeText = "";
+    console.log("Resume File:", resumeFile.name);
+    console.log("Resume extraction succeeded: false");
+  }
+}
+
+console.log("========================================");
+console.log("RESUME CHECK");
+console.log("Filename:", resumeFilename);
+console.log("Uploaded:", resumeUploaded);
+console.log("Extraction success:", resumeUploaded ? resumeText.length > 0 : false);
+console.log("Resume characters:", resumeText.length);
+console.log("Resume available:", resumeText.length > 0);
+console.log("========================================");
+    if (!jobDescription.trim()) {
+  return NextResponse.json(
+    {
+      success: false,
+      message: "Job Description is required.",
+    },
+    {
+      status: 400,
+    }
+  );
+} 
+
+console.log({
+  jobDescriptionLength: jobDescription.length,
+  resumeUploaded,
+  resumeFilename,
+  resumeTextLength: resumeText.length,
+});
+    const llmResumeText = resumeUploaded
+      ? resumeText || "Resume was uploaded, but text extraction failed."
+      : "No resume was uploaded.";
+
     const completion = await openai.chat.completions.create({
   model: "openai/gpt-oss-20b:free",
 
@@ -164,15 +305,44 @@ export async function POST(request: Request) {
     {
       role: "user",
       content: `
-Analyze the following Business Analyst Job Description.
+You have two documents.
 
-Resume Uploaded: ${resumeUploaded}
+DOCUMENT 1 — JOB DESCRIPTION
+${jobDescription}
 
-Job Description:
+DOCUMENT 2 — CANDIDATE RESUME
+${llmResumeText}
 
-${body.jobDescription}
+ResumeUploaded: ${resumeUploaded}
+
+TASK:
+
+First extract the important requirements from the Job Description.
+
+Then, if a resume is available and text is present, compare the candidate's actual experience against those requirements.
+
+If a resume file was uploaded but no text is available, do not invent candidate information and keep resume-related comparison fields null or empty.
+
+Do not analyze the resume in isolation.
+Do not analyze the Job Description in isolation.
+
+The final output must reflect the relationship between the two documents.
+
+Determine:
+- Experience match
+- Skill match
+- Domain match
+- ATS compatibility
+- Recruiter decision
+- Hiring manager decision
+- Senior BA assessment
+- Missing keywords
+- Resume improvements
+- Interview preparation priorities
+
+Return ONLY the JSON structure defined in the system instructions.
 `,
-    },
+    }
   ],
 
   temperature: 0.2,
@@ -181,10 +351,25 @@ console.log(completion.choices[0].message.content);
 const analysis = JSON.parse(
   completion.choices[0].message.content || "{}"
 );
+
+analysis.resumeUploaded = resumeUploaded;
+analysis.resumeFilename = resumeFilename;
+
 return NextResponse.json({
   success: true,
   analysis,
 });
+  } catch (error) {
+    console.error(error);
 
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Something went wrong.",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
