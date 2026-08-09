@@ -29,9 +29,14 @@
   --font-mono: var(--font-mono);
 }
 
+html,
 body {
-  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%),
-    linear-gradient(180deg, #05070f 0%, #08111f 100%);
+  min-height: 100%;
+  overflow-x: hidden;
+  background-color: var(--background);
+}
+
+body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }

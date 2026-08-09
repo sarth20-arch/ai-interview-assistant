@@ -180,6 +180,8 @@ export default function Home() {
           display: grid;
           grid-template-columns: 230px 1fr;
           min-height: 100vh;
+          background-color: var(--background);
+          background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 28%);
         }
 
         /* ── SIDEBAR ── */
@@ -281,7 +283,7 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           background: transparent;
-          min-height: 100vh;
+          min-height: auto;
           padding: 0 48px;
         }
 
