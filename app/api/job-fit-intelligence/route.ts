@@ -295,7 +295,7 @@ console.log({
       : "No resume was uploaded.";
 
     const completion = await openai.chat.completions.create({
-  model: "openai/gpt-oss-20b:free",
+  model: "openai/gpt-oss-20b",
 
   messages: [
     {
@@ -348,9 +348,25 @@ Return ONLY the JSON structure defined in the system instructions.
   temperature: 0.2,
 });
 console.log(completion.choices[0].message.content);
-const analysis = JSON.parse(
-  completion.choices[0].message.content || "{}"
-);
+
+let analysis: any;
+try {
+  analysis = JSON.parse(
+    completion.choices[0].message.content || "{}"
+  );
+} catch (parseError) {
+  console.error("Failed to parse LLM JSON response:", parseError);
+  console.error("Raw LLM output:", completion.choices[0].message.content);
+  return NextResponse.json(
+    {
+      success: false,
+      message: "AI returned invalid JSON. Please try again.",
+    },
+    {
+      status: 502,
+    }
+  );
+}
 
 analysis.resumeUploaded = resumeUploaded;
 analysis.resumeFilename = resumeFilename;

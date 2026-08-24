@@ -135,7 +135,7 @@ ${qaContext}
 
     const completion =
       await openai.chat.completions.create({
-        model: "openai/gpt-oss-20b:free",
+        model: "openai/gpt-oss-20b",
 
         messages: [
           {

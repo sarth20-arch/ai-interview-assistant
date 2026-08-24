@@ -168,7 +168,7 @@ ${qaContext}
 
     const completion =
       await openai.chat.completions.create({
-        model: "openai/gpt-oss-20b:free",
+        model: "openai/gpt-oss-20b",
 
         messages: [
           {
@@ -190,12 +190,14 @@ Rules for the Suggested Answer:
 - Write as a realistic Business Analyst candidate would answer in an interview.
 - 150-250 words, conversational, natural, interview-ready.
 - Sounds like something spoken in 90-120 seconds.
-- Use STAR naturally when appropriate.
-- Start with phrases like: "One project that comes to mind...", "One example from my experience...", "In one implementation project..."
+- Use STAR methodology naturally when appropriate (Situation, Task, Action, Result).
+- Write in second person or use a generic "I" from a candidate perspective (e.g., "I led a CRM implementation...").
+- Start with context or a specific scenario (e.g., "In my recent CRM implementation project..." or "When I was tasked with...").
+- DO NOT reuse specific projects from Sarthak's knowledge base (use generic business scenarios instead).
 - DO NOT begin with framework explanations.
 - DO NOT give lectures.
-- DO NOT say "I worked...", "My project..." unless the question explicitly asks about personal experience.
-- Focus on answering the question, not teaching.
+- Focus on answering the question with a concrete example, not teaching.
+- Make it sound like an actual interview response the candidate could give.
 
 Rules for Why It Works:
 - 4-6 concise bullet points explaining why this answer is effective.
@@ -246,10 +248,24 @@ RESPOND ONLY WITH VALID JSON. NO OTHER TEXT.`,
       });
 
     const responseContent = completion.choices[0].message.content || "{}";
+    
+    console.log("=".repeat(60));
+    console.log("MOCK INTERVIEW - LLM RAW RESPONSE:");
+    console.log(responseContent);
+    console.log("=".repeat(60));
+    
     const parsedResponse = extractJsonPayload(responseContent);
 
+    console.log("PARSED RESPONSE OBJECT:");
+    console.log(JSON.stringify(parsedResponse, null, 2));
+    console.log("=".repeat(60));
+
     if (parsedResponse) {
-      return Response.json(normalizeAnswerPayload(parsedResponse));
+      const normalized = normalizeAnswerPayload(parsedResponse);
+      console.log("NORMALIZED RESPONSE:");
+      console.log(JSON.stringify(normalized, null, 2));
+      console.log("=".repeat(60));
+      return Response.json(normalized);
     }
 
     console.error("Failed to parse response JSON:", responseContent);
@@ -260,11 +276,15 @@ RESPOND ONLY WITH VALID JSON. NO OTHER TEXT.`,
       interviewTip: "",
     });
   } catch (error) {
-    console.error(error);
-
+    console.error("Mock interview error:", error);
+    
     return Response.json(
       {
-        error: "Something went wrong",
+        suggestedAnswer: "Unable to generate a suggested answer at this moment. Please try again.",
+        whyItWorks: [],
+        keyPoints: [],
+        interviewTip: "If this continues, check your API configuration.",
+        error: "Failed to generate answer"
       },
       {
         status: 500,
