@@ -112,13 +112,15 @@ The analysis was performed using **SQL/DAX concepts and Power BI**.
 
 ### Key Metrics
 
-| Metric | Result |
-|---|---:|
-| Users | 118 |
-| Conversations | 110 |
-| Sessions | 130 |
-| Returning Users | 9.32% |
-| 7-Day Retention | 16% |
+| Metric              | Result |
+| ------------------- | -----: |
+| Users               |    118 |
+| Conversations       |    110 |
+| Sessions            |    130 |
+| Returning Users     |     11 |
+| Returning User Rate |  9.32% |
+| 7-Day Retention     |    16% |
+
 
 ---
 
