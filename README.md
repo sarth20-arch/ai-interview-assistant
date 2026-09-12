@@ -40,7 +40,8 @@ BA Prep AI brings these workflows together into one AI-assisted experience focus
 ## 1. Home / BA Prep AI Dashboard
 
 **Screenshot:**  
-*Paste Home/Dashboard screenshot here*
+<img width="1648" height="812" alt="Screenshot 2026-09-12 230522" src="https://github.com/user-attachments/assets/cb8cf559-d5bf-40df-87be-de343a7be11f" />
+
 
 ---
 
@@ -102,7 +103,7 @@ An event-based analytics model was created to analyze:
 - Interview-topic engagement
 - Product usage over time
 
-The analysis was performed using **SQL/DAX concepts and Power BI**.
+The analysis was performed using DAX measures and Power BI, with an event-based product analytics model designed for SQL analysis.**.
 
 ## Power BI Product Analytics Dashboard
 
@@ -181,7 +182,7 @@ A one-page product case study documents the product thinking behind BA Prep AI, 
 
 **Problem → User → User Journey → MVP → Analytics → Insights → Product Decisions → Roadmap → Success Metrics**
 
-📎 **Case Study:** https://drive.google.com/file/d/1WjAGNVH32akxT5ESOXe3-qzHjgTg-Xt0/view?usp=sharing
+📎 **Case Study:** 📄 **[View Product Case Study](./product-case-study/BA-Prep-AI-Product-Case-Study.pdf)**
 
 ---
 
@@ -220,4 +221,4 @@ BA Prep AI was designed and developed as a personal product project to demonstra
 
 **Business Analysis + Product Thinking + AI + Data Analytics**
 
-The project covers the complete product cycle from identifying a user problem and building the solution to analyzing usage data and translating insights into product decisions.
+The project covers the product lifecycle from problem identification and solution design to analytics, insight generation, product decisions, and roadmap planning.
