@@ -1,271 +1,221 @@
-# 🚀 AI Interview Assistant
+# 🚀 BA Prep AI
 
-An AI-powered interview preparation platform for Business Analysts that combines structured interview simulations, AI-generated guidance, KPI learning, Business Analyst productivity tools, and Job Fit Intelligence.
+### AI-powered Business Analyst interview and career preparation platform
 
-Unlike a generic chatbot, the platform delivers guided interview experiences with contextual knowledge, recruiter-style questions, grounded AI responses, and resume-to-JD analysis.
+BA Prep AI is an AI-powered platform designed to help Business Analysts prepare for interviews, evaluate job fit, practice interview scenarios, and work through practical BA exercises.
 
-🌐 **Live Demo**
-
-https://ai-recruiter-assistant.vercel.app/
+The product combines AI-assisted interview preparation with practical Business Analysis tools in one workflow.
 
 ---
 
-# ✨ Features
+## 🌐 Live Demo
 
-### 🎯 AI Interview Simulator
+🔗 **Live Application:** https://ai-recruiter-assistant.vercel.app/
 
-Practice Business Analyst interviews through a structured interview flow.
-
-- Role & difficulty selection
-- Recruiter / Hiring Manager interview modes
-- AI-generated suggested answers
-- Framework hints
-- Key points interviewers look for
-- Interview tips
-- Follow-up questions
-- Readiness summary
+🔗 **GitHub Repository:** https://github.com/sarth20-arch/ai-interview-assistant
 
 ---
 
-### 📄 Job Fit Intelligence (New)
+## 🎯 Problem
 
-Analyze a Business Analyst Job Description before applying.
+Business Analysts preparing for interviews often rely on fragmented resources for resume evaluation, interview practice, generic question banks, and BA requirement exercises.
 
-Features include:
-
-- Paste any Business Analyst JD
-- Sample Business Analyst JDs
-- Optional resume upload
-- ATS Match Score
-- Overall Match Score
-- Recruiter Hiring Recommendation
-- AI-generated Job Fit Summary
+BA Prep AI brings these workflows together into one AI-assisted experience focused on **role-specific preparation and actionable feedback**.
 
 ---
 
-### 🤖 Ask Sarthak
+## 👤 Target User
 
-An AI assistant that answers recruiter questions using a structured knowledge base instead of generic LLM responses.
+**Business Analyst in active job search**
 
-Topics include:
-
-- Professional Experience
-- Projects
-- Stakeholder Management
-- Agile
-- Product Thinking
-- KPI Knowledge
-- Implementation Experience
-- Behavioral Questions
+- 2–4 years of experience
+- Preparing for BA/Product interviews
+- Needs role-specific rather than generic preparation
+- Wants actionable feedback on gaps and readiness
 
 ---
 
-### 📊 KPI Library
+# 🖥️ Product Walkthrough
 
-Learn commonly used Business and Product metrics including:
+## 1. Home / BA Prep AI Dashboard
 
-- Activation Rate
-- Feature Adoption
-- Retention
-- Sprint Velocity
-- Stakeholder Satisfaction
-- Business Outcome Metrics
+**Screenshot:**  
+*Paste Home/Dashboard screenshot here*
 
 ---
 
-### 🛠️ BA Toolkit
+## 2. Recruiter Assistant
 
-Generate Business Analysis artifacts such as:
+Helps users prepare answers around their experience, projects, Business Analysis concepts, Agile practices, stakeholder management, and behavioral scenarios.
+
+**Screenshot:**  
+<img width="1648" height="812" alt="image" src="https://github.com/user-attachments/assets/c6570e66-9278-45c0-80b7-91c0c97191e4" />
+<img width="1652" height="862" alt="image" src="https://github.com/user-attachments/assets/a938247e-721e-4afb-b25c-7e2ba18edab1" />
+
+
+
+---
+
+## 3. Job Fit Intelligence
+
+Helps users evaluate their alignment with a target role and identify potential skill or experience gaps.
+
+<img width="1637" height="816" alt="image" src="https://github.com/user-attachments/assets/3b28cc52-d322-486a-a365-b82ba1f6c93e" />
+<img width="1608" height="767" alt="image" src="https://github.com/user-attachments/assets/6fcb6025-c069-4d90-b574-26dc3f0246f0" />
+
+
+---
+
+## 4. Mock Interview
+
+Provides an interview-practice workflow where users can respond to questions and receive AI-assisted feedback.
+
+<img width="1607" height="802" alt="image" src="https://github.com/user-attachments/assets/ede77cd7-125c-41d5-8efb-d5bb015c27c2" />
+<img width="1655" height="755" alt="image" src="https://github.com/user-attachments/assets/1fbe8a3b-4f7e-4e33-b45a-70facc50111b" />
+
+---
+
+## 5. BA Toolkit
+
+Provides practical BA utilities for generating structured outputs such as:
 
 - User Stories
 - Acceptance Criteria
-- BRD Ideas
-- Requirement Templates
+- Requirement Documentation
+- Other BA preparation exercises
+
+<img width="1628" height="792" alt="image" src="https://github.com/user-attachments/assets/d04fb68f-fdb3-49fe-80ce-49b21224c5aa" />
+
 
 ---
 
-# 🧠 Knowledge Repository
+# 📊 Product Analytics
 
-The AI is powered by a structured knowledge repository instead of relying entirely on prompt engineering.
+BA Prep AI was extended beyond the application layer into a product analytics exercise.
 
-Knowledge includes:
+An event-based analytics model was created to analyze:
 
-- Projects
-- STAR Stories
-- Behavioral Scenarios
-- KPI Examples
-- Recruiter Questions
-- Business Analysis Concepts
+- Feature adoption
+- Workflow completion
+- Returning users
+- 7-day retention
+- Interview-topic engagement
+- Product usage over time
 
-Repository:
+The analysis was performed using **SQL/DAX concepts and Power BI**.
 
-https://github.com/sarth20-arch/ba-prep-ai/tree/main/knowledge-base
+## Power BI Product Analytics Dashboard
 
----
+**Screenshot:**  
+<img width="1262" height="745" alt="dashboard-preview" src="https://github.com/user-attachments/assets/a3efd7dc-6003-42ac-a811-ee78f747c31d" />
 
-# ⚙️ How It Works
 
-```
-User Input
-      │
-      ▼
-Context Selection
-      │
-      ▼
-Knowledge Retrieval
-      │
-      ▼
-Prompt Construction
-      │
-      ▼
-OpenRouter LLM
-      │
-      ▼
-Grounded AI Response
-      │
-      ▼
-User Interface
-```
+### Key Metrics
+
+| Metric | Result |
+|---|---:|
+| Users | 118 |
+| Conversations | 110 |
+| Sessions | 130 |
+| Returning Users | 9.32% |
+| 7-Day Retention | 16% |
 
 ---
 
-# 🏗️ Project Structure
+# 🧠 Product Insights
 
-```
-app/
-│
-├── Home Dashboard
-├── Job Fit Intelligence
-├── Interview Simulator
-├── Ask Sarthak
-├── KPI Library
-└── BA Toolkit
+The analytics highlighted several areas for product improvement:
 
-components/
-│
-├── Home Dashboard
-├── Interview Simulator
-├── Job Fit Intelligence
-├── Setup Screen
-├── Question Progress
-├── Suggested Answer Panel
-├── Completion Screen
-└── Shared Components
+- **Recruiter Assistant** was the dominant feature.
+- **Job Fit Intelligence** showed meaningful adoption but lower completion.
+- **Mock Interview** had the largest completion gap at **20%**.
+- **Behavioral** and **Business Analysis** were the strongest interview-topic categories.
 
-data/
-│
-├── Interview Bank
-├── Job Fit Intelligence
-├── Projects
-├── Behavioral Stories
-├── KPI Knowledge
-└── Prompt Context
-```
+These findings were used to identify areas for further product investigation rather than assuming causation from the data.
 
 ---
 
-# 💻 Tech Stack
+# 💡 Product Decisions
 
-### Frontend
+Rather than immediately adding more features, the next priority would be improving the **Mock Interview experience** and investigating why users abandon the workflow.
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+Initial hypotheses include:
 
-### Backend
+- Workflow friction
+- Limited progress/feedback visibility
+- Interview length
+- Unclear completion value
 
-- Next.js API Routes
-- OpenRouter API
-
-### AI Layer
-
-- Structured JSON Knowledge Base
-- Context Retrieval
-- Prompt Engineering
-
-### Deployment
-
-- GitHub
-- Vercel
+These hypotheses would be validated through further user research and product experimentation.
 
 ---
 
-# 📈 Current Capabilities
+# 🗺️ Product Roadmap
 
-✅ AI Interview Simulator
+### V1 — Foundation
 
-✅ Job Fit Intelligence
+- Recruiter Assistant
+- Job Fit Intelligence
+- Mock Interview
+- BA Toolkit
 
-✅ Resume vs JD Analysis
+### V2 — Engagement
 
-✅ AI Recruiter Assistant
+- Improve Mock Interview completion experience
+- Personalized interview practice
+- Better feedback and progress visibility
 
-✅ Suggested Interview Answers
+### V3 — Personalization
 
-✅ Framework Hints
-
-✅ Interview Tips
-
-✅ KPI Library
-
-✅ BA Toolkit
-
-✅ Knowledge-Based Response Generation
-
----
-
-# 🚀 Roadmap
-
-- Personalized Resume vs JD Interview Questions
-- AI Interview Evaluation
-- Dynamic Follow-up Questions
-- Candidate Scoring Dashboard
-- Voice Interview Mode
-- PDF Interview Reports
-- Interview History
-- Progress Analytics
+- JD-driven skill-gap analysis
+- Personalized preparation plans
+- Progress tracking
 
 ---
 
-# 📸 Screenshots
+# 📄 Product Case Study
 
-### 🏠 Home Dashboard
+A one-page product case study documents the product thinking behind BA Prep AI, including:
 
-*(Add updated homepage screenshot)*
+**Problem → User → User Journey → MVP → Analytics → Insights → Product Decisions → Roadmap → Success Metrics**
 
-### 📄 Job Fit Intelligence
-
-*(Add Job Fit Intelligence screenshot)*
-
-### 🎤 Mock Interview
-
-<img width="1031" height="718" alt="image" src="https://github.com/user-attachments/assets/a0e99116-bb44-4a65-ad7d-6b6088bfd5e8" />
-
-### 📊 KPI Library
-
-<img width="1310" height="745" alt="image" src="https://github.com/user-attachments/assets/fd51b62a-23d6-4b08-b0e0-953560d8e8c8" />
-
-### 🛠️ BA Toolkit
-
-<img width="1611" height="470" alt="image" src="https://github.com/user-attachments/assets/6b1717dc-b715-4baf-8558-e7aa7042ebbb" />
-
-### 🤖 Ask Sarthak
-
-<img width="1570" height="658" alt="image" src="https://github.com/user-attachments/assets/610b3495-e435-459e-8c8d-f622e2b66b11" />
+📎 **Case Study:** https://drive.google.com/file/d/1WjAGNVH32akxT5ESOXe3-qzHjgTg-Xt0/view?usp=sharing
 
 ---
 
-# 👨‍💻 Author
+# 🛠️ Tech Stack
 
-**Sarthak Srivastava**
+- **Frontend:** Next.js, TypeScript
+- **AI:** LLM APIs, prompt engineering, contextual knowledge
+- **Integration:** REST APIs
+- **Analytics:** SQL, DAX, Power BI
+- **Deployment:** Vercel
+- **Version Control:** GitHub
 
-Business Analyst • Product Enthusiast • AI Builder
+---
 
-🔗 LinkedIn
+# 📈 Success Metrics
 
-https://www.linkedin.com/in/sarthak-srivastava-s1997/
+The product can be evaluated using:
 
-🌐 Live Demo
+- 7-day retention
+- Feature adoption
+- Workflow completion
+- Repeat sessions
+- Interview preparation engagement
 
-https://ai-recruiter-assistant.vercel.app/
+---
+
+## ⚠️ Analytics Methodology
+
+The product analytics section uses a **simulated product-event dataset created for portfolio analysis** to demonstrate event instrumentation, KPI design, analysis, and product decision-making.
+
+---
+
+## 👨‍💻 About the Project
+
+BA Prep AI was designed and developed as a personal product project to demonstrate the intersection of:
+
+**Business Analysis + Product Thinking + AI + Data Analytics**
+
+The project covers the complete product cycle from identifying a user problem and building the solution to analyzing usage data and translating insights into product decisions.
